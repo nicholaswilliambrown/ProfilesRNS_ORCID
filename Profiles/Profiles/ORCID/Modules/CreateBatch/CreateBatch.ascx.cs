@@ -67,25 +67,25 @@ namespace Profiles.ORCID.Modules.CreateBatch
         }
         protected void DrawProfilesModule()
         {
-            this.listBoxInstitutionID.DataSource = new ProfilesRNSDLL.BLL.Profile.Data.OrganizationInstitution().Gets();
+            this.listBoxInstitutionID.DataSource = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.Profile.Data.OrganizationInstitution().Gets();
             this.listBoxInstitutionID.DataBind();
             for (int i = 0; i < listBoxInstitutionID.Items.Count; i++)
             {
                 listBoxInstitutionID.Items[i].Selected = true;
             }
-            this.listBoxDepartmentID.DataSource = new ProfilesRNSDLL.BLL.Profile.Data.OrganizationDepartment().Gets();
+            this.listBoxDepartmentID.DataSource = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.Profile.Data.OrganizationDepartment().Gets();
             this.listBoxDepartmentID.DataBind();
             for (int i = 0; i < listBoxDepartmentID.Items.Count; i++)
             {
                 listBoxDepartmentID.Items[i].Selected = true;
             }
-            this.listBoxDivisionID.DataSource = new ProfilesRNSDLL.BLL.Profile.Data.OrganizationDivision().Gets();
+            this.listBoxDivisionID.DataSource = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.Profile.Data.OrganizationDivision().Gets();
             this.listBoxDivisionID.DataBind();
             for (int i = 0; i < listBoxDivisionID.Items.Count; i++)
             {
                 listBoxDivisionID.Items[i].Selected = true;
             }
-            this.listBoxFacultyRankID.DataSource = new ProfilesRNSDLL.BLL.Profile.Data.PersonFacultyRank().Gets();
+            this.listBoxFacultyRankID.DataSource = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.Profile.Data.PersonFacultyRank().Gets();
             this.listBoxFacultyRankID.DataBind();
             for (int i = 0; i < listBoxFacultyRankID.Items.Count; i++)
             {
@@ -148,7 +148,7 @@ namespace Profiles.ORCID.Modules.CreateBatch
 
                                 try
                                 {
-                                    ProfilesRNSDLL.BO.ORCID.Person bo = new ProfilesRNSDLL.BLL.ORCID.Person().GetPersonWithDBData(int.Parse(lblPersonID.Text), sm.Session().SessionID);
+                                    Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person bo = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.Person().GetPersonWithDBData(int.Parse(lblPersonID.Text), sm.Session().SessionID);
                                     if (!bo.BiographyIsNull && !bo.Biography.Equals(string.Empty))
                                     {
                                         bo.PushBiographyToORCID = true;
@@ -156,7 +156,7 @@ namespace Profiles.ORCID.Modules.CreateBatch
 
                                     //System.Threading.Thread.Sleep(2000);
 
-                                    if (new ProfilesRNSDLL.BLL.ORCID.Person().CreateNewORCID(bo, LoggedInInternalUsername, ProfilesRNSDLL.BO.ORCID.REFPersonStatusType.REFPersonStatusTypes.User_Push_Failed))
+                                    if (new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.Person().CreateNewORCID(bo, LoggedInInternalUsername, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.REFPersonStatusType.REFPersonStatusTypes.User_Push_Failed))
                                     {
                                         lblMessages.Text = "Success";
                                     }
@@ -178,14 +178,14 @@ namespace Profiles.ORCID.Modules.CreateBatch
             }
         }
 
-        private ProfilesRNSDLL.BLL.Profile.Data.Person _ProfilePersonBLL = null;
-        private ProfilesRNSDLL.BLL.Profile.Data.Person ProfilePersonBLL
+        private Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.Profile.Data.Person _ProfilePersonBLL = null;
+        private Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.Profile.Data.Person ProfilePersonBLL
         {
             get
             {
                 if (_ProfilePersonBLL == null)
                 {
-                    _ProfilePersonBLL = new ProfilesRNSDLL.BLL.Profile.Data.Person();
+                    _ProfilePersonBLL = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.Profile.Data.Person();
                 }
                 return _ProfilePersonBLL;
 
@@ -202,7 +202,7 @@ namespace Profiles.ORCID.Modules.CreateBatch
         {
             get
             {
-                return string.Join(", ", ProfilesRNSDLL.DevelopmentBase.UICommon.GetSelectedValues(listBoxInstitutionID.Items).ToArray());
+                return string.Join(", ", Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase.UICommon.GetSelectedValues(listBoxInstitutionID.Items).ToArray());
             }
         }
         private string SelectedDepartmentIDs
@@ -213,7 +213,7 @@ namespace Profiles.ORCID.Modules.CreateBatch
                 {
                     return "All";
                 }
-                return string.Join(", ", ProfilesRNSDLL.DevelopmentBase.UICommon.GetSelectedValues(listBoxDepartmentID.Items).ToArray());
+                return string.Join(", ", Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase.UICommon.GetSelectedValues(listBoxDepartmentID.Items).ToArray());
             }
         }
         private string SelectedDivisionIDs
@@ -224,14 +224,14 @@ namespace Profiles.ORCID.Modules.CreateBatch
                 {
                     return "All";
                 }
-                return string.Join(", ", ProfilesRNSDLL.DevelopmentBase.UICommon.GetSelectedValues(listBoxDivisionID.Items).ToArray());
+                return string.Join(", ", Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase.UICommon.GetSelectedValues(listBoxDivisionID.Items).ToArray());
             }
         }
         private string SelectedFacultyRankIDs
         {
             get
             {
-                return string.Join(", ", ProfilesRNSDLL.DevelopmentBase.UICommon.GetSelectedValues(listBoxFacultyRankID.Items).ToArray());
+                return string.Join(", ", Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase.UICommon.GetSelectedValues(listBoxFacultyRankID.Items).ToArray());
             }
         }
         private void PopulateSearchResults(System.Data.DataView dv)

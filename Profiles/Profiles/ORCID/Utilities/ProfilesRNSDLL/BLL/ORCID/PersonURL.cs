@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ProfilesRNSDLL.BLL.ORCID
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID
 {
     public partial class PersonURL
     {

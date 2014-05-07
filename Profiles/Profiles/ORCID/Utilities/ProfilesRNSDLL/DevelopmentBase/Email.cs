@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Net.Mail;
 
-namespace ProfilesRNSDLL.DevelopmentBase
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase
 {
     public class Email
     {

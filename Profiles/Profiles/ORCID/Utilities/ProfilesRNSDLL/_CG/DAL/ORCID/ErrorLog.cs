@@ -7,7 +7,7 @@ using System.Text;
 using System.Reflection;
 using System.Diagnostics;
  
-namespace ProfilesRNSDLL.DAL.ORCID
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
 { 
     public partial class ErrorLog : DALGeneric<ProfilesRNSDLL.BO.ORCID.ErrorLog>
     { 
@@ -21,7 +21,7 @@ namespace ProfilesRNSDLL.DAL.ORCID
         # region Methods 
  
         /*! Method to create parameters in order to add or edit a record. */
-        public override void GetParamsAll(ref System.Data.Common.DbCommand cmd, ProfilesRNSDLL.BO.ORCID.ErrorLog bo) 
+        public override void GetParamsAll(ref System.Data.Common.DbCommand cmd, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.ErrorLog bo) 
         { 
             DbParameter Parm = cmd.CreateParameter(); 
             Parm.ParameterName = "@ErrorLogID";
@@ -43,7 +43,7 @@ namespace ProfilesRNSDLL.DAL.ORCID
         } 
  
         /*! Method to log changes to fields in a record. */
-        public override void LogIfNecessary(DevelopmentBase.BaseClassBO.RecordLevelAuditTypes auditType, ProfilesRNSDLL.BO.ORCID.ErrorLog boBefore, ProfilesRNSDLL.BO.ORCID.ErrorLog bo, DbTransaction trans) 
+        public override void LogIfNecessary(DevelopmentBase.BaseClassBO.RecordLevelAuditTypes auditType, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.ErrorLog boBefore, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.ErrorLog bo, DbTransaction trans) 
         { 
             int recordLevelAuditTrailID = 0;
             if (auditType == DevelopmentBase.BaseClassBO.RecordLevelAuditTypes.Deleted)
@@ -64,13 +64,13 @@ namespace ProfilesRNSDLL.DAL.ORCID
         internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID].[ErrorLog].[ErrorLogID], [ORCID].[ErrorLog].[InternalUsername], [ORCID].[ErrorLog].[Exception], [ORCID].[ErrorLog].[OccurredOn], [ORCID].[ErrorLog].[Processed]"; } 
  
         /*! Method to get identity(s) of the newly added database record. */
-        public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, ProfilesRNSDLL.BO.ORCID.ErrorLog businessObj)
+        public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.ErrorLog businessObj)
         { 
             businessObj.ErrorLogID = int.Parse(sqlCommand.Parameters["@ErrorLogID"].Value.ToString()); 
         } 
  
         /*! Method to create parameters in order to add or edit a record. */
-        public override void GetParamsPrimaryKey(ref System.Data.Common.DbCommand cmd, ProfilesRNSDLL.BO.ORCID.ErrorLog bo) 
+        public override void GetParamsPrimaryKey(ref System.Data.Common.DbCommand cmd, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.ErrorLog bo) 
         { 
             AddParam(ref cmd, "@ErrorLogID", bo.ErrorLogID);
         } 

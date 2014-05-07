@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic; 
 using System.Text; 
  
-namespace ProfilesRNSDLL.BLL.RDF.Security
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.RDF.Security
 {
     public partial class Group : ProfilesRNSDLL.DAL.RDF.Security.Group
     {

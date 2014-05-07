@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ProfilesRNSDLL.DevelopmentBase
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase
 {
     public class PermissionException : Exception
     {

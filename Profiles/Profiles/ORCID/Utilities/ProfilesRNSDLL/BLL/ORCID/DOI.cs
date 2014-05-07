@@ -8,7 +8,7 @@ using System.Net;
 using System.IO;
 using System.Web.Script.Serialization;
 
-namespace ProfilesRNSDLL.BLL.ORCID
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID
 {
     public class DOI
     {

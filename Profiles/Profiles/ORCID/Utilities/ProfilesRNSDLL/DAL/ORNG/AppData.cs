@@ -5,7 +5,7 @@ using System.Text;
 using System.Data;
 using System.Data.Common;
 
-namespace ProfilesRNSDLL.DAL.ORNG
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORNG
 {
     public partial class AppData
     {

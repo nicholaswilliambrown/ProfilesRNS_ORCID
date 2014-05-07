@@ -59,7 +59,7 @@ namespace Profiles.ORCID.Modules.ProvideORCID
         {
             if (!IsPostBack)
             {
-                ProfilesRNSDLL.BO.ORCID.Person person = GetPerson();
+                Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person person = GetPerson();
                 divORCIDAlreadyProvided.Visible = person.Exists && !person.ORCIDIsNull;
                 divProvideORCID.Visible = !divORCIDAlreadyProvided.Visible;
                 //lblOrganizationName.Text = Profiles.ORCID.Utilities.config.OrganizationName;
@@ -71,8 +71,8 @@ namespace Profiles.ORCID.Modules.ProvideORCID
         {
             // Have the user log into ORCID and Authenticate.  Upon return from ORCID, redirect to ProvideORCIDConfirmation.aspx.   
             // If successful, ProvideORCIDConfirmation.aspx should have a query string parameter named code, that will allow us to get the ORCID ID.
-            ProfilesRNSDLL.BO.ORCID.REFPermission refPermission = new ProfilesRNSDLL.BLL.ORCID.REFPermission().Get((int)ProfilesRNSDLL.BO.ORCID.REFPermission.REFPermissions.authenticate);
-            string orcidLoginPath = ProfilesRNSDLL.BLL.ORCID.OAuth.GetUserPermissionURL(refPermission.PermissionScope, "ProvideORCIDConfirmation.aspx");
+            Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.REFPermission refPermission = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.REFPermission().Get((int)Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.REFPermission.REFPermissions.authenticate);
+            string orcidLoginPath = Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.OAuth.GetUserPermissionURL(refPermission.PermissionScope, "ProvideORCIDConfirmation.aspx");
             Response.Redirect(orcidLoginPath, true);
         }
     }

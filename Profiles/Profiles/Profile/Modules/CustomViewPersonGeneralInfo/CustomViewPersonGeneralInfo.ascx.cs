@@ -55,8 +55,8 @@ namespace Profiles.Profile.Modules.CustomViewPersonGeneralInfo
             args.AddParam("imgguid", "", Guid.NewGuid().ToString());
 
             // Check for an ORCID
-            string internalUsername = new ProfilesRNSDLL.BLL.Profile.Data.Person().GetInternalUsername(Convert.ToInt64(Request.QueryString["Subject"]));
-            ProfilesRNSDLL.BO.ORCID.Person orcidPerson = new ProfilesRNSDLL.BLL.ORCID.Person().GetByInternalUsername(internalUsername);
+            string internalUsername = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.Profile.Data.Person().GetInternalUsername(Convert.ToInt64(Request.QueryString["Subject"]));
+            Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person orcidPerson = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.Person().GetByInternalUsername(internalUsername);
             if (orcidPerson.Exists && !orcidPerson.ORCIDIsNull)
             {
                 args.AddParam("orcid", "", orcidPerson.ORCID);

@@ -7,7 +7,7 @@ using System.Text;
 using System.Reflection;
 using System.Diagnostics;
  
-namespace ProfilesRNSDLL.DAL.Profile.Data
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.Profile.Data
 { 
     public partial class PersonFacultyRank : DALGeneric<ProfilesRNSDLL.BO.Profile.Data.PersonFacultyRank>
     { 

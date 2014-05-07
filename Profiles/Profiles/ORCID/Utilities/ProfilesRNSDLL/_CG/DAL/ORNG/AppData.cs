@@ -7,7 +7,7 @@ using System.Text;
 using System.Reflection;
 using System.Diagnostics;
  
-namespace ProfilesRNSDLL.DAL.ORNG
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORNG
 { 
     public partial class AppData : DALGeneric<ProfilesRNSDLL.BO.ORNG.AppData>
     { 

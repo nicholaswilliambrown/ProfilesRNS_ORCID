@@ -13,7 +13,7 @@ namespace Profiles.ORCID.Modules.UpdateSecurityGroupDefaultDecisions
         {
             if (!IsPostBack)
             {
-                this.rptSecurityGroups.DataSource = new ProfilesRNSDLL.BLL.RDF.Security.Group().Gets();
+                this.rptSecurityGroups.DataSource = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.RDF.Security.Group().Gets();
                 this.rptSecurityGroups.DataBind();
             }
         }
@@ -33,7 +33,7 @@ namespace Profiles.ORCID.Modules.UpdateSecurityGroupDefaultDecisions
         }
         protected void btnSaveChanges_Click(object sender, EventArgs e)
         {
-            ProfilesRNSDLL.BLL.RDF.Security.Group groupBLL = new ProfilesRNSDLL.BLL.RDF.Security.Group();
+            Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.RDF.Security.Group groupBLL = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.RDF.Security.Group();
             foreach (RepeaterItem ri in this.rptSecurityGroups.Items)
             {
                 if (ri.ItemType == ListItemType.Item || ri.ItemType == ListItemType.AlternatingItem)
@@ -41,7 +41,7 @@ namespace Profiles.ORCID.Modules.UpdateSecurityGroupDefaultDecisions
                     DropDownList ddlDefaultORCIDDecisionID = (DropDownList)ri.FindControl("ddlDefaultORCIDDecisionID");
                     Label lblSecurityGroupID = (Label)ri.FindControl("lblSecurityGroupID");
                     Label lblGroupError = (Label)ri.FindControl("lblGroupError");
-                    ProfilesRNSDLL.BO.RDF.Security.Group bo = groupBLL.Get(int.Parse(lblSecurityGroupID.Text));
+                    Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.RDF.Security.Group bo = groupBLL.Get(int.Parse(lblSecurityGroupID.Text));
                     bo.DefaultORCIDDecisionID = int.Parse(ddlDefaultORCIDDecisionID.SelectedValue);
                     if (!groupBLL.Edit(bo))
                     {

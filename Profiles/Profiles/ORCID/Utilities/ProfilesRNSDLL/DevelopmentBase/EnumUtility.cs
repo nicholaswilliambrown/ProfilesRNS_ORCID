@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.ComponentModel;
 using System.Reflection; 
 
-namespace ProfilesRNSDLL.DevelopmentBase
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase
 {
     public static class EnumUtility
     {

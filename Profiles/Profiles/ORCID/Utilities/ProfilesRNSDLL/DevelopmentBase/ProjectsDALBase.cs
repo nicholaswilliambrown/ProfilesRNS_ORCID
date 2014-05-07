@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.Common;
 
-namespace ProfilesRNSDLL.DevelopmentBase
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase
 {
     public class ProjectsDALBase : DevelopmentBase.DALBase
     {

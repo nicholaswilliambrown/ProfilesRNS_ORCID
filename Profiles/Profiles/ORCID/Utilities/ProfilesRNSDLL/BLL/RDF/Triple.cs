@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ProfilesRNSDLL.BLL.RDF
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.RDF
 {
     public partial class Triple
     {

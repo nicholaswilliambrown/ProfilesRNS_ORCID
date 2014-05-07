@@ -1,4 +1,4 @@
-namespace ProfilesRNSDLL.BO.Interfaces.Profile.Data
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Interfaces.Profile.Data
 { 
     public partial interface IOrganizationDivision
     { 

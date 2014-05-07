@@ -67,7 +67,7 @@ namespace Profiles.ORCID.Modules.CreationConfirmation
         }
         protected void DrawProfilesModule()
         {
-            ProfilesRNSDLL.BO.ORCID.Person person = GetPerson();
+            Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person person = GetPerson();
             if (person.Exists && !person.ORCIDIsNull && !person.ORCID.Equals(string.Empty))
             {
                 hlORCIDUrl.Text = person.ORCIDUrl;

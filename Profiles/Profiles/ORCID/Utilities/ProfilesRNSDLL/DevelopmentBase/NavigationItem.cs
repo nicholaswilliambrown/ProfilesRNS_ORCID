@@ -5,7 +5,7 @@ using System.Text;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace ProfilesRNSDLL.DevelopmentBase
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase
 {
     public class NavigationItem 
     {

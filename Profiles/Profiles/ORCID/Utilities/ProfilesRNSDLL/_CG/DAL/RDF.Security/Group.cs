@@ -7,7 +7,7 @@ using System.Text;
 using System.Reflection;
 using System.Diagnostics;
  
-namespace ProfilesRNSDLL.DAL.RDF.Security
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.RDF.Security
 { 
     public partial class Group : DALGeneric<ProfilesRNSDLL.BO.RDF.Security.Group>
     { 

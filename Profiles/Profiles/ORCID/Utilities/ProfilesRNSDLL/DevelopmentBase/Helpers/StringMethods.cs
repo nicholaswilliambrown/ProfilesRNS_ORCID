@@ -11,7 +11,7 @@ using System.Collections;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace ProfilesRNSDLL.DevelopmentBase.Helpers
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase.Helpers
 {
     public class StringMethods
     {

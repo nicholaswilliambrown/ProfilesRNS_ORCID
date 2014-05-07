@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ProfilesRNSDLL.BO.ORCID
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID
 {
     public class Config
     {

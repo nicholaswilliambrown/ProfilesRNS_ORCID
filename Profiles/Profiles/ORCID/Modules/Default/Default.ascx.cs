@@ -49,7 +49,7 @@ namespace Profiles.ORCID.Modules.Default
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ProfilesRNSDLL.BO.ORCID.Person person = GetPerson();
+            Utilities.ProfilesRNSDLL.BO.ORCID.Person person = GetPerson();
             if (!IsPostBack)
             {
                 //check to make sure BUID is associated your ORCID
@@ -69,8 +69,8 @@ namespace Profiles.ORCID.Modules.Default
 
             }
         }
-        
-        private void ProcessORCIDResponse(ProfilesRNSDLL.BO.ORCID.Person person)
+
+        private void ProcessORCIDResponse(Utilities.ProfilesRNSDLL.BO.ORCID.Person person)
         {
             if (HasORCID_OAuthCode)
             {
@@ -81,33 +81,33 @@ namespace Profiles.ORCID.Modules.Default
                 ProcessError(person);
             }
         }
-        private List<ProfilesRNSDLL.BO.ORCID.PersonMessage> GetPersonMessagesWaitingForApproval(ProfilesRNSDLL.BO.ORCID.Person person)
+        private List<Utilities.ProfilesRNSDLL.BO.ORCID.PersonMessage> GetPersonMessagesWaitingForApproval(Utilities.ProfilesRNSDLL.BO.ORCID.Person person)
         {
-            int waitingForApproval = (int)ProfilesRNSDLL.BO.ORCID.REFRecordStatus.REFRecordStatuss.Waiting_for_ORCID_User_for_approval;
+            int waitingForApproval = (int)Utilities.ProfilesRNSDLL.BO.ORCID.REFRecordStatus.REFRecordStatuss.Waiting_for_ORCID_User_for_approval;
             return (from pm in PersonMessageBLL.GetByPersonIDAndRecordStatusID(person.PersonID, waitingForApproval) orderby pm.PersonMessageID select pm).ToList();
         }
-        private void UploadPendingData(ProfilesRNSDLL.BO.ORCID.Person person)
+        private void UploadPendingData(Utilities.ProfilesRNSDLL.BO.ORCID.Person person)
         {
             // This method loads any pending interactions with ORCID.
-            List<ProfilesRNSDLL.BO.ORCID.PersonMessage> personMessagesWaitingForApproval = GetPersonMessagesWaitingForApproval(person);
+            List<Utilities.ProfilesRNSDLL.BO.ORCID.PersonMessage> personMessagesWaitingForApproval = GetPersonMessagesWaitingForApproval(person);
             if (personMessagesWaitingForApproval.Count > 0)
             {
-                foreach (ProfilesRNSDLL.BO.ORCID.PersonMessage personMessage in personMessagesWaitingForApproval)
+                foreach (Utilities.ProfilesRNSDLL.BO.ORCID.PersonMessage personMessage in personMessagesWaitingForApproval)
                 {
-                    ProfilesRNSDLL.BO.ORCID.REFPermission refPermission = REFPermissionBLL.Get(personMessage.PermissionID);
-                    ProfilesRNSDLL.BO.ORCID.PersonToken personToken = PersonTokenBLL.GetByPersonIDAndPermissionID(person.PersonID, personMessage.PermissionID);
+                    Utilities.ProfilesRNSDLL.BO.ORCID.REFPermission refPermission = REFPermissionBLL.Get(personMessage.PermissionID);
+                    Utilities.ProfilesRNSDLL.BO.ORCID.PersonToken personToken = PersonTokenBLL.GetByPersonIDAndPermissionID(person.PersonID, personMessage.PermissionID);
                     if (!personToken.Exists || personToken.IsExpired)
                     {
                         // Go to ORCID and get a Token for this action.
-                        Response.Redirect(ProfilesRNSDLL.BLL.ORCID.OAuth.GetUserPermissionURL(refPermission.PermissionScope, "Default.aspx"), true);
+                        Response.Redirect(Utilities.ProfilesRNSDLL.BLL.ORCID.OAuth.GetUserPermissionURL(refPermission.PermissionScope, "Default.aspx"), true);
                         return;
                     }
 
-                    switch ((ProfilesRNSDLL.BO.ORCID.REFPermission.REFPermissions)personMessage.PermissionID)
+                    switch ((Utilities.ProfilesRNSDLL.BO.ORCID.REFPermission.REFPermissions)personMessage.PermissionID)
                     {
-                        case ProfilesRNSDLL.BO.ORCID.REFPermission.REFPermissions.orcid_profile_read_limited:
-                        case ProfilesRNSDLL.BO.ORCID.REFPermission.REFPermissions.orcid_bio_read_limited:
-                        case ProfilesRNSDLL.BO.ORCID.REFPermission.REFPermissions.orcid_works_read_limited:
+                        case Utilities.ProfilesRNSDLL.BO.ORCID.REFPermission.REFPermissions.orcid_profile_read_limited:
+                        case Utilities.ProfilesRNSDLL.BO.ORCID.REFPermission.REFPermissions.orcid_bio_read_limited:
+                        case Utilities.ProfilesRNSDLL.BO.ORCID.REFPermission.REFPermissions.orcid_works_read_limited:
                             ORCIDBLL.ReadORCIDProfile(person, personMessage, refPermission, LoggedInInternalUsername);
                             break;
                         default:
@@ -118,16 +118,16 @@ namespace Profiles.ORCID.Modules.Default
             }
             LoadUserMessages(person);
         }
-        private void LoadUserMessages(ProfilesRNSDLL.BO.ORCID.Person person)
+        private void LoadUserMessages(Utilities.ProfilesRNSDLL.BO.ORCID.Person person)
         {
-            List<ProfilesRNSDLL.BO.ORCID.PersonMessage> messages = (from m in PersonMessageBLL.GetByPersonID(person.PersonID) where m.UserMessageIsNull == false orderby m.PostDate descending select m).ToList();
+            List<Utilities.ProfilesRNSDLL.BO.ORCID.PersonMessage> messages = (from m in PersonMessageBLL.GetByPersonID(person.PersonID) where m.UserMessageIsNull == false orderby m.PostDate descending select m).ToList();
             divMessages.Visible = messages.Count > 0;
             rptMessages.DataSource = messages;
             rptMessages.DataBind();
         }
-        private void ProcessError(ProfilesRNSDLL.BO.ORCID.Person person)
+        private void ProcessError(Utilities.ProfilesRNSDLL.BO.ORCID.Person person)
         {
-            List<ProfilesRNSDLL.BO.ORCID.PersonMessage> personMessages = GetPersonMessagesWaitingForApproval(person);
+            List<Utilities.ProfilesRNSDLL.BO.ORCID.PersonMessage> personMessages = GetPersonMessagesWaitingForApproval(person);
             if (personMessages.Count > 0)
             {
                 PersonMessageBLL.ProcessORCID_ResponseError(personMessages[0], ORCID_ResponseError, ORCID_ResponseErrorDescription);
@@ -158,14 +158,14 @@ namespace Profiles.ORCID.Modules.Default
         {
             get
             {
-                return ProfilesRNSDLL.DevelopmentBase.Helpers.QueryString.GetQueryString("error");
+                return Utilities.ProfilesRNSDLL.DevelopmentBase.Helpers.QueryString.GetQueryString("error");
             }
         }
         private string ORCID_ResponseErrorDescription
         {
             get
             {
-                return ProfilesRNSDLL.DevelopmentBase.Helpers.QueryString.GetQueryString("error_description");
+                return Utilities.ProfilesRNSDLL.DevelopmentBase.Helpers.QueryString.GetQueryString("error_description");
             }
         }
     }

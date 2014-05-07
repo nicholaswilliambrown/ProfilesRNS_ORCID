@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using System.Diagnostics;
- 
-namespace ProfilesRNSDLL.DAL.Profile.Import
+using Profiles.ORCID;
+
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.Profile.Import
 { 
-    public partial class NIHAwards : DALGeneric<ProfilesRNSDLL.BO.Profile.Import.NIHAwards>
+    public partial class NIHAwards : DALGeneric<Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Import.NIHAwards>
     { 
      
         # region Constructors 
@@ -21,7 +22,7 @@ namespace ProfilesRNSDLL.DAL.Profile.Import
         # region Methods 
  
         /*! Method to create parameters in order to add or edit a record. */
-        public override void GetParamsAll(ref System.Data.Common.DbCommand cmd, ProfilesRNSDLL.BO.Profile.Import.NIHAwards bo) 
+        public override void GetParamsAll(ref System.Data.Common.DbCommand cmd, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Import.NIHAwards bo) 
         { 
             DbParameter Parm = cmd.CreateParameter(); 
             Parm.ParameterName = "@NIHAwardsID";
@@ -184,7 +185,7 @@ namespace ProfilesRNSDLL.DAL.Profile.Import
         } 
  
         /*! Method to log changes to fields in a record. */
-        public override void LogIfNecessary(DevelopmentBase.BaseClassBO.RecordLevelAuditTypes auditType, ProfilesRNSDLL.BO.Profile.Import.NIHAwards boBefore, ProfilesRNSDLL.BO.Profile.Import.NIHAwards bo, DbTransaction trans) 
+        public override void LogIfNecessary(DevelopmentBase.BaseClassBO.RecordLevelAuditTypes auditType, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Import.NIHAwards boBefore, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Import.NIHAwards bo, DbTransaction trans) 
         { 
             int recordLevelAuditTrailID = 0;
             if (auditType == DevelopmentBase.BaseClassBO.RecordLevelAuditTypes.Deleted)
@@ -252,13 +253,13 @@ namespace ProfilesRNSDLL.DAL.Profile.Import
         internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [Profile.Import].[NIHAwards].[NIHAwardsID], [Profile.Import].[NIHAwards].[Application_Id], [Profile.Import].[NIHAwards].[InternalUsername], [Profile.Import].[NIHAwards].[Activity], [Profile.Import].[NIHAwards].[Administering_IC], [Profile.Import].[NIHAwards].[Application_Type], [Profile.Import].[NIHAwards].[ARRA], [Profile.Import].[NIHAwards].[Budget_Start], [Profile.Import].[NIHAwards].[Budget_End], [Profile.Import].[NIHAwards].[FOA_Number], [Profile.Import].[NIHAwards].[Full_Project_Num_DC], [Profile.Import].[NIHAwards].[SubProject_Id], [Profile.Import].[NIHAwards].[Funding_ICs], [Profile.Import].[NIHAwards].[FY], [Profile.Import].[NIHAwards].[IC_Name], [Profile.Import].[NIHAwards].[NIH_Reporting_Categories], [Profile.Import].[NIHAwards].[Org_City], [Profile.Import].[NIHAwards].[Org_Country], [Profile.Import].[NIHAwards].[Org_Dept], [Profile.Import].[NIHAwards].[Org_District], [Profile.Import].[NIHAwards].[Org_DUNS], [Profile.Import].[NIHAwards].[Org_FIPS], [Profile.Import].[NIHAwards].[Org_State], [Profile.Import].[NIHAwards].[Org_ZipCode], [Profile.Import].[NIHAwards].[Organization], [Profile.Import].[NIHAwards].[PI_Names], [Profile.Import].[NIHAwards].[PI_PersonIds], [Profile.Import].[NIHAwards].[Project_Start], [Profile.Import].[NIHAwards].[Project_End], [Profile.Import].[NIHAwards].[Project_Num], [Profile.Import].[NIHAwards].[Project_Terms], [Profile.Import].[NIHAwards].[Project_Title], [Profile.Import].[NIHAwards].[Relevance], [Profile.Import].[NIHAwards].[Serial_Number], [Profile.Import].[NIHAwards].[Study_Section], [Profile.Import].[NIHAwards].[Study_Section_Name], [Profile.Import].[NIHAwards].[Suffix], [Profile.Import].[NIHAwards].[Support_Year], [Profile.Import].[NIHAwards].[Total_Cost], [Profile.Import].[NIHAwards].[Total_Cost_Sub_Project], [Profile.Import].[NIHAwards].[ImportID], [Profile.Import].[NIHAwards].[Major_Component_Name], [Profile.Import].[NIHAwards].[Award_Notice_Date], [Profile.Import].[NIHAwards].[Core_Project_Num], [Profile.Import].[NIHAwards].[CFDA_Code], [Profile.Import].[NIHAwards].[Ed_Inst_Type], [Profile.Import].[NIHAwards].[Program_Officer_Name], [Profile.Import].[NIHAwards].[PHR], [Profile.Import].[NIHAwards].[IsBU], [Profile.Import].[NIHAwards].[IsBUMC], [Profile.Import].[NIHAwards].[IsBMC], [Profile.Import].[NIHAwards].[PubCount]"; } 
  
         /*! Method to get identity(s) of the newly added database record. */
-        public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, ProfilesRNSDLL.BO.Profile.Import.NIHAwards businessObj)
+        public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Import.NIHAwards businessObj)
         { 
             businessObj.NIHAwardsID = int.Parse(sqlCommand.Parameters["@NIHAwardsID"].Value.ToString()); 
         } 
  
         /*! Method to create parameters in order to add or edit a record. */
-        public override void GetParamsPrimaryKey(ref System.Data.Common.DbCommand cmd, ProfilesRNSDLL.BO.Profile.Import.NIHAwards bo) 
+        public override void GetParamsPrimaryKey(ref System.Data.Common.DbCommand cmd, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Import.NIHAwards bo) 
         { 
             AddParam(ref cmd, "@NIHAwardsID", bo.NIHAwardsID);
         } 

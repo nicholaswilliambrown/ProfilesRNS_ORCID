@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text; 
 using System.Data; 
  
-namespace ProfilesRNSDLL.BLL.ORCID
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID
 {
     public partial class RecordLevelAuditTrail : ProfilesRNSDLL.DAL.ORCID.RecordLevelAuditTrail
     {

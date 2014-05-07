@@ -5,3 +5,4 @@ C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Websi
 C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\Profiles\Profiles\obj\Debug\Profiles.csprojResolveAssemblyReference.cache
 C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\Profiles\Profiles\obj\Debug\Profiles.dll
 C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\Profiles\Profiles\obj\Debug\Profiles.pdb
+C:\Projects\ProfilesORCIDGIT\Profiles\Profiles\obj\Debug\ResolveAssemblyReference.cache

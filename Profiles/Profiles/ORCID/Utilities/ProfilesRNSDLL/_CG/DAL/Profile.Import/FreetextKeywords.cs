@@ -7,7 +7,7 @@ using System.Text;
 using System.Reflection;
 using System.Diagnostics;
  
-namespace ProfilesRNSDLL.DAL.Profile.Import
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.Profile.Import
 { 
     public partial class FreetextKeywords : DALGeneric<ProfilesRNSDLL.BO.Profile.Import.FreetextKeywords>
     { 
@@ -21,7 +21,7 @@ namespace ProfilesRNSDLL.DAL.Profile.Import
         # region Methods 
  
         /*! Method to create parameters in order to add or edit a record. */
-        public override void GetParamsAll(ref System.Data.Common.DbCommand cmd, ProfilesRNSDLL.BO.Profile.Import.FreetextKeywords bo) 
+        public override void GetParamsAll(ref System.Data.Common.DbCommand cmd, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Import.FreetextKeywords bo) 
         { 
             DbParameter Parm = cmd.CreateParameter(); 
             Parm.ParameterName = "@PersonKeywordID";
@@ -40,7 +40,7 @@ namespace ProfilesRNSDLL.DAL.Profile.Import
         } 
  
         /*! Method to log changes to fields in a record. */
-        public override void LogIfNecessary(DevelopmentBase.BaseClassBO.RecordLevelAuditTypes auditType, ProfilesRNSDLL.BO.Profile.Import.FreetextKeywords boBefore, ProfilesRNSDLL.BO.Profile.Import.FreetextKeywords bo, DbTransaction trans) 
+        public override void LogIfNecessary(DevelopmentBase.BaseClassBO.RecordLevelAuditTypes auditType, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Import.FreetextKeywords boBefore, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Import.FreetextKeywords bo, DbTransaction trans) 
         { 
             int recordLevelAuditTrailID = 0;
             if (auditType == DevelopmentBase.BaseClassBO.RecordLevelAuditTypes.Deleted)
@@ -60,13 +60,13 @@ namespace ProfilesRNSDLL.DAL.Profile.Import
         internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [Profile.Import].[FreetextKeywords].[PersonKeywordID], [Profile.Import].[FreetextKeywords].[InternalUsername], [Profile.Import].[FreetextKeywords].[Keyword], [Profile.Import].[FreetextKeywords].[DisplaySecurityGroupID]"; } 
  
         /*! Method to get identity(s) of the newly added database record. */
-        public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, ProfilesRNSDLL.BO.Profile.Import.FreetextKeywords businessObj)
+        public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Import.FreetextKeywords businessObj)
         { 
             businessObj.PersonKeywordID = int.Parse(sqlCommand.Parameters["@PersonKeywordID"].Value.ToString()); 
         } 
  
         /*! Method to create parameters in order to add or edit a record. */
-        public override void GetParamsPrimaryKey(ref System.Data.Common.DbCommand cmd, ProfilesRNSDLL.BO.Profile.Import.FreetextKeywords bo) 
+        public override void GetParamsPrimaryKey(ref System.Data.Common.DbCommand cmd, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Import.FreetextKeywords bo) 
         { 
             AddParam(ref cmd, "@PersonKeywordID", bo.PersonKeywordID);
         } 

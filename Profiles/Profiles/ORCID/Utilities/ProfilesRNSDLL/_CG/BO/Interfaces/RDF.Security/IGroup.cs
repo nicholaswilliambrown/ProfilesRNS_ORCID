@@ -1,4 +1,4 @@
-namespace ProfilesRNSDLL.BO.Interfaces.RDF.Security
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Interfaces.RDF.Security
 { 
     public partial interface IGroup
     { 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ProfilesRNSDLL.BLL.Profile.Data
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.Profile.Data
 {
     public partial class PersonFacultyRank
     {

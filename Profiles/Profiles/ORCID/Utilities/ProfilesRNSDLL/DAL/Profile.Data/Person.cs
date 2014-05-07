@@ -5,7 +5,7 @@ using System.Text;
 using System.Data;
 using System.Data.Common;
 
-namespace ProfilesRNSDLL.DAL.Profile.Data
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.Profile.Data
 {
     public partial class Person
     {

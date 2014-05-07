@@ -48,8 +48,8 @@ namespace Profiles.ORCID
                     UploadInfoToORCID1.ResearchExpertiseAndProfessionalInterestsErrors += "Error! Biography cannot be longer then 5000 characters";
                     return;
                 }
-                ProfilesRNSDLL.BO.ORCID.Person person = UploadInfoToORCID1.GetPersonWithPageData();
-                ProfilesRNSDLL.BLL.ORCID.PersonMessage personMessageBLL = new ProfilesRNSDLL.BLL.ORCID.PersonMessage();
+                Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person person = UploadInfoToORCID1.GetPersonWithPageData();
+                Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.PersonMessage personMessageBLL = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.PersonMessage();
                 personMessageBLL.CreateUploadMessages(person, LoggedInInternalUsername);
             }
             catch (Exception ex)
@@ -65,7 +65,7 @@ namespace Profiles.ORCID
         }
         private void LogException(Exception ex)
         {
-            if (ex.GetType().IsSubclassOf(typeof(ProfilesRNSDLL.DevelopmentBase.BO.ExceptionSafeToDisplay)) || ex.GetType().IsSubclassOf(typeof(ProfilesRNSDLL.DevelopmentBase.BO.ExceptionSafeToDisplay)))
+            if (ex.GetType().IsSubclassOf(typeof(Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase.BO.ExceptionSafeToDisplay)) || ex.GetType().IsSubclassOf(typeof(Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase.BO.ExceptionSafeToDisplay)))
             {
                 AddError(ex.Message);
             }
@@ -77,7 +77,7 @@ namespace Profiles.ORCID
         }
         private void LogExceptionOnly(Exception ex)
         {
-            ProfilesRNSDLL.BLL.ORCID.ErrorLog.LogError(ex, LoggedInInternalUsername);
+            Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.ErrorLog.LogError(ex, LoggedInInternalUsername);
         }
     }
 }

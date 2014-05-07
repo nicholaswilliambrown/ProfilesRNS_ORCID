@@ -1,6 +1,6 @@
 using System;
 
-namespace ProfilesRNSDLL.BLL
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL
 {
     public abstract partial class Factory : DevelopmentBase.Factory
     {

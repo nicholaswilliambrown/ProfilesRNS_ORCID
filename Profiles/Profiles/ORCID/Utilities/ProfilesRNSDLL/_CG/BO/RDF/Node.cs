@@ -4,7 +4,7 @@ using System.Text;
 using System.Runtime.Serialization; 
 using System.ComponentModel; 
  
-namespace ProfilesRNSDLL.BO.RDF
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.RDF
 { 
     public partial class Node : ProfilesRNSBaseClassBO, BO.Interfaces.RDF.INode, IEqualityComparer<Node>, IEquatable<Node> 
     { 

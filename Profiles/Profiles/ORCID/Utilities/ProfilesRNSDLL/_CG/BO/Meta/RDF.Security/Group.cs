@@ -4,7 +4,7 @@ using System.Text;
 using System.Runtime.Serialization; 
 using System.ComponentModel; 
  
-namespace ProfilesRNSDLL.BO.RDF.Security
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.RDF.Security
 { 
     public partial class Group
     { 

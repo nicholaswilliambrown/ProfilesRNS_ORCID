@@ -7,7 +7,7 @@ using System.Text;
 using System.Reflection;
 using System.Diagnostics;
  
-namespace ProfilesRNSDLL.DAL.ORCID
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
 { 
     public partial class PersonAlternateEmail : DALGeneric<ProfilesRNSDLL.BO.ORCID.PersonAlternateEmail>
     { 

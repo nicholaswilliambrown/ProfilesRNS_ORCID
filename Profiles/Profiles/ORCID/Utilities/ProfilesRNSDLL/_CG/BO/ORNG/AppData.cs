@@ -4,7 +4,7 @@ using System.Text;
 using System.Runtime.Serialization; 
 using System.ComponentModel; 
  
-namespace ProfilesRNSDLL.BO.ORNG
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORNG
 { 
     public partial class AppData : ProfilesRNSBaseClassBO, BO.Interfaces.ORNG.IAppData
     { 

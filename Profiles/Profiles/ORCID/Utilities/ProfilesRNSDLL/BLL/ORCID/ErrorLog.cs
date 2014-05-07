@@ -5,7 +5,7 @@ using System.Text;
 using System.Net;
 using System.IO;
 
-namespace ProfilesRNSDLL.BLL.ORCID
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID
 {
     public partial class ErrorLog 
     {

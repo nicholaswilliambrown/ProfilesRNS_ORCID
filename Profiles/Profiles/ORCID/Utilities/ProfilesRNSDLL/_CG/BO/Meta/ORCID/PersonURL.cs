@@ -4,7 +4,7 @@ using System.Text;
 using System.Runtime.Serialization; 
 using System.ComponentModel; 
  
-namespace ProfilesRNSDLL.BO.ORCID
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID
 { 
     public partial class PersonURL
     { 

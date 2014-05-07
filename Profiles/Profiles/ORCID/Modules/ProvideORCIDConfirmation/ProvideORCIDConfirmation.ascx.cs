@@ -53,10 +53,10 @@ namespace Profiles.ORCID.Modules.ProvideORCIDConfirmation
             {
                 if (!IsPostBack)
                 {
-                    ProfilesRNSDLL.BO.ORCID.Person person = GetPerson();
+                    Utilities.ProfilesRNSDLL.BO.ORCID.Person person = GetPerson();
                     //LoadPageLabels(person);
 
-                    if (Profiles.ORCID.Utilities.DataIO.AssociateORCIDWithOrganizationID(LoggedInInternalUsername, ProfilesRNSDLL.BLL.ORCID.OAuth.GetORCID(OAuthCode, "ProvideORCIDConfirmation.aspx", LoggedInInternalUsername)))
+                    if (Profiles.ORCID.Utilities.DataIO.AssociateORCIDWithOrganizationID(LoggedInInternalUsername, Utilities.ProfilesRNSDLL.BLL.ORCID.OAuth.GetORCID(OAuthCode, "ProvideORCIDConfirmation.aspx", LoggedInInternalUsername)))
                     {
                         pSuccess.Visible = true;
                         //LoadPageLabels(person);
@@ -66,7 +66,7 @@ namespace Profiles.ORCID.Modules.ProvideORCIDConfirmation
                         pSuccess.Visible = false;
                         lblErrors.Text = "An error occurred while associating your ORCID with your local identifier";
                     }
-                    Int64 subjectID = new ProfilesRNSDLL.BLL.Profile.Data.Person().GetNodeId(person.InternalUsername);
+                    Int64 subjectID = new Utilities.ProfilesRNSDLL.BLL.Profile.Data.Person().GetNodeId(person.InternalUsername);
                     pHasProfile.Visible = !subjectID.Equals(0);
                     hlProfile.NavigateUrl = "~/display/" + subjectID.ToString();
                 }
@@ -80,10 +80,10 @@ namespace Profiles.ORCID.Modules.ProvideORCIDConfirmation
 //        {
             //lblOrganizationName.Text = Profiles.ORCID.Utilities.config.OrganizationName;
 //        }
-        private bool AssociateORCIDWithOrganizationID(ProfilesRNSDLL.BO.ORCID.Person person, string orcid)
+        private bool AssociateORCIDWithOrganizationID(Utilities.ProfilesRNSDLL.BO.ORCID.Person person, string orcid)
         {
             person.ORCID = orcid;
-            person.PersonStatusTypeID = (int)ProfilesRNSDLL.BO.ORCID.REFPersonStatusType.REFPersonStatusTypes.ORCID_Provided;
+            person.PersonStatusTypeID = (int)Utilities.ProfilesRNSDLL.BO.ORCID.REFPersonStatusType.REFPersonStatusTypes.ORCID_Provided;
             person.ORCIDRecorded = DateTime.Now;
             return PersonBLL.Save(person);
         }

@@ -41,15 +41,15 @@ namespace Profiles.ORCID.Modules
                 return Profiles.ORCID.Utilities.DataIO.GetInternalUserID();
             }
         }
-        public ProfilesRNSDLL.BO.ORCID.Person GetPerson()
+        public Utilities.ProfilesRNSDLL.BO.ORCID.Person GetPerson()
         {
-            ProfilesRNSDLL.BLL.ORCID.Person personBLL = new ProfilesRNSDLL.BLL.ORCID.Person();
-            ProfilesRNSDLL.BO.ORCID.Person person = personBLL.GetByInternalUsername(LoggedInInternalUsername);
+            Utilities.ProfilesRNSDLL.BLL.ORCID.Person personBLL = new Utilities.ProfilesRNSDLL.BLL.ORCID.Person();
+            Utilities.ProfilesRNSDLL.BO.ORCID.Person person = personBLL.GetByInternalUsername(LoggedInInternalUsername);
             return person;
         }
         public void LogException(Exception ex)
         {
-            if (ex.GetType().IsSubclassOf(typeof(ProfilesRNSDLL.DevelopmentBase.BO.ExceptionSafeToDisplay)) || ex.GetType().IsSubclassOf(typeof(ProfilesRNSDLL.DevelopmentBase.BO.ExceptionSafeToDisplay)))
+            if (ex.GetType().IsSubclassOf(typeof(Utilities.ProfilesRNSDLL.DevelopmentBase.BO.ExceptionSafeToDisplay)) || ex.GetType().IsSubclassOf(typeof(Utilities.ProfilesRNSDLL.DevelopmentBase.BO.ExceptionSafeToDisplay)))
             {
                 AddError(ex.Message);
             }
@@ -76,12 +76,12 @@ namespace Profiles.ORCID.Modules
         {
             get
             {
-                return ProfilesRNSDLL.DevelopmentBase.Helpers.QueryString.GetQueryString("Code");
+                return Utilities.ProfilesRNSDLL.DevelopmentBase.Helpers.QueryString.GetQueryString("Code");
             }
         }
         protected void LogExceptionOnly(Exception ex)
         {
-            ProfilesRNSDLL.BLL.ORCID.ErrorLog.LogError(ex, LoggedInInternalUsername);
+            Utilities.ProfilesRNSDLL.BLL.ORCID.ErrorLog.LogError(ex, LoggedInInternalUsername);
         }
         protected string ORCID_WordPress_AgreementConfirmation
         {
@@ -112,67 +112,67 @@ namespace Profiles.ORCID.Modules
                 return _sm;
             }
         }
-        protected ProfilesRNSDLL.BLL.ORCID.PersonToken PersonTokenBLL
+        protected Utilities.ProfilesRNSDLL.BLL.ORCID.PersonToken PersonTokenBLL
         {
             get
             {
                 if (_PersonTokenBLL == null)
                 {
-                    _PersonTokenBLL = new ProfilesRNSDLL.BLL.ORCID.PersonToken();
+                    _PersonTokenBLL = new Utilities.ProfilesRNSDLL.BLL.ORCID.PersonToken();
                 }
                 return _PersonTokenBLL;
             }
         }
-        protected ProfilesRNSDLL.BLL.ORCID.PersonMessage PersonMessageBLL
+        protected Utilities.ProfilesRNSDLL.BLL.ORCID.PersonMessage PersonMessageBLL
         {
             get
             {
                 if (_PersonMessageBLL == null)
                 {
-                    _PersonMessageBLL = new ProfilesRNSDLL.BLL.ORCID.PersonMessage();
+                    _PersonMessageBLL = new Utilities.ProfilesRNSDLL.BLL.ORCID.PersonMessage();
                 }
                 return _PersonMessageBLL;
             }
         }
-        protected ProfilesRNSDLL.BLL.ORCID.REFPermission REFPermissionBLL
+        protected Utilities.ProfilesRNSDLL.BLL.ORCID.REFPermission REFPermissionBLL
         {
             get
             {
                 if (_REFPermissionBLL == null)
                 {
-                    _REFPermissionBLL = new ProfilesRNSDLL.BLL.ORCID.REFPermission();
+                    _REFPermissionBLL = new Utilities.ProfilesRNSDLL.BLL.ORCID.REFPermission();
                 }
                 return _REFPermissionBLL;
             }
         }
-        protected ProfilesRNSDLL.BLL.ORCID.ORCID ORCIDBLL
+        protected Utilities.ProfilesRNSDLL.BLL.ORCID.ORCID ORCIDBLL
         {
             get
             {
                 if (_ORCIDBLL == null)
                 {
-                    _ORCIDBLL = new ProfilesRNSDLL.BLL.ORCID.ORCID();
+                    _ORCIDBLL = new Utilities.ProfilesRNSDLL.BLL.ORCID.ORCID();
                 }
                 return _ORCIDBLL;
             }
         }
-        protected ProfilesRNSDLL.BLL.ORCID.Person PersonBLL
+        protected Utilities.ProfilesRNSDLL.BLL.ORCID.Person PersonBLL
         {
             get
             {
                 if (_PersonBLL == null)
                 {
-                    _PersonBLL = new ProfilesRNSDLL.BLL.ORCID.Person();
+                    _PersonBLL = new Utilities.ProfilesRNSDLL.BLL.ORCID.Person();
                 }
                 return _PersonBLL;
             }
         }
 
         private SessionManagement _sm = null;
-        private ProfilesRNSDLL.BLL.ORCID.PersonToken _PersonTokenBLL = null;
-        private ProfilesRNSDLL.BLL.ORCID.PersonMessage _PersonMessageBLL = null;
-        private ProfilesRNSDLL.BLL.ORCID.REFPermission _REFPermissionBLL = null;
-        private ProfilesRNSDLL.BLL.ORCID.ORCID _ORCIDBLL = null;
-        private ProfilesRNSDLL.BLL.ORCID.Person _PersonBLL = null;
+        private Utilities.ProfilesRNSDLL.BLL.ORCID.PersonToken _PersonTokenBLL = null;
+        private Utilities.ProfilesRNSDLL.BLL.ORCID.PersonMessage _PersonMessageBLL = null;
+        private Utilities.ProfilesRNSDLL.BLL.ORCID.REFPermission _REFPermissionBLL = null;
+        private Utilities.ProfilesRNSDLL.BLL.ORCID.ORCID _ORCIDBLL = null;
+        private Utilities.ProfilesRNSDLL.BLL.ORCID.Person _PersonBLL = null;
     }
 }

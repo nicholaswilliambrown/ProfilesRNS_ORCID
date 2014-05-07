@@ -57,22 +57,22 @@ namespace Profiles.ORCID.Modules.ProcessReadLimitedAuthCode
             {
                 if (!IsPostBack)
                 {
-                    ProfilesRNSDLL.BO.ORCID.Person person = GetPerson();
+                    Utilities.ProfilesRNSDLL.BO.ORCID.Person person = GetPerson();
                     if (!HasError(person))
                     {
-                        Dictionary<string, object> items = ProfilesRNSDLL.BLL.ORCID.OAuth.GetUserAccessTokenItems(OAuthCode, "ProcessRead-LimitedAuthCode.aspx", person.InternalUsername);
+                        Dictionary<string, object> items = Utilities.ProfilesRNSDLL.BLL.ORCID.OAuth.GetUserAccessTokenItems(OAuthCode, "ProcessRead-LimitedAuthCode.aspx", person.InternalUsername);
                         string orcid = items["orcid"].ToString();
 
                         if (!person.Exists)
                         {
-                            throw new ProfilesRNSDLL.DevelopmentBase.BO.ExceptionSafeToDisplay("This ORCID has not been recorded in the " +
+                            throw new Utilities.ProfilesRNSDLL.DevelopmentBase.BO.ExceptionSafeToDisplay("This ORCID has not been recorded in the " +
                                 Profiles.ORCID.Utilities.config.OrganizationName + " ORCID database.");
                         }
                         else
                         {
                             if (!string.IsNullOrEmpty(OAuthCode))
                             {
-                                new ProfilesRNSDLL.BLL.ORCID.PersonToken().UpdateUserToken(items, person, person.InternalUsername);
+                                new Utilities.ProfilesRNSDLL.BLL.ORCID.PersonToken().UpdateUserToken(items, person, person.InternalUsername);
                             }
                             Response.Redirect(person.ORCIDUrl, false);
                         }
@@ -85,10 +85,10 @@ namespace Profiles.ORCID.Modules.ProcessReadLimitedAuthCode
             }
         }
         
-        private bool HasError(ProfilesRNSDLL.BO.ORCID.Person person)
+        private bool HasError(Utilities.ProfilesRNSDLL.BO.ORCID.Person person)
         {
-            string queryStringError = ProfilesRNSDLL.DevelopmentBase.Helpers.QueryString.GetQueryString("error");
-            string queryStringErrorDescription = ProfilesRNSDLL.DevelopmentBase.Helpers.QueryString.GetQueryString("error_description");
+            string queryStringError = Utilities.ProfilesRNSDLL.DevelopmentBase.Helpers.QueryString.GetQueryString("error");
+            string queryStringErrorDescription = Utilities.ProfilesRNSDLL.DevelopmentBase.Helpers.QueryString.GetQueryString("error_description");
             bool haserror = !queryStringError.Equals(string.Empty);
 
             if (haserror)
@@ -99,7 +99,7 @@ namespace Profiles.ORCID.Modules.ProcessReadLimitedAuthCode
                 }
                 else
                 {
-                    throw new ProfilesRNSDLL.DevelopmentBase.BO.ExceptionSafeToDisplay(queryStringError);
+                    throw new Utilities.ProfilesRNSDLL.DevelopmentBase.BO.ExceptionSafeToDisplay(queryStringError);
                 }
             }
             return haserror;

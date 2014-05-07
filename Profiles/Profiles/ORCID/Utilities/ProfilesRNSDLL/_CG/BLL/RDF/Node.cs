@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic; 
 using System.Text; 
  
-namespace ProfilesRNSDLL.BLL.RDF
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.RDF
 {
     public partial class Node : ProfilesRNSDLL.DAL.RDF.Node
     {

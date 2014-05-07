@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.UI.WebControls;
 
-namespace ProfilesRNSDLL.DevelopmentBase
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase
 {
     public class UICommon
     {

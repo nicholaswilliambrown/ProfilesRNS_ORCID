@@ -1,4 +1,4 @@
-namespace ProfilesRNSDLL.BO.Interfaces.RDF
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Interfaces.RDF
 { 
     public partial interface ITriple
     { 

@@ -1,4 +1,4 @@
-namespace ProfilesRNSDLL.BO.Interfaces.ORNG
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Interfaces.ORNG
 { 
     public partial interface IAppData
     { 

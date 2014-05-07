@@ -5,7 +5,7 @@ using System.Text;
 using System.Reflection;
 using System.ComponentModel;
 
-namespace ProfilesRNSDLL.DevelopmentBase
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase
 {
     public class Common
     {

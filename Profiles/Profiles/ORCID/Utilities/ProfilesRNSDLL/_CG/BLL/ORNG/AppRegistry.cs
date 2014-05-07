@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic; 
 using System.Text; 
  
-namespace ProfilesRNSDLL.BLL.ORNG
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORNG
 {
     public partial class AppRegistry : ProfilesRNSDLL.DAL.ORNG.AppRegistry
     {

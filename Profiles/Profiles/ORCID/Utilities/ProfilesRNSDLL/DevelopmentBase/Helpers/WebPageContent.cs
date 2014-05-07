@@ -6,7 +6,7 @@ using System.IO;
 using System.Net;
 using System.Threading;
 
-namespace ProfilesRNSDLL.DevelopmentBase.Helpers
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase.Helpers
 {
     public class WebPageContent
     {

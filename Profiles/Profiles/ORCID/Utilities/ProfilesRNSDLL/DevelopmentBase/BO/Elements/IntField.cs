@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 
-namespace ProfilesRNSDLL.DevelopmentBase.BO.Elements
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase.BO.Elements
 {
     [DefaultProperty("Value")]
     public class IntField : FieldBase<int>

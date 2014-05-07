@@ -7,7 +7,7 @@ using System.Data.Common;
 //using System.Reflection;
 using System.Diagnostics;
 
-namespace ProfilesRNSDLL.DevelopmentBase
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase
 {
     public abstract class DALBase
     {

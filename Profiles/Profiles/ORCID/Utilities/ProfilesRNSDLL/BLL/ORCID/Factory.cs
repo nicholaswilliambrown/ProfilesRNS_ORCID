@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ProfilesRNSDLL.BLL
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL
 {
     public partial class Factory 
     {
         # region private variables
         private ProfilesRNSDLL.BLL.ORCID.ORCID _ORCID = null;
-        private ProfilesRNSDLL.BLL.OAuth _OAuth = null;
+        private ProfilesRNSDLL.BLL.ORCID.OAuth _OAuth = null; //ZAP - Needed to add .ORCID to the ref
         # endregion // private variables
 
-        public ProfilesRNSDLL.BLL.ORCID ORCID
+        public ProfilesRNSDLL.BLL.ORCID.ORCID ORCID
         {
             get
             {
@@ -23,7 +23,7 @@ namespace ProfilesRNSDLL.BLL
                 return _ORCID;
             }
         }
-        public ProfilesRNSDLL.BLL.OAuth OAuth
+        public ProfilesRNSDLL.BLL.ORCID.OAuth OAuth
         {
             get
             {

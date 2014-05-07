@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ProfilesRNSDLL.DAL
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL
 {
     public abstract class DALGeneric<BO> : DevelopmentBase.DALTemplate<BO> where BO : DevelopmentBase.BaseClassBO
     {

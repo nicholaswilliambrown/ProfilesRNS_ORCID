@@ -7,7 +7,7 @@ using System.Text;
 using System.Reflection;
 using System.Diagnostics;
  
-namespace ProfilesRNSDLL.DAL.ORCID
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
 { 
     public partial class FieldLevelAuditTrail : DALGeneric<ProfilesRNSDLL.BO.ORCID.FieldLevelAuditTrail>
     { 
@@ -21,7 +21,7 @@ namespace ProfilesRNSDLL.DAL.ORCID
         # region Methods 
  
         /*! Method to create parameters in order to add or edit a record. */
-        public override void GetParamsAll(ref System.Data.Common.DbCommand cmd, ProfilesRNSDLL.BO.ORCID.FieldLevelAuditTrail bo) 
+        public override void GetParamsAll(ref System.Data.Common.DbCommand cmd, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.FieldLevelAuditTrail bo) 
         { 
             DbParameter Parm = cmd.CreateParameter(); 
             Parm.ParameterName = "@FieldLevelAuditTrailID";

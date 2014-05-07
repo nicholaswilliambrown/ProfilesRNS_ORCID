@@ -1,4 +1,4 @@
-namespace ProfilesRNSDLL.BO.Interfaces.ORCID
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Interfaces.ORCID
 { 
     public partial interface IREFWorkExternalType
     { 

@@ -4,7 +4,7 @@ using System.Text;
 using System.Runtime.Serialization; 
 using System.ComponentModel; 
  
-namespace ProfilesRNSDLL.BO.Profile.Data
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Data
 { 
     public partial class Person
     { 

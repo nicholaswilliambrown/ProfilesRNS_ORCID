@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
 
-namespace ProfilesRNSDLL.DevelopmentBase
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase
 {
     [DataContract]
     public abstract partial class BaseClassBO : DevelopmentBase.BO.IBaseClassBO
@@ -54,7 +54,7 @@ namespace ProfilesRNSDLL.DevelopmentBase
         }
 
         public enum ProjectRoles
-        { 
+        {
         }
 
         public BaseClassBO()

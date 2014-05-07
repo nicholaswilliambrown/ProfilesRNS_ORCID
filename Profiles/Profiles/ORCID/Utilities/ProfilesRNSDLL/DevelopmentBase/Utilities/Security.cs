@@ -5,7 +5,7 @@ using System.Text;
 using System.Security.Principal;
 using System.Runtime.InteropServices;
 
-namespace ProfilesRNSDLL.DevelopmentBase.Utilities
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase.Utilities
 {
     public class SecurityClass
     {

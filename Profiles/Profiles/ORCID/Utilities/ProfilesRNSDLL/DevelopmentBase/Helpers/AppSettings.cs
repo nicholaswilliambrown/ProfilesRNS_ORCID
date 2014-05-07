@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace ProfilesRNSDLL.DevelopmentBase.Helpers
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase.Helpers
 {
     public class AppSettings
     {

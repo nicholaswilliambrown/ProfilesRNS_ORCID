@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ProfilesRNSDLL.DAL.ORCID
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
 {
     public partial class PersonAffiliation
     {

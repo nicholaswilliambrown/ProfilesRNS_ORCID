@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic; 
 using System.Text; 
  
-namespace ProfilesRNSDLL.BLL.Profile.Import
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.Profile.Import
 {
     public partial class NIHAwards : ProfilesRNSDLL.DAL.Profile.Import.NIHAwards
     {

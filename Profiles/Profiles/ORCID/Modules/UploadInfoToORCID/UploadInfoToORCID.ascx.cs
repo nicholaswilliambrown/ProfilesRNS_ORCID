@@ -17,6 +17,7 @@ using System.Globalization;
 using System.Text;
 using System.Xml.Xsl;
 using Profiles.Profile.Utilities;
+using Profiles.ORCID.Utilities;
 
 namespace Profiles.ORCID.Modules.UploadInfoToORCID
 {
@@ -33,9 +34,9 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
         {
             base.RDFTriple = new RDFTriple(Convert.ToInt64(sm.Session().NodeID.ToString()));
         }
-        public ProfilesRNSDLL.BO.ORCID.Person GetPersonWithPageData()
+        public Utilities.ProfilesRNSDLL.BO.ORCID.Person GetPersonWithPageData()
         {
-            ProfilesRNSDLL.BO.ORCID.Person person = GetPerson();
+            Utilities.ProfilesRNSDLL.BO.ORCID.Person person = GetPerson();
             GetBioFromThePage(person);
             GetWorksFromThePage(person);
             GetAffiliationsFromThePage(person);
@@ -72,7 +73,7 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
 
         protected void DrawProfilesModule()
         {
-            ProfilesRNSDLL.BO.ORCID.Person orcidPerson = GetPersonWithDBData();
+            Utilities.ProfilesRNSDLL.BO.ORCID.Person orcidPerson = GetPersonWithDBData();
             LoadURLs(orcidPerson);
             LoadBIO(orcidPerson);
             LoadAffiliations(orcidPerson);
@@ -97,16 +98,16 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
             if (e.Item.ItemType == ListItemType.AlternatingItem || e.Item.ItemType == ListItemType.Item)
             {
                 DropDownList ddlPubVis = (DropDownList)e.Item.FindControl("ddlPubVis");
-                ProfilesRNSDLL.DevelopmentBase.UICommon.SetValue(DataBinder.Eval(e.Item, "DataItem.DecisionID").ToString(), false, ddlPubVis);
+                Utilities.ProfilesRNSDLL.DevelopmentBase.UICommon.SetValue(DataBinder.Eval(e.Item, "DataItem.DecisionID").ToString(), false, ddlPubVis);
             }
         }
 
-        private void GetBioFromThePage(ProfilesRNSDLL.BO.ORCID.Person person)
+        private void GetBioFromThePage(Utilities.ProfilesRNSDLL.BO.ORCID.Person person)
         {
             if (divResearchExpertiseAndProfessionalInterests.Visible)
             {
                 person.BiographyDecisionID = int.Parse(ddlResearchExpertiseAndProfessionalInterestsVis.SelectedValue);
-                if (person.BiographyDecisionID == (int)ProfilesRNSDLL.BO.ORCID.REFDecision.REFDecisions.Public)
+                if (person.BiographyDecisionID == (int)Utilities.ProfilesRNSDLL.BO.ORCID.REFDecision.REFDecisions.Public)
                 {
                     person.Biography = this.txtResearchExpertiseAndProfessionalInterests.Text;
                 }
@@ -129,7 +130,7 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
                                 lblWebPageTitle = (Label)ri.FindControl("lblWebPageTitle");
                                 hlURL = (HyperLink)ri.FindControl("hlURL");
                                 ddlPushType = (DropDownList)ri.FindControl("ddlPushType");
-                                ProfilesRNSDLL.BO.ORCID.PersonURL personURL = new ProfilesRNSDLL.BLL.ORCID.PersonURL().GetByPersonIDAndURL(person.PersonID, hlURL.Text);
+                                Utilities.ProfilesRNSDLL.BO.ORCID.PersonURL personURL = new Utilities.ProfilesRNSDLL.BLL.ORCID.PersonURL().GetByPersonIDAndURL(person.PersonID, hlURL.Text);
                                 personURL.URLName = lblWebPageTitle.Text;
                                 personURL.URL = hlURL.Text;
                                 personURL.PersonID = person.PersonID;
@@ -141,7 +142,7 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
                 }
             }
         }
-        private void GetWorksFromThePage(ProfilesRNSDLL.BO.ORCID.Person person)
+        private void GetWorksFromThePage(Utilities.ProfilesRNSDLL.BO.ORCID.Person person)
         {
             if (divPublications.Visible)
             {
@@ -165,11 +166,11 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
                             Label lblArticleTitle = (Label)ri.FindControl("lblArticleTitle");
 
                             // Pubdate is required.
-                            if (!ProfilesRNSDLL.DevelopmentBase.Helpers.Date.IsDate(lblPubDate.Text))
+                            if (!Utilities.ProfilesRNSDLL.DevelopmentBase.Helpers.Date.IsDate(lblPubDate.Text))
                             {
                                 continue;
                             }
-                            ProfilesRNSDLL.BO.ORCID.PersonWork work = new ProfilesRNSDLL.BO.ORCID.PersonWork();
+                            Utilities.ProfilesRNSDLL.BO.ORCID.PersonWork work = new Utilities.ProfilesRNSDLL.BO.ORCID.PersonWork();
                             work.DecisionID = int.Parse(ddlPubVis.SelectedValue.ToString());
                             work.WorkCitation = lblCitation.Text;
                             work.PubDate = DateTime.Parse(lblPubDate.Text);
@@ -181,11 +182,11 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
                             // Add the identifiers
                             if (!lblPMID.Text.Trim().Equals(string.Empty))
                             {
-                                ProfilesRNSDLL.BLL.ORCID.PersonWork.AddIdentifier(work, ProfilesRNSDLL.BO.ORCID.REFWorkExternalType.REFWorkExternalTypes.pmid, lblPMID.Text);
+                                Utilities.ProfilesRNSDLL.BLL.ORCID.PersonWork.AddIdentifier(work, Utilities.ProfilesRNSDLL.BO.ORCID.REFWorkExternalType.REFWorkExternalTypes.pmid, lblPMID.Text);
                             }
-                            if (!lblDOI.Text.Equals(ProfilesRNSDLL.BLL.ORCID.DOI.DOI_NOT_FOUND_MESSAGE))
+                            if (!lblDOI.Text.Equals(Utilities.ProfilesRNSDLL.BLL.ORCID.DOI.DOI_NOT_FOUND_MESSAGE))
                             {
-                                ProfilesRNSDLL.BLL.ORCID.PersonWork.AddIdentifier(work, ProfilesRNSDLL.BO.ORCID.REFWorkExternalType.REFWorkExternalTypes.doi, lblDOI.Text);
+                                Utilities.ProfilesRNSDLL.BLL.ORCID.PersonWork.AddIdentifier(work, Utilities.ProfilesRNSDLL.BO.ORCID.REFWorkExternalType.REFWorkExternalTypes.doi, lblDOI.Text);
                             }
                             person.Works.Add(work);
                             break;
@@ -193,7 +194,7 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
                 }
             }
         }
-        private ProfilesRNSDLL.BO.ORCID.PersonAffiliation GetAffiliationFromThePage(RepeaterItem ri)
+        private Utilities.ProfilesRNSDLL.BO.ORCID.PersonAffiliation GetAffiliationFromThePage(RepeaterItem ri)
         {
             // Get the controls for this item.
             DropDownList ddlPubVis = (DropDownList)ri.FindControl("ddlPubVis");
@@ -211,7 +212,7 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
             Label lblDisambiguationID = (Label)ri.FindControl("lblDisambiguationID");
             Label lblDisambiguationSource = (Label)ri.FindControl("lblDisambiguationSource");
 
-            ProfilesRNSDLL.BO.ORCID.PersonAffiliation personAffiliation = new ProfilesRNSDLL.BO.ORCID.PersonAffiliation();
+            Utilities.ProfilesRNSDLL.BO.ORCID.PersonAffiliation personAffiliation = new Utilities.ProfilesRNSDLL.BO.ORCID.PersonAffiliation();
             personAffiliation.DecisionID = int.Parse(ddlPubVis.SelectedValue.ToString());
             personAffiliation.ProfilesID = int.Parse(lblProfilesID.Text);
             personAffiliation.AffiliationTypeID = int.Parse(lblAffiliationTypeID.Text);
@@ -249,7 +250,7 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
             }
             return personAffiliation;
         }
-        private void GetAffiliationsFromThePage(ProfilesRNSDLL.BO.ORCID.Person person)
+        private void GetAffiliationsFromThePage(Utilities.ProfilesRNSDLL.BO.ORCID.Person person)
         {
             if (divAffiliations.Visible)
             {
@@ -267,7 +268,7 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
                 }
             }
         }
-        private void LoadURLs(ProfilesRNSDLL.BO.ORCID.Person orcidPerson)
+        private void LoadURLs(Utilities.ProfilesRNSDLL.BO.ORCID.Person orcidPerson)
         {
             this.divWebsites.Visible = (orcidPerson.URLs.Count > 0);
             if (orcidPerson.URLs.Count > 0)
@@ -276,26 +277,26 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
                 rptPersonURLs.DataBind();
             }
         }
-        private void LoadBIO(ProfilesRNSDLL.BO.ORCID.Person orcidPersonWithData)
+        private void LoadBIO(Utilities.ProfilesRNSDLL.BO.ORCID.Person orcidPersonWithData)
         {
             if (!orcidPersonWithData.BiographyIsNull)
             {
                 this.txtResearchExpertiseAndProfessionalInterests.Text = orcidPersonWithData.Biography;
                 if (!orcidPersonWithData.BiographyDecisionIDIsNull)
                 {
-                    ProfilesRNSDLL.DevelopmentBase.UICommon.SetValue(orcidPersonWithData.BiographyDecisionID.ToString(), false, this.ddlResearchExpertiseAndProfessionalInterestsVis);
+                    Utilities.ProfilesRNSDLL.DevelopmentBase.UICommon.SetValue(orcidPersonWithData.BiographyDecisionID.ToString(), false, this.ddlResearchExpertiseAndProfessionalInterestsVis);
                 }
             }
 
             // Get what has been saved before
-            ProfilesRNSDLL.BO.ORCID.Person orcidPerson = GetPerson();
+            Utilities.ProfilesRNSDLL.BO.ORCID.Person orcidPerson = GetPerson();
             divResearchExpertiseAndProfessionalInterests.Visible = this.txtResearchExpertiseAndProfessionalInterests.Text.Length > 0
                 && (orcidPerson.BiographyIsNull || orcidPerson.Biography != this.txtResearchExpertiseAndProfessionalInterests.Text);
         }
-        private int publicationsVisibility = (int)ProfilesRNSDLL.BO.ORCID.REFDecision.REFDecisions.Public;
-        private void LoadPublications(ProfilesRNSDLL.BO.ORCID.Person person)
+        private int publicationsVisibility = (int)Utilities.ProfilesRNSDLL.BO.ORCID.REFDecision.REFDecisions.Public;
+        private void LoadPublications(Utilities.ProfilesRNSDLL.BO.ORCID.Person person)
         {
-            List<ProfilesRNSDLL.BO.ORCID.PersonWork> pubs = person.Works;
+            List<Utilities.ProfilesRNSDLL.BO.ORCID.PersonWork> pubs = person.Works;
             divPublications.Visible = pubs.Count > 0;
             if (pubs.Count > 0)
             {
@@ -305,9 +306,9 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
                 rptPublications.DataBind();
             }
         }
-        private void LoadAffiliations(ProfilesRNSDLL.BO.ORCID.Person orcidPerson)
+        private void LoadAffiliations(Utilities.ProfilesRNSDLL.BO.ORCID.Person orcidPerson)
         {
-            //List<ProfilesRNSDLL.BO.ORCID.PersonAffiliation> affiliations = Affiliations;
+            //List<Utilities.ProfilesRNSDLL.BO.ORCID.PersonAffiliation> affiliations = Affiliations;
             divAffiliations.Visible = orcidPerson.Affiliations.Count > 0;
             if (orcidPerson.Affiliations.Count > 0)
             {
@@ -329,10 +330,10 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
                 return _UserID;
             }
         }
-        private ProfilesRNSDLL.BO.ORCID.Person GetPersonWithDBData()
+        private Utilities.ProfilesRNSDLL.BO.ORCID.Person GetPersonWithDBData()
         {
             int profilePersonID = new Profiles.Edit.Utilities.DataIO().GetPersonID(base.RDFTriple.Subject);
-            return new ProfilesRNSDLL.BLL.ORCID.Person().GetPersonWithDBData(profilePersonID, sm.Session().SessionID);
+            return new Utilities.ProfilesRNSDLL.BLL.ORCID.Person().GetPersonWithDBData(profilePersonID, sm.Session().SessionID);
         }
     }
 }

@@ -9,7 +9,7 @@ using System.IO;
 using System.Web.Script.Serialization;
 using System.IO.Compression;
 
-namespace ProfilesRNSDLL.BLL.ORCID
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID
 {
     public class ORCID : ORCIDCommon, Interfaces.IORCID
     {

@@ -4,7 +4,7 @@ using System.Text;
 using System.Runtime.Serialization; 
 using System.ComponentModel; 
  
-namespace ProfilesRNSDLL.BO.Profile.Import
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Import
 { 
     public partial class FreetextKeywords : ProfilesRNSBaseClassBO, BO.Interfaces.Profile.Import.IFreetextKeywords, IEqualityComparer<FreetextKeywords>, IEquatable<FreetextKeywords> 
     { 

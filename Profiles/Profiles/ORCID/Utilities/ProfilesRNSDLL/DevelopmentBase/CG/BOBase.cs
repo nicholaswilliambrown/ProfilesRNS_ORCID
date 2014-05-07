@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text; 
 using System.Runtime.Serialization; 
  
-/*! \namespace ProfilesRNSDLL.DevelopmentBase
+/*! \namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase
  * This namespace contains the common objects that will for OIT development projects.
  */
-namespace ProfilesRNSDLL.DevelopmentBase
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase
 { 
      
     partial class BaseClassBO

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions; 
 
-namespace ProfilesRNSDLL.DevelopmentBase.RegEx
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase.RegEx
 {
     public class GeneralValidation
     {

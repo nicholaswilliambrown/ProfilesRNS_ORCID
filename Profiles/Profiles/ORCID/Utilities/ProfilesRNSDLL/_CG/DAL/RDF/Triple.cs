@@ -7,7 +7,7 @@ using System.Text;
 using System.Reflection;
 using System.Diagnostics;
  
-namespace ProfilesRNSDLL.DAL.RDF
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.RDF
 { 
     public partial class Triple : DALGeneric<ProfilesRNSDLL.BO.RDF.Triple>
     { 

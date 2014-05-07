@@ -1,4 +1,4 @@
-namespace ProfilesRNSDLL.BO.Interfaces.Profile.Import
+namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Interfaces.Profile.Import
 { 
     public partial interface INIHAwards
     { 
