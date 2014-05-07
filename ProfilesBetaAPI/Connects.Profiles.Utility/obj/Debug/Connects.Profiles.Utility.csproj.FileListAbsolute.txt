@@ -1,0 +1,4 @@
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesBetaAPI\Connects.Profiles.Utility\bin\Debug\Connects.Profiles.Utility.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesBetaAPI\Connects.Profiles.Utility\bin\Debug\Connects.Profiles.Utility.pdb
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesBetaAPI\Connects.Profiles.Utility\obj\Debug\Connects.Profiles.Utility.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesBetaAPI\Connects.Profiles.Utility\obj\Debug\Connects.Profiles.Utility.pdb

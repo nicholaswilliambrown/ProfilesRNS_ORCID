@@ -1,0 +1,13 @@
+C:\BUMCProjects\GitHub\ProfilesRNS\Website\SourceCode\Profiles\ProfilesRNSDLL\bin\Debug\ProfilesRNSDLL.dll
+C:\BUMCProjects\GitHub\ProfilesRNS\Website\SourceCode\Profiles\ProfilesRNSDLL\bin\Debug\ProfilesRNSDLL.pdb
+C:\BUMCProjects\GitHub\ProfilesRNS\Website\SourceCode\Profiles\ProfilesRNSDLL\obj\Debug\ProfilesRNSDLL.dll
+C:\BUMCProjects\GitHub\ProfilesRNS\Website\SourceCode\Profiles\ProfilesRNSDLL\obj\Debug\ProfilesRNSDLL.pdb
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\ProfilesCodeForNick\ProfilesRNSDLL\bin\Debug\ProfilesRNSDLL.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\ProfilesCodeForNick\ProfilesRNSDLL\bin\Debug\ProfilesRNSDLL.pdb
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\ProfilesCodeForNick\ProfilesRNSDLL\obj\Debug\ProfilesRNSDLL.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\ProfilesCodeForNick\ProfilesRNSDLL\obj\Debug\ProfilesRNSDLL.pdb
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesRNSDLL\bin\Debug\ProfilesRNSDLL.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesRNSDLL\bin\Debug\ProfilesRNSDLL.pdb
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesRNSDLL\obj\Debug\ProfilesRNSDLL.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesRNSDLL\obj\Debug\ProfilesRNSDLL.pdb
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesRNSDLL\obj\Debug\ProfilesRNSDLL.csprojResolveAssemblyReference.cache

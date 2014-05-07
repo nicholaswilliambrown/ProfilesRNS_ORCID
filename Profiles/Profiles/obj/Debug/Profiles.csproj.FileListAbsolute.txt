@@ -1,0 +1,7 @@
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\Profiles\Profiles\bin\Profiles.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\Profiles\Profiles\bin\Profiles.pdb
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\Profiles\Profiles\bin\ProfilesRNSDLL.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\Profiles\Profiles\bin\ProfilesRNSDLL.pdb
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\Profiles\Profiles\obj\Debug\Profiles.csprojResolveAssemblyReference.cache
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\Profiles\Profiles\obj\Debug\Profiles.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\Profiles\Profiles\obj\Debug\Profiles.pdb

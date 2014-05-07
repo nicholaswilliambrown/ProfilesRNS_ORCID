@@ -1,0 +1,7 @@
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesBetaAPI\Connects.Profiles.Service.DataContracts\bin\Debug\Connects.Profiles.Service.DataContracts.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesBetaAPI\Connects.Profiles.Service.DataContracts\bin\Debug\Connects.Profiles.Service.DataContracts.pdb
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesBetaAPI\Connects.Profiles.Service.DataContracts\bin\Debug\Connects.Profiles.Common.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesBetaAPI\Connects.Profiles.Service.DataContracts\bin\Debug\Connects.Profiles.Common.pdb
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesBetaAPI\Connects.Profiles.Service.DataContracts\obj\Debug\Connects.Profiles.Service.DataContracts.csprojResolveAssemblyReference.cache
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesBetaAPI\Connects.Profiles.Service.DataContracts\obj\Debug\Connects.Profiles.Service.DataContracts.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesBetaAPI\Connects.Profiles.Service.DataContracts\obj\Debug\Connects.Profiles.Service.DataContracts.pdb

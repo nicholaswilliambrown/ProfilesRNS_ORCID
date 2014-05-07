@@ -1,0 +1,7 @@
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\SemWeb\src\bin\Debug\SemWeb.pdb
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\SemWeb\src\bin\Debug\IKVM.GNU.Classpath.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\SemWeb\src\bin\Debug\IKVM.Runtime.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\SemWeb\src\bin\Debug\sparql-core.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\SemWeb\src\obj\Debug\SemWeb.csprojResolveAssemblyReference.cache
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\SemWeb\src\obj\Debug\SemWeb.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\SemWeb\src\obj\Debug\SemWeb.pdb

@@ -1,0 +1,5 @@
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesBetaAPI\Profiles.Common\bin\Debug\Connects.Profiles.Common.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesBetaAPI\Profiles.Common\bin\Debug\Connects.Profiles.Common.pdb
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesBetaAPI\Profiles.Common\obj\Debug\Connects.Profiles.Common.dll
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesBetaAPI\Profiles.Common\obj\Debug\Connects.Profiles.Common.pdb
+C:\Users\nwb4\Documents\Profiles Release Work\ORCID\NWB_Branch\ProfilesRNS\Website\SourceCode\ProfilesBetaAPI\Profiles.Common\obj\Debug\Connects.Profiles.Common.csprojResolveAssemblyReference.cache

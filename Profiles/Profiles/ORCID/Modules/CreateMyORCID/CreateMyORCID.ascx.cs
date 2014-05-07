@@ -1,0 +1,246 @@
+﻿/*  
+ 
+    Copyright (c) 2008-2012 by the President and Fellows of Harvard College. All rights reserved.  
+    Profiles Research Networking Software was developed under the supervision of Griffin M Weber, MD, PhD.,
+    and Harvard Catalyst: The Harvard Clinical and Translational Science Center, with support from the 
+    National Center for Research Resources and Harvard University.
+
+
+    Code licensed under a BSD License. 
+    For details, see: LICENSE.txt 
+  
+*/
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Xml;
+using System.Web.UI.HtmlControls;
+using System.Web.Script.Serialization;
+using Profiles.Login.Utilities;
+using Profiles.Framework.Utilities;
+using Profiles.ORNG.Utilities;
+
+using System.Data;
+using System.Data.SqlClient;
+using System.Data.Common;
+using System.Globalization;
+using System.Text;
+using System.Xml.Xsl;
+
+using Profiles.Profile.Utilities;
+
+namespace Profiles.ORCID.Modules.CreateMyORCID
+{
+    public partial class CreateMyORCID : ORCIDBaseModule
+    {
+        public CreateMyORCID() {
+            base.RDFTriple = new RDFTriple(Convert.ToInt64(sm.Session().NodeID.ToString()));             
+        }
+        public void Initialize(XmlDocument basedata, XmlNamespaceManager namespaces, RDFTriple rdftriple)
+        {
+            BaseData = basedata;
+            Namespaces = namespaces;
+            RDFTriple = rdftriple;
+            UploadInfoToORCID1.Initialize(basedata, namespaces, rdftriple);
+        }
+        public override Label Errors
+        {
+            get { return this.lblErrors; }
+        }
+
+        protected void Page_Load(object sender, System.EventArgs e)
+        {
+            try
+            {
+                if (!IsPostBack)
+                {
+                    DrawProfilesModule();
+                }
+            }
+            catch (Exception ex)
+            {
+                LogException(ex);
+            }
+        }
+        protected void DrawProfilesModule()
+        {
+            ProfilesRNSDLL.BO.ORCID.Person orcidPerson = GetPersonWithDBData();
+            this.txtEmailAddress.Text = orcidPerson.EmailAddress;
+            this.txtFirstName.Text = orcidPerson.FirstName;
+            this.txtLastName.Text = orcidPerson.LastName;
+            UpdateUploadNowVisibility();
+            this.hlORCIDAckAndConsent.Text = "ORCID Acknowledgement and Consent";
+            this.hlORCIDAckAndConsent.NavigateUrl = ORCID_WordPress_Agreement;
+            CheckForExistingORCID();
+            UpdateAcknowledgeVisibility();
+            this.lblOrgEmailRequired.Text = ProfilesRNSDLL.BLL.ORCID.Person.EmailRequiredMessage;
+        }
+        protected void btnNewORCID_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ProfilesRNSDLL.BO.ORCID.Person bo = GetPerson();
+                if (chkUploadInfoNow.Checked)
+                {
+                    bo = UploadInfoToORCID1.GetPersonWithPageData();
+                }
+
+                GetPageControlValues(bo);
+
+                if (Profiles.ORCID.Utilities.config.RequireAcknowledgement)
+                {
+                    bo.AgreementAcknowledged = true;
+                }
+                if (new ProfilesRNSDLL.BLL.ORCID.Person().CreateNewORCID(bo, LoggedInInternalUsername, ProfilesRNSDLL.BO.ORCID.REFPersonStatusType.REFPersonStatusTypes.User_Push_Failed))
+                {
+                    Response.Redirect("~/ORCID/CreationConfirmation.aspx?UserORCID=" + bo.ORCID, false);
+                    return;
+                }
+                else
+                {
+                    this.lblErrorsCreate.Text = bo.Error + bo.AllErrors + "<br /><br />";
+                    GetErrorsAndMessages(bo);
+                }
+            }
+            catch (Exception ex)
+            {
+                lblErrorsCreate.Text = ex.Message;
+                LogException(ex);
+            }
+        }
+        protected void chkIAgree_CheckedChanged(object sender, EventArgs e)
+        {
+            this.btnNewORCID.Enabled = this.chkIAgree.Checked;
+        }
+        protected void chkUploadInfoNow_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateUploadNowVisibility();
+        }
+
+        private void GetErrorsAndMessages(ProfilesRNSDLL.BO.ORCID.Person bo)
+        {
+            AddError(bo.Error);
+            this.lblFirstNameErrors.Text = bo.FirstNameErrors;
+            this.lblLastNameErrors.Text = bo.LastNameErrors;
+            this.lblPublishedNameErrors.Text = bo.PublishedNameErrors;
+            this.lblEmailAddressErrors.Text = bo.EmailAddressErrors;
+            this.lblAlternateEmailDecisionIDErrors.Text = bo.AlternateEmailDecisionIDErrors;
+            this.UploadInfoToORCID1.ResearchExpertiseAndProfessionalInterestsErrors = bo.BiographyErrors;
+        }
+        private ProfilesRNSDLL.BO.ORCID.Person GetPageControlValues(ProfilesRNSDLL.BO.ORCID.Person bo)
+        {
+            bo.AlternateEmails = new List<ProfilesRNSDLL.BO.ORCID.PersonAlternateEmail>();
+
+            bo.InternalUsername = LoggedInInternalUsername;
+            bo.PersonStatusTypeID = (int)ProfilesRNSDLL.BO.ORCID.REFPersonStatusType.REFPersonStatusTypes.ORCID_Created;
+
+            if (!this.txtFirstName.Text.Equals(string.Empty))
+            {
+                bo.FirstName = this.txtFirstName.Text;
+            }
+            else
+            {
+                bo.FirstNameIsNull = true;
+            }
+            if (!this.txtLastName.Text.Equals(string.Empty))
+            {
+                bo.LastName = this.txtLastName.Text;
+            }
+            else
+            {
+                bo.LastNameIsNull = true;
+            }
+            if (!this.txtPublishedName.Text.Equals(string.Empty))
+            {
+                bo.PublishedName = this.txtPublishedName.Text;
+            }
+            foreach (string othername in this.txtOtherNames.Text.Split(Environment.NewLine.ToCharArray()))
+            {
+                if (!othername.Trim().Equals(string.Empty))
+                {
+                    ProfilesRNSDLL.BO.ORCID.PersonOthername otherNameBO = new ProfilesRNSDLL.BO.ORCID.PersonOthername();
+                    otherNameBO.OtherName = othername.Trim();
+                    bo.Othernames.Add(otherNameBO);
+                }
+            }
+            if (!this.txtEmailAddress.Text.Equals(string.Empty))
+            {
+                bo.EmailAddress = this.txtEmailAddress.Text;
+            }
+            else
+            {
+                bo.EmailAddressIsNull = true;
+            }
+            if (!this.ddlEmailDecisionID.Text.Equals(string.Empty))
+            {
+                bo.EmailDecisionID = int.Parse(this.ddlEmailDecisionID.SelectedValue);
+            }
+            else
+            {
+                bo.EmailDecisionIDIsNull = true;
+            }
+            if (!this.ddlAlternateEmailDecisionID.Text.Equals(string.Empty))
+            {
+                bo.AlternateEmailDecisionID = int.Parse(this.ddlAlternateEmailDecisionID.SelectedValue);
+            }
+            else
+            {
+                bo.AlternateEmailDecisionIDIsNull = true;
+            }
+            foreach (string email in this.txtAlternateEmail.Text.Split(Environment.NewLine.ToCharArray()))
+            {
+                if (!email.Equals(string.Empty))
+                {
+                    ProfilesRNSDLL.BO.ORCID.PersonAlternateEmail emailBO = new ProfilesRNSDLL.BO.ORCID.PersonAlternateEmail();
+                    emailBO.EmailAddress = email;
+                    bo.AlternateEmails.Add(emailBO);
+                }
+            }
+            return bo;
+        }
+        private void CheckForExistingORCID()
+        {
+            ProfilesRNSDLL.BO.ORCID.Person person = GetPerson();
+            if (person.Exists && !person.ORCIDIsNull && !person.ORCID.Equals(string.Empty))
+            {
+                AddError("You already have an ORCID.  Please visit the <a href='" + Profiles.ORCID.Utilities.config.ORCID_URL + "'>ORCID website</a> to make any changes.");
+                this.divEntryForm.Visible = false;
+            }
+        }
+        private void SetPrivacy(DropDownList ddl, string privacyLevel)
+        {
+            ddl.ClearSelection();
+            ListItem li = ddl.Items.FindByValue(privacyLevel);
+            if (!(li == null))
+            {
+                li.Selected = true;
+            }
+        }
+        private void UpdateUploadNowVisibility()
+        {
+            this.UploadInfoToORCID1.Visible = chkUploadInfoNow.Checked;
+        }
+        private void UpdateAcknowledgeVisibility()
+        {
+            bool requireAcknowledgement = Profiles.ORCID.Utilities.config.RequireAcknowledgement;
+            if (requireAcknowledgement)
+            {
+                this.pAcknowledge.Visible = true;
+                this.btnNewORCID.Enabled = this.chkIAgree.Checked;
+            }
+            else
+            {
+                this.pAcknowledge.Visible = false;
+                this.btnNewORCID.Enabled = true;
+            }
+        }
+        private ProfilesRNSDLL.BO.ORCID.Person GetPersonWithDBData()
+        {
+            int profilePersonID = new Profiles.Edit.Utilities.DataIO().GetPersonID(base.RDFTriple.Subject);
+            return new ProfilesRNSDLL.BLL.ORCID.Person().GetPersonWithDBData(profilePersonID, sm.Session().SessionID);
+        }
+    }
+}

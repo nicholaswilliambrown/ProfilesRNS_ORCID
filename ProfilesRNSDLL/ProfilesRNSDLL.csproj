@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{38CEFB03-6255-44BF-BE95-33EC663BE3D6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProfilesRNSDLL</RootNamespace>
+    <AssemblyName>ProfilesRNSDLL</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\ORCID\DOI.cs" />
+    <Compile Include="BLL\ORCID\ErrorLog.cs" />
+    <Compile Include="BLL\ORCID\Interfaces\IORCID.cs" />
+    <Compile Include="BLL\ORCID\Interfaces\IPersonMessage.cs" />
+    <Compile Include="BLL\ORCID\OAuth.cs" />
+    <Compile Include="BLL\ORCID\ORCID.cs" />
+    <Compile Include="BLL\ORCID\ORCIDCommon.cs" />
+    <Compile Include="BLL\ORCID\Person.cs" />
+    <Compile Include="BLL\ORCID\PersonAffiliation.cs" />
+    <Compile Include="BLL\ORCID\PersonAlternateEmail.cs" />
+    <Compile Include="BLL\ORCID\PersonMessage.cs" />
+    <Compile Include="BLL\ORCID\PersonOthername.cs" />
+    <Compile Include="BLL\ORCID\PersonToken.cs" />
+    <Compile Include="BLL\ORCID\PersonURL.cs" />
+    <Compile Include="BLL\ORCID\PersonWork.cs" />
+    <Compile Include="BLL\ORCID\PersonWorkIdentifier.cs" />
+    <Compile Include="BLL\ORCID\REFDecision.cs" />
+    <Compile Include="BLL\ORCID\REFPermission.cs" />
+    <Compile Include="BLL\ORNG\AppData.cs" />
+    <Compile Include="BLL\ORNG\AppRegistry.cs" />
+    <Compile Include="BLL\ORNG\Apps.cs" />
+    <Compile Include="BLL\Profile.Data\OrganizationDepartment.cs" />
+    <Compile Include="BLL\Profile.Data\OrganizationDivision.cs" />
+    <Compile Include="BLL\Profile.Data\OrganizationInstitution.cs" />
+    <Compile Include="BLL\Profile.Data\Person.cs" />
+    <Compile Include="BLL\Profile.Data\PersonFacultyRank.cs" />
+    <Compile Include="BLL\RDF.Security\Group.cs" />
+    <Compile Include="BLL\RDF\Triple.cs" />
+    <Compile Include="BO\Config.cs" />
+    <Compile Include="BO\ORCID\Narrative.cs" />
+    <Compile Include="BO\ORCID\Person.cs" />
+    <Compile Include="BO\ORCID\PersonAffiliation.cs" />
+    <Compile Include="BO\ORCID\PersonToken.cs" />
+    <Compile Include="BO\ORCID\PersonWork.cs" />
+    <Compile Include="BO\ProfilesRNSBaseClassBO.cs" />
+    <Compile Include="DAL\DALGeneric.cs" />
+    <Compile Include="DAL\ORCID\PersonAffiliation.cs" />
+    <Compile Include="DAL\ORCID\PersonURL.cs" />
+    <Compile Include="DAL\ORCID\PersonWork.cs" />
+    <Compile Include="DAL\ORCID\PersonWorkIdentifier.cs" />
+    <Compile Include="DAL\ORNG\AppData.cs" />
+    <Compile Include="DAL\Profile.Data\Person.cs" />
+    <Compile Include="DAL\RDF\Triple.cs" />
+    <Compile Include="DevelopmentBase\AppUser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DevelopmentBase\BaseClassBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DevelopmentBase\BOBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DevelopmentBase\BO\ExceptionSafeToDisplay.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DevelopmentBase\BO\IBaseClassBO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DevelopmentBase\Common.cs" />
+    <Compile Include="DevelopmentBase\DALBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DevelopmentBase\DALBOReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DevelopmentBase\DALTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DevelopmentBase\EnumDataSourceItem.cs" />
+    <Compile Include="DevelopmentBase\Factory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DevelopmentBase\Helpers\Date.cs" />
+    <Compile Include="DevelopmentBase\Helpers\QueryString.cs" />
+    <Compile Include="DevelopmentBase\Helpers\StringMethods.cs" />
+    <Compile Include="DevelopmentBase\Helpers\WebPageContent.cs" />
+    <Compile Include="DevelopmentBase\RegEx\GeneralValidation.cs" />
+    <Compile Include="DevelopmentBase\UICommon.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_CG\BLL\ORCID\ErrorLog.cs" />
+    <Compile Include="_CG\BLL\ORCID\FieldLevelAuditTrail.cs" />
+    <Compile Include="_CG\BLL\ORCID\Person.cs" />
+    <Compile Include="_CG\BLL\ORCID\PersonAffiliation.cs" />
+    <Compile Include="_CG\BLL\ORCID\PersonAlternateEmail.cs" />
+    <Compile Include="_CG\BLL\ORCID\PersonMessage.cs" />
+    <Compile Include="_CG\BLL\ORCID\PersonOthername.cs" />
+    <Compile Include="_CG\BLL\ORCID\PersonToken.cs" />
+    <Compile Include="_CG\BLL\ORCID\PersonURL.cs" />
+    <Compile Include="_CG\BLL\ORCID\PersonWork.cs" />
+    <Compile Include="_CG\BLL\ORCID\PersonWorkIdentifier.cs" />
+    <Compile Include="_CG\BLL\ORCID\RecordLevelAuditTrail.cs" />
+    <Compile Include="_CG\BLL\ORCID\RecordLevelAuditType.cs" />
+    <Compile Include="_CG\BLL\ORCID\REFDecision.cs" />
+    <Compile Include="_CG\BLL\ORCID\REFPermission.cs" />
+    <Compile Include="_CG\BLL\ORNG\AppData.cs" />
+    <Compile Include="_CG\BLL\ORNG\AppRegistry.cs" />
+    <Compile Include="_CG\BLL\ORNG\Apps.cs" />
+    <Compile Include="_CG\BLL\Profile.Data\OrganizationDepartment.cs" />
+    <Compile Include="_CG\BLL\Profile.Data\OrganizationDivision.cs" />
+    <Compile Include="_CG\BLL\Profile.Data\OrganizationInstitution.cs" />
+    <Compile Include="_CG\BLL\Profile.Data\Person.cs" />
+    <Compile Include="_CG\BLL\Profile.Data\PersonFacultyRank.cs" />
+    <Compile Include="_CG\BLL\RDF.Security\Group.cs" />
+    <Compile Include="_CG\BLL\RDF\Node.cs" />
+    <Compile Include="_CG\BLL\RDF\Triple.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IErrorLog.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IFieldLevelAuditTrail.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IPerson.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IPersonAffiliation.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IPersonAlternateEmail.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IPersonMessage.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IPersonOthername.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IPersonToken.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IPersonURL.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IPersonWork.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IPersonWorkIdentifier.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IRecordLevelAuditTrail.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IRecordLevelAuditType.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IREFAffiliationType.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IREFDecision.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IREFPermission.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IREFPersonStatusType.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IREFRecordStatus.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORCID\IREFWorkExternalType.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORNG\IAppData.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORNG\IAppRegistry.cs" />
+    <Compile Include="_CG\BO\Interfaces\ORNG\IApps.cs" />
+    <Compile Include="_CG\BO\Interfaces\Profile.Data\IOrganizationDepartment.cs" />
+    <Compile Include="_CG\BO\Interfaces\Profile.Data\IOrganizationDivision.cs" />
+    <Compile Include="_CG\BO\Interfaces\Profile.Data\IOrganizationInstitution.cs" />
+    <Compile Include="_CG\BO\Interfaces\Profile.Data\IPerson.cs" />
+    <Compile Include="_CG\BO\Interfaces\Profile.Data\IPersonFacultyRank.cs" />
+    <Compile Include="_CG\BO\Interfaces\RDF.Security\IGroup.cs" />
+    <Compile Include="_CG\BO\Interfaces\RDF\INode.cs" />
+    <Compile Include="_CG\BO\Interfaces\RDF\ITriple.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\ErrorLog.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\FieldLevelAuditTrail.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\Person.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\PersonAffiliation.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\PersonAlternateEmail.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\PersonMessage.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\PersonOthername.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\PersonToken.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\PersonURL.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\PersonWork.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\PersonWorkIdentifier.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\RecordLevelAuditTrail.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\RecordLevelAuditType.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\REFAffiliationType.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\REFDecision.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\REFPermission.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\REFPersonStatusType.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\REFRecordStatus.cs" />
+    <Compile Include="_CG\BO\Meta\ORCID\REFWorkExternalType.cs" />
+    <Compile Include="_CG\BO\Meta\ORNG\AppData.cs" />
+    <Compile Include="_CG\BO\Meta\ORNG\AppRegistry.cs" />
+    <Compile Include="_CG\BO\Meta\ORNG\Apps.cs" />
+    <Compile Include="_CG\BO\Meta\Profile.Data\OrganizationDepartment.cs" />
+    <Compile Include="_CG\BO\Meta\Profile.Data\OrganizationDivision.cs" />
+    <Compile Include="_CG\BO\Meta\Profile.Data\OrganizationInstitution.cs" />
+    <Compile Include="_CG\BO\Meta\Profile.Data\Person.cs" />
+    <Compile Include="_CG\BO\Meta\Profile.Data\PersonFacultyRank.cs" />
+    <Compile Include="_CG\BO\Meta\RDF.Security\Group.cs" />
+    <Compile Include="_CG\BO\Meta\RDF\Node.cs" />
+    <Compile Include="_CG\BO\Meta\RDF\Triple.cs" />
+    <Compile Include="_CG\BO\ORCID\ErrorLog.cs" />
+    <Compile Include="_CG\BO\ORCID\FieldLevelAuditTrail.cs" />
+    <Compile Include="_CG\BO\ORCID\Person.cs" />
+    <Compile Include="_CG\BO\ORCID\PersonAffiliation.cs" />
+    <Compile Include="_CG\BO\ORCID\PersonAlternateEmail.cs" />
+    <Compile Include="_CG\BO\ORCID\PersonMessage.cs" />
+    <Compile Include="_CG\BO\ORCID\PersonOthername.cs" />
+    <Compile Include="_CG\BO\ORCID\PersonToken.cs" />
+    <Compile Include="_CG\BO\ORCID\PersonURL.cs" />
+    <Compile Include="_CG\BO\ORCID\PersonWork.cs" />
+    <Compile Include="_CG\BO\ORCID\PersonWorkIdentifier.cs" />
+    <Compile Include="_CG\BO\ORCID\RecordLevelAuditTrail.cs" />
+    <Compile Include="_CG\BO\ORCID\RecordLevelAuditType.cs" />
+    <Compile Include="_CG\BO\ORCID\REFAffiliationType.cs" />
+    <Compile Include="_CG\BO\ORCID\REFDecision.cs" />
+    <Compile Include="_CG\BO\ORCID\REFPermission.cs" />
+    <Compile Include="_CG\BO\ORCID\REFPersonStatusType.cs" />
+    <Compile Include="_CG\BO\ORCID\REFRecordStatus.cs" />
+    <Compile Include="_CG\BO\ORCID\REFWorkExternalType.cs" />
+    <Compile Include="_CG\BO\ORNG\AppData.cs" />
+    <Compile Include="_CG\BO\ORNG\AppRegistry.cs" />
+    <Compile Include="_CG\BO\ORNG\Apps.cs" />
+    <Compile Include="_CG\BO\Profile.Data\OrganizationDepartment.cs" />
+    <Compile Include="_CG\BO\Profile.Data\OrganizationDivision.cs" />
+    <Compile Include="_CG\BO\Profile.Data\OrganizationInstitution.cs" />
+    <Compile Include="_CG\BO\Profile.Data\Person.cs" />
+    <Compile Include="_CG\BO\Profile.Data\PersonFacultyRank.cs" />
+    <Compile Include="_CG\BO\RDF.Security\Group.cs" />
+    <Compile Include="_CG\BO\RDF\Node.cs" />
+    <Compile Include="_CG\BO\RDF\Triple.cs" />
+    <Compile Include="_CG\DAL\ORCID\ErrorLog.cs" />
+    <Compile Include="_CG\DAL\ORCID\FieldLevelAuditTrail.cs" />
+    <Compile Include="_CG\DAL\ORCID\Person.cs" />
+    <Compile Include="_CG\DAL\ORCID\PersonAffiliation.cs" />
+    <Compile Include="_CG\DAL\ORCID\PersonAlternateEmail.cs" />
+    <Compile Include="_CG\DAL\ORCID\PersonMessage.cs" />
+    <Compile Include="_CG\DAL\ORCID\PersonOthername.cs" />
+    <Compile Include="_CG\DAL\ORCID\PersonToken.cs" />
+    <Compile Include="_CG\DAL\ORCID\PersonURL.cs" />
+    <Compile Include="_CG\DAL\ORCID\PersonWork.cs" />
+    <Compile Include="_CG\DAL\ORCID\PersonWorkIdentifier.cs" />
+    <Compile Include="_CG\DAL\ORCID\RecordLevelAuditTrail.cs" />
+    <Compile Include="_CG\DAL\ORCID\RecordLevelAuditType.cs" />
+    <Compile Include="_CG\DAL\ORCID\REFDecision.cs" />
+    <Compile Include="_CG\DAL\ORCID\REFPermission.cs" />
+    <Compile Include="_CG\DAL\ORNG\AppData.cs" />
+    <Compile Include="_CG\DAL\ORNG\AppRegistry.cs" />
+    <Compile Include="_CG\DAL\ORNG\Apps.cs" />
+    <Compile Include="_CG\DAL\Profile.Data\OrganizationDepartment.cs" />
+    <Compile Include="_CG\DAL\Profile.Data\OrganizationDivision.cs" />
+    <Compile Include="_CG\DAL\Profile.Data\OrganizationInstitution.cs" />
+    <Compile Include="_CG\DAL\Profile.Data\Person.cs" />
+    <Compile Include="_CG\DAL\Profile.Data\PersonFacultyRank.cs" />
+    <Compile Include="_CG\DAL\RDF.Security\Group.cs" />
+    <Compile Include="_CG\DAL\RDF\Node.cs" />
+    <Compile Include="_CG\DAL\RDF\Triple.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DAL\SQLFiles\ClearTestDataFromProduction.txt" />
+    <Content Include="DAL\SQLFiles\CreateStoredProcedures.txt" />
+    <Content Include="DAL\SQLFiles\CreateTablesScript.txt" />
+    <Content Include="_CG\DAL\StoredProcs\ProfilesRNS.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
