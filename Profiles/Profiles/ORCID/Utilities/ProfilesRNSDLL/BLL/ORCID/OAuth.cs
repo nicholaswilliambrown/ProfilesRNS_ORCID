@@ -57,9 +57,19 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID
             string json = BLL.ORCID.OAuth.GetUserAccessTokenFullResponse(oauthCode, ProfilesRNSDLL.BO.ORCID.Config.WebAppURL + returnPage, loggedInInternalUsername);
             // Example:  string json = "{\"access_token\":\"496c81e5-1555-4676-896b-c3272ee3f151\",\"token_type\":\"bearer\",\"refresh_token\":\"9bd38870-6405-42e1-b57e-297847095fd7\",\"expires_in\":631138518,\"scope\":\"/orcid-profile/read-limited\"}";
             var jss = new JavaScriptSerializer();
-            dynamic data = jss.Deserialize<dynamic>(json);
-            Dictionary<string, object> items = (data as Dictionary<string, object>);
-            return items;
+
+
+            //ZAP, I had to find a way around the dynamic keyword
+            //            dynamic data = jss.Deserialize<dynamic>(json);
+  //          Dictionary<string, object> items = (data as Dictionary<string, object>);
+          //  return items;
+
+
+
+
+            var data = jss.Deserialize<Dictionary<string, object>>(json);
+            return data;
+
         }
         internal static string GetClientToken(string scope, string loggedInInternalUsername)
         {

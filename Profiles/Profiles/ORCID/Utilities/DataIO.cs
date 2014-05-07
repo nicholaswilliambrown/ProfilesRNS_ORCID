@@ -42,7 +42,7 @@ namespace Profiles.ORCID.Utilities
 
             return dbreader;
         }
-        public static string GetInternalUserID()
+        public  string GetInternalUserID()
         {
             SessionManagement sm = new SessionManagement();
 
@@ -95,7 +95,7 @@ namespace Profiles.ORCID.Utilities
             throw new Exception("Unable to find Internal Username");
         }
 
-        public static bool hasOrcid(string internalusername)
+        public  bool hasOrcid(string internalusername)
         {
             string connstr = ConfigurationManager.ConnectionStrings["ProfilesDB"].ConnectionString;
             SqlConnection dbconnection = new SqlConnection(connstr);
