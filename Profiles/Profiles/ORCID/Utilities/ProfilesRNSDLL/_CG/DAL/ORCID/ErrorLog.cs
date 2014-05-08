@@ -61,7 +61,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         } 
  
         /*! Method to get the fields in the table in a select string. */
-        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID].[ErrorLog].[ErrorLogID], [ORCID].[ErrorLog].[InternalUsername], [ORCID].[ErrorLog].[Exception], [ORCID].[ErrorLog].[OccurredOn], [ORCID].[ErrorLog].[Processed]"; } 
+        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID.].[ErrorLog].[ErrorLogID], [ORCID.].[ErrorLog].[InternalUsername], [ORCID.].[ErrorLog].[Exception], [ORCID.].[ErrorLog].[OccurredOn], [ORCID.].[ErrorLog].[Processed]"; } 
  
         /*! Method to get identity(s) of the newly added database record. */
         public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.ErrorLog businessObj)
@@ -77,7 +77,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
  
         internal ProfilesRNSDLL.BO.ORCID.ErrorLog Get(int ErrorLogID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_ErrorLogGet");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_ErrorLogGet");
             AddParam(ref cmd, "@ErrorLogID", ErrorLogID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 

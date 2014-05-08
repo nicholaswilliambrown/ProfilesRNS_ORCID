@@ -67,7 +67,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         } 
  
         /*! Method to get the fields in the table in a select string. */
-        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID].[REF_Permission].[PermissionID], [ORCID].[REF_Permission].[PermissionScope], [ORCID].[REF_Permission].[PermissionDescription], [ORCID].[REF_Permission].[MethodAndRequest], [ORCID].[REF_Permission].[SuccessMessage], [ORCID].[REF_Permission].[FailedMessage]"; } 
+        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID.].[REF_Permission].[PermissionID], [ORCID.].[REF_Permission].[PermissionScope], [ORCID.].[REF_Permission].[PermissionDescription], [ORCID.].[REF_Permission].[MethodAndRequest], [ORCID.].[REF_Permission].[SuccessMessage], [ORCID.].[REF_Permission].[FailedMessage]"; } 
  
         /*! Method to get identity(s) of the newly added database record. */
         public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, ProfilesRNSDLL.BO.ORCID.REFPermission businessObj)
@@ -83,13 +83,13 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
  
         internal ProfilesRNSDLL.BO.ORCID.REFPermission GetByPermissionScope(string PermissionScope) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_REFPermissionGetByPermissionScope");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_REFPermissionGetByPermissionScope");
             AddParam(ref cmd, "@PermissionScope", PermissionScope);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 
         internal ProfilesRNSDLL.BO.ORCID.REFPermission Get(int PermissionID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_REFPermissionGet");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_REFPermissionGet");
             AddParam(ref cmd, "@PermissionID", PermissionID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 

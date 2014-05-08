@@ -59,7 +59,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         } 
  
         /*! Method to get the fields in the table in a select string. */
-        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID].[PersonAlternateEmail].[PersonAlternateEmailID], [ORCID].[PersonAlternateEmail].[PersonID], [ORCID].[PersonAlternateEmail].[EmailAddress], [ORCID].[PersonAlternateEmail].[PersonMessageID]"; } 
+        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID.].[PersonAlternateEmail].[PersonAlternateEmailID], [ORCID.].[PersonAlternateEmail].[PersonID], [ORCID.].[PersonAlternateEmail].[EmailAddress], [ORCID.].[PersonAlternateEmail].[PersonMessageID]"; } 
  
         /*! Method to get identity(s) of the newly added database record. */
         public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, ProfilesRNSDLL.BO.ORCID.PersonAlternateEmail businessObj)
@@ -75,19 +75,19 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
  
         internal List<ProfilesRNSDLL.BO.ORCID.PersonAlternateEmail> GetByPersonID(int PersonID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonAlternateEmailGetByPersonID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonAlternateEmailGetByPersonID");
             AddParam(ref cmd, "@PersonID", PersonID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal List<ProfilesRNSDLL.BO.ORCID.PersonAlternateEmail> GetByPersonMessageID(int PersonMessageID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonAlternateEmailGetByPersonMessageID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonAlternateEmailGetByPersonMessageID");
             AddParam(ref cmd, "@PersonMessageID", PersonMessageID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal ProfilesRNSDLL.BO.ORCID.PersonAlternateEmail Get(int PersonAlternateEmailID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonAlternateEmailGet");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonAlternateEmailGet");
             AddParam(ref cmd, "@PersonAlternateEmailID", PersonAlternateEmailID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 

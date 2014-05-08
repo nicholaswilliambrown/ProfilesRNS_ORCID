@@ -12,11 +12,11 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
             System.Data.Common.DbCommand cmd = GetCommand();
             string sql = GetSelectString();
             sql += "FROM ";
-            sql += "    ORCID.PersonAffiliation  ";
-            sql += "    INNER JOIN ORCID.PersonMessage ON ORCID.PersonAffiliation.PersonMessageID = ORCID.PersonMessage.PersonMessageID   ";
+            sql += "    [ORCID.].PersonAffiliation  ";
+            sql += "    INNER JOIN [ORCID.].PersonMessage ON [ORCID.].PersonAffiliation.PersonMessageID = [ORCID.].PersonMessage.PersonMessageID   ";
             sql += "WHERE ";
-            sql += "    ORCID.PersonAffiliation.PersonID = @ORCIDPersonID ";
-            sql += "    AND ORCID.PersonMessage.RecordStatusID = " + ((int)BO.ORCID.REFRecordStatus.REFRecordStatuss.Success).ToString();
+            sql += "    [ORCID.].PersonAffiliation.PersonID = @ORCIDPersonID ";
+            sql += "    AND [ORCID.].PersonMessage.RecordStatusID = " + ((int)BO.ORCID.REFRecordStatus.REFRecordStatuss.Success).ToString();
             cmd.CommandText = sql;
             cmd.CommandType = System.Data.CommandType.Text;
             AddParam(ref cmd, "@ORCIDPersonID", orcidpersonID);

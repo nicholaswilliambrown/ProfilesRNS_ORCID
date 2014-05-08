@@ -65,7 +65,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         } 
  
         /*! Method to get the fields in the table in a select string. */
-        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID].[PersonURL].[PersonURLID], [ORCID].[PersonURL].[PersonID], [ORCID].[PersonURL].[PersonMessageID], [ORCID].[PersonURL].[URLName], [ORCID].[PersonURL].[URL], [ORCID].[PersonURL].[DecisionID]"; } 
+        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID.].[PersonURL].[PersonURLID], [ORCID.].[PersonURL].[PersonID], [ORCID.].[PersonURL].[PersonMessageID], [ORCID.].[PersonURL].[URLName], [ORCID.].[PersonURL].[URL], [ORCID.].[PersonURL].[DecisionID]"; } 
  
         /*! Method to get identity(s) of the newly added database record. */
         public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, ProfilesRNSDLL.BO.ORCID.PersonURL businessObj)
@@ -81,26 +81,26 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
  
         internal List<ProfilesRNSDLL.BO.ORCID.PersonURL> GetByPersonID(int PersonID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonURLGetByPersonID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonURLGetByPersonID");
             AddParam(ref cmd, "@PersonID", PersonID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal ProfilesRNSDLL.BO.ORCID.PersonURL GetByPersonIDAndURL(int PersonID, string URL) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonURLGetByPersonIDAndURL");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonURLGetByPersonIDAndURL");
             AddParam(ref cmd, "@PersonID", PersonID);
             AddParam(ref cmd, "@URL", URL);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 
         internal List<ProfilesRNSDLL.BO.ORCID.PersonURL> GetByPersonMessageID(int PersonMessageID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonURLGetByPersonMessageID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonURLGetByPersonMessageID");
             AddParam(ref cmd, "@PersonMessageID", PersonMessageID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal ProfilesRNSDLL.BO.ORCID.PersonURL Get(int PersonURLID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonURLGet");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonURLGet");
             AddParam(ref cmd, "@PersonURLID", PersonURLID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 

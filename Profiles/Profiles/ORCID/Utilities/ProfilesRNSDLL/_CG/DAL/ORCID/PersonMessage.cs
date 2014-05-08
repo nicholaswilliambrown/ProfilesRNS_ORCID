@@ -97,7 +97,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         } 
  
         /*! Method to get the fields in the table in a select string. */
-        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID].[PersonMessage].[PersonMessageID], [ORCID].[PersonMessage].[PersonID], [ORCID].[PersonMessage].[XML_Sent], [ORCID].[PersonMessage].[XML_Response], [ORCID].[PersonMessage].[ErrorMessage], [ORCID].[PersonMessage].[HttpResponseCode], [ORCID].[PersonMessage].[MessagePostSuccess], [ORCID].[PersonMessage].[RecordStatusID], [ORCID].[PersonMessage].[PermissionID], [ORCID].[PersonMessage].[RequestURL], [ORCID].[PersonMessage].[HeaderPost], [ORCID].[PersonMessage].[UserMessage], [ORCID].[PersonMessage].[PostDate]"; } 
+        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID.].[PersonMessage].[PersonMessageID], [ORCID.].[PersonMessage].[PersonID], [ORCID.].[PersonMessage].[XML_Sent], [ORCID.].[PersonMessage].[XML_Response], [ORCID.].[PersonMessage].[ErrorMessage], [ORCID.].[PersonMessage].[HttpResponseCode], [ORCID.].[PersonMessage].[MessagePostSuccess], [ORCID.].[PersonMessage].[RecordStatusID], [ORCID.].[PersonMessage].[PermissionID], [ORCID.].[PersonMessage].[RequestURL], [ORCID.].[PersonMessage].[HeaderPost], [ORCID.].[PersonMessage].[UserMessage], [ORCID.].[PersonMessage].[PostDate]"; } 
  
         /*! Method to get identity(s) of the newly added database record. */
         public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, ProfilesRNSDLL.BO.ORCID.PersonMessage businessObj)
@@ -113,13 +113,13 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
  
         internal List<ProfilesRNSDLL.BO.ORCID.PersonMessage> GetByPersonID(int PersonID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonMessageGetByPersonID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonMessageGetByPersonID");
             AddParam(ref cmd, "@PersonID", PersonID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal List<ProfilesRNSDLL.BO.ORCID.PersonMessage> GetByPersonIDAndRecordStatusIDAndPermissionID(int PersonID, int RecordStatusID, int PermissionID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonMessageGetByPersonIDAndRecordStatusIDAndPermissionID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonMessageGetByPersonIDAndRecordStatusIDAndPermissionID");
             AddParam(ref cmd, "@PersonID", PersonID);
             AddParam(ref cmd, "@RecordStatusID", RecordStatusID);
             AddParam(ref cmd, "@PermissionID", PermissionID);
@@ -127,14 +127,14 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         } 
         internal List<ProfilesRNSDLL.BO.ORCID.PersonMessage> GetByPersonIDAndRecordStatusID(int PersonID, int RecordStatusID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonMessageGetByPersonIDAndRecordStatusID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonMessageGetByPersonIDAndRecordStatusID");
             AddParam(ref cmd, "@PersonID", PersonID);
             AddParam(ref cmd, "@RecordStatusID", RecordStatusID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal ProfilesRNSDLL.BO.ORCID.PersonMessage Get(int PersonMessageID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonMessageGet");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonMessageGet");
             AddParam(ref cmd, "@PersonMessageID", PersonMessageID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 

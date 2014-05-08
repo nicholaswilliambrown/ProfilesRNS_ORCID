@@ -47,7 +47,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         } 
  
         /*! Method to get the fields in the table in a select string. */
-        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID].[RecordLevelAuditTrail].[RecordLevelAuditTrailID], [ORCID].[RecordLevelAuditTrail].[MetaTableID], [ORCID].[RecordLevelAuditTrail].[RowIdentifier], [ORCID].[RecordLevelAuditTrail].[RecordLevelAuditTypeID], [ORCID].[RecordLevelAuditTrail].[CreatedDate], [ORCID].[RecordLevelAuditTrail].[CreatedBy]"; } 
+        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID.].[RecordLevelAuditTrail].[RecordLevelAuditTrailID], [ORCID.].[RecordLevelAuditTrail].[MetaTableID], [ORCID.].[RecordLevelAuditTrail].[RowIdentifier], [ORCID.].[RecordLevelAuditTrail].[RecordLevelAuditTypeID], [ORCID.].[RecordLevelAuditTrail].[CreatedDate], [ORCID.].[RecordLevelAuditTrail].[CreatedBy]"; } 
  
         /*! Method to get identity(s) of the newly added database record. */
         public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, ProfilesRNSDLL.BO.ORCID.RecordLevelAuditTrail businessObj)
@@ -63,7 +63,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
  
         internal ProfilesRNSDLL.BO.ORCID.RecordLevelAuditTrail Get(long RecordLevelAuditTrailID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_RecordLevelAuditTrailGet");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_RecordLevelAuditTrailGet");
             AddParam(ref cmd, "@RecordLevelAuditTrailID", RecordLevelAuditTrailID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 

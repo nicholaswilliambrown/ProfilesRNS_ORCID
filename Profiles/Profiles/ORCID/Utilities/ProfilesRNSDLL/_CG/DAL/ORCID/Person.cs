@@ -101,7 +101,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         } 
  
         /*! Method to get the fields in the table in a select string. */
-        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID].[Person].[PersonID], [ORCID].[Person].[InternalUsername], [ORCID].[Person].[PersonStatusTypeID], [ORCID].[Person].[CreateUnlessOptOut], [ORCID].[Person].[ORCID], [ORCID].[Person].[ORCIDRecorded], [ORCID].[Person].[FirstName], [ORCID].[Person].[LastName], [ORCID].[Person].[PublishedName], [ORCID].[Person].[EmailDecisionID], [ORCID].[Person].[EmailAddress], [ORCID].[Person].[AlternateEmailDecisionID], [ORCID].[Person].[AgreementAcknowledged], [ORCID].[Person].[Biography], [ORCID].[Person].[BiographyDecisionID]"; } 
+        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID.].[Person].[PersonID], [ORCID.].[Person].[InternalUsername], [ORCID.].[Person].[PersonStatusTypeID], [ORCID.].[Person].[CreateUnlessOptOut], [ORCID.].[Person].[ORCID.], [ORCID.].[Person].[ORCIDRecorded], [ORCID.].[Person].[FirstName], [ORCID.].[Person].[LastName], [ORCID.].[Person].[PublishedName], [ORCID.].[Person].[EmailDecisionID], [ORCID.].[Person].[EmailAddress], [ORCID.].[Person].[AlternateEmailDecisionID], [ORCID.].[Person].[AgreementAcknowledged], [ORCID.].[Person].[Biography], [ORCID.].[Person].[BiographyDecisionID]"; } 
  
         /*! Method to get identity(s) of the newly added database record. */
         public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, ProfilesRNSDLL.BO.ORCID.Person businessObj)
@@ -117,31 +117,31 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
  
         internal List<ProfilesRNSDLL.BO.ORCID.Person> GetByCreateUnlessOptOut(bool CreateUnlessOptOut, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonGetByCreateUnlessOptOut");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonGetByCreateUnlessOptOut");
             AddParam(ref cmd, "@CreateUnlessOptOut", CreateUnlessOptOut);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal ProfilesRNSDLL.BO.ORCID.Person GetByInternalUsername(string InternalUsername) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonGetByInternalUsername");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonGetByInternalUsername");
             AddParam(ref cmd, "@InternalUsername", InternalUsername);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 
         internal List<ProfilesRNSDLL.BO.ORCID.Person> GetByORCID(string ORCID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonGetByORCID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonGetByORCID");
             AddParam(ref cmd, "@ORCID", ORCID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal List<ProfilesRNSDLL.BO.ORCID.Person> GetByPersonStatusTypeID(int PersonStatusTypeID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonGetByPersonStatusTypeID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonGetByPersonStatusTypeID");
             AddParam(ref cmd, "@PersonStatusTypeID", PersonStatusTypeID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal ProfilesRNSDLL.BO.ORCID.Person Get(int PersonID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonGet");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonGet");
             AddParam(ref cmd, "@PersonID", PersonID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 

@@ -63,7 +63,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         } 
  
         /*! Method to get the fields in the table in a select string. */
-        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID].[PersonToken].[PersonTokenID], [ORCID].[PersonToken].[PersonID], [ORCID].[PersonToken].[PermissionID], [ORCID].[PersonToken].[AccessToken], [ORCID].[PersonToken].[TokenExpiration], [ORCID].[PersonToken].[RefreshToken]"; } 
+        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID.].[PersonToken].[PersonTokenID], [ORCID.].[PersonToken].[PersonID], [ORCID.].[PersonToken].[PermissionID], [ORCID.].[PersonToken].[AccessToken], [ORCID.].[PersonToken].[TokenExpiration], [ORCID.].[PersonToken].[RefreshToken]"; } 
  
         /*! Method to get identity(s) of the newly added database record. */
         public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, ProfilesRNSDLL.BO.ORCID.PersonToken businessObj)
@@ -79,26 +79,26 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
  
         internal List<ProfilesRNSDLL.BO.ORCID.PersonToken> GetByPermissionID(int PermissionID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonTokenGetByPermissionID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonTokenGetByPermissionID");
             AddParam(ref cmd, "@PermissionID", PermissionID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal List<ProfilesRNSDLL.BO.ORCID.PersonToken> GetByPersonID(int PersonID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonTokenGetByPersonID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonTokenGetByPersonID");
             AddParam(ref cmd, "@PersonID", PersonID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal ProfilesRNSDLL.BO.ORCID.PersonToken GetByPersonIDAndPermissionID(int PersonID, int PermissionID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonTokenGetByPersonIDAndPermissionID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonTokenGetByPersonIDAndPermissionID");
             AddParam(ref cmd, "@PersonID", PersonID);
             AddParam(ref cmd, "@PermissionID", PermissionID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 
         internal ProfilesRNSDLL.BO.ORCID.PersonToken Get(int PersonTokenID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonTokenGet");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonTokenGet");
             AddParam(ref cmd, "@PersonTokenID", PersonTokenID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 

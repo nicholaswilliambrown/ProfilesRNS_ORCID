@@ -10,6 +10,6 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID
     { 
         public override int TableId { get { return 4469;} }
         public enum FieldNames : int { AffiliationTypeID = 52856, AffiliationType = 52857 }
-        public override string TableSchemaName { get { return "ORCID"; } }
+        public override string TableSchemaName { get { return "ORCID."; } }
     } 
 } 

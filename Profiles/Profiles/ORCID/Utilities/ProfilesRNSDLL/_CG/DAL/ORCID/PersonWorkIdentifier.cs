@@ -57,7 +57,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         } 
  
         /*! Method to get the fields in the table in a select string. */
-        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID].[PersonWorkIdentifier].[PersonWorkIdentifierID], [ORCID].[PersonWorkIdentifier].[PersonWorkID], [ORCID].[PersonWorkIdentifier].[WorkExternalTypeID], [ORCID].[PersonWorkIdentifier].[Identifier]"; } 
+        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID.].[PersonWorkIdentifier].[PersonWorkIdentifierID], [ORCID.].[PersonWorkIdentifier].[PersonWorkID], [ORCID.].[PersonWorkIdentifier].[WorkExternalTypeID], [ORCID.].[PersonWorkIdentifier].[Identifier]"; } 
  
         /*! Method to get identity(s) of the newly added database record. */
         public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, ProfilesRNSDLL.BO.ORCID.PersonWorkIdentifier businessObj)
@@ -73,19 +73,19 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
  
         internal List<ProfilesRNSDLL.BO.ORCID.PersonWorkIdentifier> GetByPersonWorkID(int PersonWorkID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonWorkIdentifierGetByPersonWorkID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonWorkIdentifierGetByPersonWorkID");
             AddParam(ref cmd, "@PersonWorkID", PersonWorkID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal List<ProfilesRNSDLL.BO.ORCID.PersonWorkIdentifier> GetByWorkExternalTypeID(int WorkExternalTypeID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonWorkIdentifierGetByWorkExternalTypeID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonWorkIdentifierGetByWorkExternalTypeID");
             AddParam(ref cmd, "@WorkExternalTypeID", WorkExternalTypeID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal ProfilesRNSDLL.BO.ORCID.PersonWorkIdentifier GetByPersonWorkIDAndWorkExternalTypeIDAndIdentifier(int PersonWorkID, int WorkExternalTypeID, string Identifier) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonWorkIdentifierGetByPersonWorkIDAndWorkExternalTypeIDAndIdentifier");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonWorkIdentifierGetByPersonWorkIDAndWorkExternalTypeIDAndIdentifier");
             AddParam(ref cmd, "@PersonWorkID", PersonWorkID);
             AddParam(ref cmd, "@WorkExternalTypeID", WorkExternalTypeID);
             AddParam(ref cmd, "@Identifier", Identifier);
@@ -93,7 +93,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         } 
         internal ProfilesRNSDLL.BO.ORCID.PersonWorkIdentifier Get(int PersonWorkIdentifierID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonWorkIdentifierGet");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonWorkIdentifierGet");
             AddParam(ref cmd, "@PersonWorkIdentifierID", PersonWorkIdentifierID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 

@@ -172,7 +172,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DevelopmentBase
         protected int AddRecordLevelAuditTrail(int tableID, Int64 rowIdentifier, DevelopmentBase.BaseClassBO.RecordLevelAuditTypes auditType, DbTransaction trans)
         {
             ProfilesRNSDLL.BO.ORCID.RecordLevelAuditTrail bo = new ProfilesRNSDLL.BO.ORCID.RecordLevelAuditTrail();
-            DbCommand cmd = GetCommand("[ORCID].cg2_RecordLevelAuditTrailAdd");
+            DbCommand cmd = GetCommand("[ORCID.].cg2_RecordLevelAuditTrailAdd");
             cmd.Transaction = trans;
             cmd.Connection = trans.Connection;
             DbParameter ParamRecordLevelAuditTrailID = cmd.CreateParameter();

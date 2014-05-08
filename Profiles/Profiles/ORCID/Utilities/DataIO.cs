@@ -99,7 +99,7 @@ namespace Profiles.ORCID.Utilities
         {
             string connstr = ConfigurationManager.ConnectionStrings["ProfilesDB"].ConnectionString;
             SqlConnection dbconnection = new SqlConnection(connstr);
-            SqlCommand dbcommand = new SqlCommand("SELECT ORCID FROM [ORCID].[Person] WHERE internalusername = \'" + internalusername + "\'");
+            SqlCommand dbcommand = new SqlCommand("SELECT ORCID FROM [ORCID.].[Person] WHERE internalusername = \'" + internalusername + "\'");
 
             SqlDataReader dbreader;
             dbconnection.Open();
@@ -123,7 +123,7 @@ namespace Profiles.ORCID.Utilities
         {
             string connstr = ConfigurationManager.ConnectionStrings["ProfilesDB"].ConnectionString;
             SqlConnection dbconnection = new SqlConnection(connstr);
-            SqlCommand dbcommand = new SqlCommand("SELECT ORCID FROM [ORCID].[Person] WHERE internalusername = \'" + internalusername + "\'");
+            SqlCommand dbcommand = new SqlCommand("SELECT ORCID FROM [ORCID.].[Person] WHERE internalusername = \'" + internalusername + "\'");
 
             SqlDataReader dbreader;
             dbconnection.Open();

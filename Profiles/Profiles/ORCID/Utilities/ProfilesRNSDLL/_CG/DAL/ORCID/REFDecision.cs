@@ -55,7 +55,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         } 
  
         /*! Method to get the fields in the table in a select string. */
-        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID].[REF_Decision].[DecisionID], [ORCID].[REF_Decision].[DecisionDescription], [ORCID].[REF_Decision].[DecisionDescriptionLong]"; } 
+        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID.].[REF_Decision].[DecisionID], [ORCID.].[REF_Decision].[DecisionDescription], [ORCID.].[REF_Decision].[DecisionDescriptionLong]"; } 
  
         /*! Method to get identity(s) of the newly added database record. */
         public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, ProfilesRNSDLL.BO.ORCID.REFDecision businessObj)
@@ -71,7 +71,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
  
         internal ProfilesRNSDLL.BO.ORCID.REFDecision Get(int DecisionID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_REFDecisionGet");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_REFDecisionGet");
             AddParam(ref cmd, "@DecisionID", DecisionID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 

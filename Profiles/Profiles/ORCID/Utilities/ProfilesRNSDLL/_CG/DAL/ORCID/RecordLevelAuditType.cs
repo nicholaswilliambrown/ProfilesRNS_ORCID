@@ -53,7 +53,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         } 
  
         /*! Method to get the fields in the table in a select string. */
-        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID].[RecordLevelAuditType].[RecordLevelAuditTypeID], [ORCID].[RecordLevelAuditType].[AuditType]"; } 
+        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID.].[RecordLevelAuditType].[RecordLevelAuditTypeID], [ORCID.].[RecordLevelAuditType].[AuditType]"; } 
  
         /*! Method to get identity(s) of the newly added database record. */
         public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, ProfilesRNSDLL.BO.ORCID.RecordLevelAuditType businessObj)
@@ -69,7 +69,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
  
         internal ProfilesRNSDLL.BO.ORCID.RecordLevelAuditType Get(int RecordLevelAuditTypeID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_RecordLevelAuditTypeGet");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_RecordLevelAuditTypeGet");
             AddParam(ref cmd, "@RecordLevelAuditTypeID", RecordLevelAuditTypeID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 

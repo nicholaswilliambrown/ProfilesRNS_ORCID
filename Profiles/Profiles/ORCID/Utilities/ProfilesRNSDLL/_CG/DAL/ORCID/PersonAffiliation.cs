@@ -101,7 +101,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         } 
  
         /*! Method to get the fields in the table in a select string. */
-        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID].[PersonAffiliation].[PersonAffiliationID], [ORCID].[PersonAffiliation].[ProfilesID], [ORCID].[PersonAffiliation].[AffiliationTypeID], [ORCID].[PersonAffiliation].[PersonID], [ORCID].[PersonAffiliation].[PersonMessageID], [ORCID].[PersonAffiliation].[DecisionID], [ORCID].[PersonAffiliation].[DepartmentName], [ORCID].[PersonAffiliation].[RoleTitle], [ORCID].[PersonAffiliation].[StartDate], [ORCID].[PersonAffiliation].[EndDate], [ORCID].[PersonAffiliation].[OrganizationName], [ORCID].[PersonAffiliation].[OrganizationCity], [ORCID].[PersonAffiliation].[OrganizationRegion], [ORCID].[PersonAffiliation].[OrganizationCountry], [ORCID].[PersonAffiliation].[DisambiguationID], [ORCID].[PersonAffiliation].[DisambiguationSource]"; } 
+        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID.].[PersonAffiliation].[PersonAffiliationID], [ORCID.].[PersonAffiliation].[ProfilesID], [ORCID.].[PersonAffiliation].[AffiliationTypeID], [ORCID.].[PersonAffiliation].[PersonID], [ORCID.].[PersonAffiliation].[PersonMessageID], [ORCID.].[PersonAffiliation].[DecisionID], [ORCID.].[PersonAffiliation].[DepartmentName], [ORCID.].[PersonAffiliation].[RoleTitle], [ORCID.].[PersonAffiliation].[StartDate], [ORCID.].[PersonAffiliation].[EndDate], [ORCID.].[PersonAffiliation].[OrganizationName], [ORCID.].[PersonAffiliation].[OrganizationCity], [ORCID.].[PersonAffiliation].[OrganizationRegion], [ORCID.].[PersonAffiliation].[OrganizationCountry], [ORCID.].[PersonAffiliation].[DisambiguationID], [ORCID.].[PersonAffiliation].[DisambiguationSource]"; } 
  
         /*! Method to get identity(s) of the newly added database record. */
         public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, ProfilesRNSDLL.BO.ORCID.PersonAffiliation businessObj)
@@ -117,32 +117,32 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
  
         internal List<ProfilesRNSDLL.BO.ORCID.PersonAffiliation> GetByDecisionID(int DecisionID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonAffiliationGetByDecisionID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonAffiliationGetByDecisionID");
             AddParam(ref cmd, "@DecisionID", DecisionID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal List<ProfilesRNSDLL.BO.ORCID.PersonAffiliation> GetByPersonID(int PersonID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonAffiliationGetByPersonID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonAffiliationGetByPersonID");
             AddParam(ref cmd, "@PersonID", PersonID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal List<ProfilesRNSDLL.BO.ORCID.PersonAffiliation> GetByPersonMessageID(int PersonMessageID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonAffiliationGetByPersonMessageID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonAffiliationGetByPersonMessageID");
             AddParam(ref cmd, "@PersonMessageID", PersonMessageID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal ProfilesRNSDLL.BO.ORCID.PersonAffiliation GetByProfilesIDAndAffiliationTypeID(int ProfilesID, int AffiliationTypeID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonAffiliationGetByProfilesIDAndAffiliationTypeID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonAffiliationGetByProfilesIDAndAffiliationTypeID");
             AddParam(ref cmd, "@ProfilesID", ProfilesID);
             AddParam(ref cmd, "@AffiliationTypeID", AffiliationTypeID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 
         internal ProfilesRNSDLL.BO.ORCID.PersonAffiliation Get(int PersonAffiliationID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonAffiliationGet");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonAffiliationGet");
             AddParam(ref cmd, "@PersonAffiliationID", PersonAffiliationID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 

@@ -95,7 +95,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         } 
  
         /*! Method to get the fields in the table in a select string. */
-        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID].[PersonWork].[PersonWorkID], [ORCID].[PersonWork].[PersonID], [ORCID].[PersonWork].[PersonMessageID], [ORCID].[PersonWork].[DecisionID], [ORCID].[PersonWork].[WorkTitle], [ORCID].[PersonWork].[ShortDescription], [ORCID].[PersonWork].[WorkCitation], [ORCID].[PersonWork].[WorkType], [ORCID].[PersonWork].[URL], [ORCID].[PersonWork].[SubTitle], [ORCID].[PersonWork].[WorkCitationType], [ORCID].[PersonWork].[PubDate], [ORCID].[PersonWork].[PublicationMediaType], [ORCID].[PersonWork].[PubID]"; } 
+        internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [ORCID.].[PersonWork].[PersonWorkID], [ORCID.].[PersonWork].[PersonID], [ORCID.].[PersonWork].[PersonMessageID], [ORCID.].[PersonWork].[DecisionID], [ORCID.].[PersonWork].[WorkTitle], [ORCID.].[PersonWork].[ShortDescription], [ORCID.].[PersonWork].[WorkCitation], [ORCID.].[PersonWork].[WorkType], [ORCID.].[PersonWork].[URL], [ORCID.].[PersonWork].[SubTitle], [ORCID.].[PersonWork].[WorkCitationType], [ORCID.].[PersonWork].[PubDate], [ORCID.].[PersonWork].[PublicationMediaType], [ORCID.].[PersonWork].[PubID]"; } 
  
         /*! Method to get identity(s) of the newly added database record. */
         public override void GetIdentity(System.Data.Common.DbCommand sqlCommand, ProfilesRNSDLL.BO.ORCID.PersonWork businessObj)
@@ -111,32 +111,32 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
  
         internal List<ProfilesRNSDLL.BO.ORCID.PersonWork> GetByDecisionID(int DecisionID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonWorkGetByDecisionID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonWorkGetByDecisionID");
             AddParam(ref cmd, "@DecisionID", DecisionID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal List<ProfilesRNSDLL.BO.ORCID.PersonWork> GetByPersonID(int PersonID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonWorkGetByPersonID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonWorkGetByPersonID");
             AddParam(ref cmd, "@PersonID", PersonID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal ProfilesRNSDLL.BO.ORCID.PersonWork GetByPersonIDAndPubID(int PersonID, string PubID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonWorkGetByPersonIDAndPubID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonWorkGetByPersonIDAndPubID");
             AddParam(ref cmd, "@PersonID", PersonID);
             AddParam(ref cmd, "@PubID", PubID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 
         internal List<ProfilesRNSDLL.BO.ORCID.PersonWork> GetByPersonMessageID(int PersonMessageID, bool addBlank) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonWorkGetByPersonMessageID");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonWorkGetByPersonMessageID");
             AddParam(ref cmd, "@PersonMessageID", PersonMessageID);
             return PopulateCollectionObject(FillTable(cmd), addBlank); 
         } 
         internal ProfilesRNSDLL.BO.ORCID.PersonWork Get(int PersonWorkID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[ORCID].cg2_PersonWorkGet");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].cg2_PersonWorkGet");
             AddParam(ref cmd, "@PersonWorkID", PersonWorkID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 
