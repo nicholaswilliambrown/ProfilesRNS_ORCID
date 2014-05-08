@@ -29,16 +29,17 @@ namespace Profiles.ORCID.Modules
     public abstract class ORCIDBaseModule : BaseModule
     {
         public abstract System.Web.UI.WebControls.Label Errors { get; }
+        private Profiles.ORCID.Utilities.DataIO data;
         public ORCIDBaseModule()
-        { }
+        { data = new Profiles.ORCID.Utilities.DataIO(); }
         public ORCIDBaseModule(XmlDocument pagedata, List<ModuleParams> moduleparams, XmlNamespaceManager pagenamespaces)
             : base(pagedata, moduleparams, pagenamespaces)
-        { }
+        { data = new Profiles.ORCID.Utilities.DataIO(); }
         public string LoggedInInternalUsername
         {
             get
             {
-                return Profiles.ORCID.Utilities.DataIO.GetInternalUserID();
+                return data.GetInternalUserID();
             }
         }
         public Utilities.ProfilesRNSDLL.BO.ORCID.Person GetPerson()
