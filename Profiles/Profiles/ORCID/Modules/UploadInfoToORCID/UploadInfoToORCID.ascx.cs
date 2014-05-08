@@ -23,6 +23,7 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
 {
     public partial class UploadInfoToORCID : ORCIDBaseModule
     {
+        Utilities.DataIO data;
         public override Label Errors
         {
             get
@@ -32,6 +33,7 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
         }
         public UploadInfoToORCID()
         {
+            data = new Profiles.ORCID.Utilities.DataIO();
             base.RDFTriple = new RDFTriple(Convert.ToInt64(sm.Session().NodeID.ToString()));
         }
         public Utilities.ProfilesRNSDLL.BO.ORCID.Person GetPersonWithPageData()
@@ -325,7 +327,7 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
 
                 if (_UserID == null)
                 {
-                    _UserID = Profiles.ORCID.Utilities.DataIO.GetInternalUserID();
+                    _UserID = data.GetInternalUserID();
                 }
                 return _UserID;
             }

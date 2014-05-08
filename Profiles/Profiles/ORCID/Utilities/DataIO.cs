@@ -42,7 +42,7 @@ namespace Profiles.ORCID.Utilities
 
             return dbreader;
         }
-        public  string GetInternalUserID()
+        public string GetInternalUserID()
         {
             SessionManagement sm = new SessionManagement();
 
