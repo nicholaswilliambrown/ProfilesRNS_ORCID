@@ -130,8 +130,9 @@ namespace Profiles.Framework.Modules.MainMenu
                 {
 
                     string loggedInInternalUsername = new Profiles.ORCID.Utilities.DataIO().GetInternalUserID();
+                    Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person person = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.Person().GetByInternalUsername(loggedInInternalUsername);
 
-                    if (!new Profiles.ORCID.Utilities.DataIO().hasOrcid(loggedInInternalUsername))
+                    if (!person.Exists || person.ORCIDIsNull)
                     {
                         string orcidHelpLink = string.Empty;
                         string orcidInfoSite = Profiles.ORCID.Utilities.config.InfoSite;
