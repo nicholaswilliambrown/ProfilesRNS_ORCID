@@ -247,7 +247,7 @@
             <li>Reducing time to identify scholarly output (see “Publisher integration,” below)</li>
             <li>Enabling scholars to keep track of and report on their work with funders, publishers
                 and institutions</li>
-            <li>Repurposing data for use in CV generation, citation repositories, BU Profiles, annual
+            <li>Repurposing data for use in CV generation, citation repositories, Profiles, annual
                 reports, faculty web-sites, and other systems (see “Grant submission integration,”
                 below)</li>
             <li>Tying individuals to their scholarly work should make finding academic papers easier
@@ -258,8 +258,7 @@
             have begun integrating ORCID iDs into the manuscript submission process, and embedding
             ORCID identifiers across their scientific and scholarly research ecosystem. This
             will save authors time during submission, and enable automatic updating of author
-            bibliographies when articles are published. That information can be ingested into
-            BU systems, at each scholar’s discretion.</p>
+            bibliographies when articles are published.</p>
         <p>
             Grant submission integration: NIH, NSF and other federal agencies are planning to
             integrate ORCID iDs into the ScienCV platform, for linking researchers, their grants,
@@ -281,18 +280,18 @@
                 title="ORCID Privacy Settings">ORCID Privacy Settings</a>). You always have
             the ability to change these settings – the ORCID record is controlled by you, not
             your institution. Individuals who are in Profiles will be asked if they want
-            to push select information from BU Profiles to ORCID at the time the ORCID record
+            to push select information from Profiles to ORCID at the time the ORCID record
             is created.</p>
         <p>
             ORCID will send you an email to claim your record. During the claim process they
             will suggest you set the default privacy setting for new works to be “public.” Data
             labeled as either “public” or “limited” will be accessible by BU. You may be asked
-            to allow BU to be a Trusted Party (gain access to “limited” data), as a final step
+            to allow your institution to be a Trusted Party (gain access to “limited” data), as a final step
             after claiming your ORCID record. If you do not claim your record within 10 days,
             it will become publicly visible. You can still claim the record at any time, and
             we encourage you to do so.</p>
         <p>
-            For those not in BU Profiles, or with no publication records showing in BU Profiles,
+            For those not in Profiles, or with no publication records showing in Profiles,
             you can opt to add works using alternative means, such as the ORCID to Scopus integration.
             This option is available even if you have never used Scopus before. To use this,
             once logged into ORCID, choose &#8220;Update works,&#8221; then &#8220;Also see
