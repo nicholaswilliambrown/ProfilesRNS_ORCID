@@ -97,6 +97,9 @@ namespace Profiles.ORCID.Modules.CreateMyORCID
                 }
                 if (new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.Person().CreateNewORCID(bo, LoggedInInternalUsername, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.REFPersonStatusType.REFPersonStatusTypes.User_Push_Failed))
                 {
+                    Edit.Utilities.DataIO data = new Edit.Utilities.DataIO();
+                    long subjectID = Profiles.ORCID.Utilities.DataIO.getNodeIdFromInternalUserName(LoggedInInternalUsername);
+                    data.AddLiteral(subjectID, data.GetStoreNode("http://vivoweb.org/ontology/core#orcidId"), data.GetStoreNode(bo.ORCID));
                     Response.Redirect("~/ORCID/CreationConfirmation.aspx?UserORCID=" + bo.ORCID, false);
                     return;
                 }
