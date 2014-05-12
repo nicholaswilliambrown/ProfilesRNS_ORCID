@@ -94,5 +94,31 @@ namespace Profiles.ORCID.Utilities
             }
             throw new Exception("Unable to find Internal Username");
         }
+
+        public static long getNodeIdFromInternalUserName(string internalUserName)
+        {
+            SessionManagement sm = new SessionManagement();
+
+            string connstr = ConfigurationManager.ConnectionStrings["ProfilesDB"].ConnectionString;
+            SqlConnection dbconnection = new SqlConnection(connstr);
+            SqlCommand dbcommand = new SqlCommand("select nodeID from [RDF.Stage].[InternalNodeMap] m join [Profile.Data].[Person] p on m.internalID= p.PersonID and Class = 'http://xmlns.com/foaf/0.1/Person' and p.internalusername = '" + internalUserName + "'");
+
+            SqlDataReader dbreader;
+            dbconnection.Open();
+            dbcommand.CommandType = CommandType.Text;
+            dbcommand.CommandTimeout = GetCommandTimeout();
+            dbcommand.Connection = dbconnection;
+            dbreader = dbcommand.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (dbreader.Read())
+            {
+                ORCIDPublication pub = new ORCIDPublication();
+                if (dbreader["NodeID"] != null)
+                {
+                    return Convert.ToInt64(dbreader["NodeID"]); 
+                }
+            }
+            return 0;
+        }
     }
 }

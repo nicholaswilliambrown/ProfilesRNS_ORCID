@@ -20,6 +20,7 @@ For details, see: LICENSE.txt
   <Module ModulePath="Modules" NameSpace="ProvideORCIDConfirmation" FileName="ProvideORCIDConfirmation.ascx" Enabled="true" />
   <Module ModulePath="Modules" NameSpace="UpdateSecurityGroupDefaultDecisions" FileName="UpdateSecurityGroupDefaultDecisions.ascx" Enabled="true" />
   <Module ModulePath="Modules" NameSpace="UploadInfoToORCID" FileName="UploadInfoToORCID.ascx" Enabled="true" />
+  <Module ModulePath="Modules" NameSpace="CustomEditORCID" FileName="CustomEditORCID.ascx" Enabled="true" />
 </ModuleList>
 
 
