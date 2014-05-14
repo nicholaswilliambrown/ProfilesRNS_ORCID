@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UploadInfoToORCID.ascx.cs"
     Inherits="Profiles.ORCID.Modules.UploadInfoToORCID.UploadInfoToORCID" %>
-<div id="divResearchExpertiseAndProfessionalInterests" runat="server" style="padding-bottom:5px">
+
+<div id="divResearchExpertiseAndProfessionalInterests" runat="server" style="padding-bottom: 5px">
     <table width="100%" class="PropertyGroupItem">
         <tr style="width: 100%">
             <td>
@@ -14,9 +15,9 @@
                 </div>
             </td>
         </tr>
-        <tr id='trOverview' class='PropertyGroupData' style="display:none">
+        <tr id='trOverview' class='PropertyGroupData' style="display: none">
             <td>
-                <div style="padding:5px">
+                <div style="padding: 5px">
                     <b>Note:</b> Your Profiles 'Overview' field has been copied here as a starting point.
                     You can change this text for ORCID and it will not affect Profiles. ORCID's maximum
                     number of characters allowed is 5000. By default this section will be public but
@@ -61,7 +62,7 @@
         </tr>
     </table>
 </div>
-<div id="divAffiliations" runat="server" style="padding-bottom:5px">
+<div id="divAffiliations" runat="server" style="padding-bottom: 5px">
     <table width="100%" class="PropertyGroupItem">
         <tr>
             <td style="width: 100%">
@@ -75,9 +76,9 @@
                 </div>
             </td>
         </tr>
-        <tr id='trAffiliations' class='PropertyGroupData'  style="display:none">
+        <tr id='trAffiliations' class='PropertyGroupData' style="display: none">
             <td>
-                <div style="padding:5px">
+                <div style="padding: 5px">
                     <span class="uierror">Note:</span>
                     <asp:Label ID="AffiliationsMessageWhenORCIDExists" runat="server" Text="The list below will not include any positions that you have already pushed via this site. " />.
                     Only positions that have a title, city, state, and country can be sent to ORCID.
@@ -169,7 +170,7 @@
         </tr>
     </table>
 </div>
-<div id="divWebsites" runat="server" style="padding-bottom:5px">
+<div id="divWebsites" runat="server" style="padding-bottom: 5px">
     <table width="100%" class="PropertyGroupItem">
         <tr>
             <td style="width: 100%">
@@ -183,9 +184,9 @@
                 </div>
             </td>
         </tr>
-        <tr id='trWebsites' class='PropertyGroupData'  style="display:none">
+        <tr id='trWebsites' class='PropertyGroupData' style="display: none">
             <td>
-                <div  style="padding:5px">
+                <div style="padding: 5px">
                     <span class="uierror">Note:</span> ORCID allows a privacy setting for the URLs section
                     but not for individual websites. The default privacy for your URLs section will
                     be public unless you change it. For particular websites you have the option of including
@@ -252,7 +253,7 @@
         </tr>
     </table>
 </div>
-<div id="divPublications" runat="server" style="padding-bottom:5px">
+<div id="divPublications" runat="server" style="padding-bottom: 5px">
     <table width="100%" class="PropertyGroupItem">
         <tr>
             <td style="width: 100%">
@@ -266,13 +267,20 @@
                 </div>
             </td>
         </tr>
-        <tr id='trPublications' class='PropertyGroupData' style="display:none">
+        <tr id='trPublications' class='PropertyGroupData' style="display: none">
             <td>
-                <div  style="padding:5px">
+                <div style="padding: 5px">
                     <span class="uierror">Note:</span>
                     <asp:Label ID="PublicationMessageWhenORCIDExists" runat="server" Text="The list below will not include any publications that you have already pushed via this site. " />
                     For more information on privacy settings <a href='ORCIDPrivacySettingsandProfiles.pdf'
-                        target='_blank'>click here </a>(opens in new window).
+                        target='_blank'>click here </a>(opens in new window). <span style="float: right">
+                            <select id="selPrivacy">
+                                <option value="1" selected="selected">Public</option>
+                                <option value="2">Limited</option>
+                                <option value="3">Private</option>
+                                <option value="4">Exclude</option>
+                            </select>
+                        </span>
                 </div>
                 <asp:Repeater ID="rptPublications" runat="server" OnItemDataBound="rptPublications_ItemDataBound">
                     <HeaderTemplate>
@@ -353,3 +361,20 @@
         </tr>
     </table>
 </div>
+<script type="text/javascript">
+
+    
+
+    $(document).ready(function () {
+        $('#selPrivacy').change(
+        function () {
+            
+            $("select[id*=ddlPubVis]").val(this.value);
+        }
+      );
+
+    });
+
+
+    
+</script>
