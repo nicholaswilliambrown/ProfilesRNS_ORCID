@@ -80,6 +80,8 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
             LoadBIO(orcidPerson);
             LoadAffiliations(orcidPerson);
             LoadPublications(orcidPerson);
+                       
+ 
         }
         protected void Page_Load(object sender, System.EventArgs e)
         {
@@ -336,6 +338,11 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
         {
             int profilePersonID = new Profiles.Edit.Utilities.DataIO().GetPersonID(base.RDFTriple.Subject);
             return new Utilities.ProfilesRNSDLL.BLL.ORCID.Person().GetPersonWithDBData(profilePersonID, sm.Session().SessionID);
+        }
+
+        public string RootDomain()
+        {
+            return Root.Domain;
         }
     }
 }
