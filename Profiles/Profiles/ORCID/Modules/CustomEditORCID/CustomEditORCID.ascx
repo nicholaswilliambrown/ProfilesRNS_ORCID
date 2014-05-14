@@ -27,6 +27,21 @@
                             <security:Options runat="server" ID="securityOptions"></security:Options>
                         </asp:Panel>
                         <br />
+                        <asp:Panel runat="server" ID="orcidtable">
+                            <table width="100%">
+                                <tr class="topRow editTable">
+                                    <td>
+                                        ORCID id
+                                    </td>
+                                </tr>
+                                <tr class="editTable">
+                                    <td style="padding: 5px 10px">
+                                        <asp:Literal runat="server" ID="litORCIDID"></asp:Literal>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                        </asp:Panel>
                         <asp:Panel runat="server" ID="pnlAddORCID">
                             <asp:Literal runat="server" ID="litCreateProvideORCID"></asp:Literal>   
                         </asp:Panel>

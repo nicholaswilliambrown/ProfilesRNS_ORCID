@@ -90,11 +90,14 @@ namespace Profiles.ORCID.Modules.CustomEditORCID
                     {
                         litCreateProvideORCID.Visible = true;
                         litUploatInfoToORCID.Visible = false;
+                        orcidtable.Visible = false;
                     }
                     else
                     {
+                        litORCIDID.Text = "<a href='" + Profiles.ORCID.Utilities.config.ORCID_URL + "/" + person.ORCID + "'>" + person.ORCID + "</a>";
                         litCreateProvideORCID.Visible = false;
                         litUploatInfoToORCID.Visible = true;
+                        orcidtable.Visible = true;
                     }
         }
 

@@ -67,6 +67,24 @@ namespace Profiles.ORCID.Modules.CustomEditORCID {
         protected global::Profiles.Edit.Modules.SecurityOptions.SecurityOptions securityOptions;
         
         /// <summary>
+        /// orcidtable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel orcidtable;
+        
+        /// <summary>
+        /// litORCIDID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litORCIDID;
+        
+        /// <summary>
         /// pnlAddORCID control.
         /// </summary>
         /// <remarks>
