@@ -24,7 +24,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         }
         internal System.Data.DataView GetPublications(long subject, string sessionID)
         {
-            System.Data.Common.DbCommand cmd = GetCommand("[Profile.Module].[CustomViewAuthorInAuthorshipForORCID.GetList]");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].[AuthorInAuthorshipForORCID.GetList]");
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             AddParam(ref cmd, "@nodeid", subject);
             AddParam(ref cmd, "@sessionid", sessionID);

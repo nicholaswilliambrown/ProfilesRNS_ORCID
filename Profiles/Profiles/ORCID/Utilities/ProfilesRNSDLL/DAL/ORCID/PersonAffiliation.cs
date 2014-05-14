@@ -24,7 +24,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.ORCID
         }
         internal List<ProfilesRNSDLL.BO.ORCID.PersonAffiliation> GetAffiliations(int profileDataPersonID)
         {
-            System.Data.Common.DbCommand cmd = GetCommand("[Profile.Module].[CustomViewAffiliationsListForORCID]");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].[AffiliationsForORCID.GetList]");
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             AddParam(ref cmd, "@ProfileDataPersonID", profileDataPersonID);
 

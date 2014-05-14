@@ -9,7 +9,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.RDF
     {
         internal System.Data.DataView GetPublications(Int64 subject)
         {
-            System.Data.Common.DbCommand cmd = GetCommand("[RDF.].GetPublications");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].GetPublications");
             AddParam(ref cmd, "@Subject", subject);
             return FillTable(cmd).DefaultView; 
         }
@@ -17,7 +17,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.RDF
         {
             BO.ORCID.Narrative narrative = new BO.ORCID.Narrative();
 
-            System.Data.Common.DbCommand cmd = GetCommand("[RDF.].GetNarrative");
+            System.Data.Common.DbCommand cmd = GetCommand("[ORCID.].GetNarrative");
             AddParam(ref cmd, "@Subject", subject);
             System.Data.DataTable dt = FillTable(cmd);
 

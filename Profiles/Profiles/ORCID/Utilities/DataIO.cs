@@ -22,7 +22,7 @@ namespace Profiles.ORCID.Utilities
             return Convert.ToInt32(ConfigurationSettings.AppSettings["COMMANDTIMEOUT"]);
 
         }
-
+/*
         public SqlDataReader GetPublications(RDFTriple request)
         {
             SessionManagement sm = new SessionManagement();
@@ -42,6 +42,8 @@ namespace Profiles.ORCID.Utilities
 
             return dbreader;
         }
+  
+ */ 
         public string GetInternalUserID()
         {
             SessionManagement sm = new SessionManagement();

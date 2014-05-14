@@ -174,15 +174,15 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.Profile.Data
         } 
  
         internal ProfilesRNSDLL.BO.Profile.Data.Person GetByInternalUsername(string InternalUsername) 
-        { 
-            System.Data.Common.DbCommand cmd = GetCommand("[Profile.Data].cg2_PersonGetByInternalUsername");
-            AddParam(ref cmd, "@InternalUsername", InternalUsername);
+        {
+            System.Data.Common.DbCommand cmd = GetCommand("sp_executesql");
+            AddParam(ref cmd, "@stmt", "SELECT TOP 100 PERCENT [Profile.Data].[Person].[PersonID], [Profile.Data].[Person].[UserID], [Profile.Data].[Person].[FirstName], [Profile.Data].[Person].[LastName], [Profile.Data].[Person].[MiddleName], [Profile.Data].[Person].[DisplayName], [Profile.Data].[Person].[Suffix], [Profile.Data].[Person].[IsActive], [Profile.Data].[Person].[EmailAddr], [Profile.Data].[Person].[Phone], [Profile.Data].[Person].[Fax], [Profile.Data].[Person].[AddressLine1], [Profile.Data].[Person].[AddressLine2], [Profile.Data].[Person].[AddressLine3], [Profile.Data].[Person].[AddressLine4], [Profile.Data].[Person].[City], [Profile.Data].[Person].[State], [Profile.Data].[Person].[Zip], [Profile.Data].[Person].[Building], [Profile.Data].[Person].[Floor], [Profile.Data].[Person].[Room], [Profile.Data].[Person].[AddressString], [Profile.Data].[Person].[Latitude], [Profile.Data].[Person].[Longitude], [Profile.Data].[Person].[GeoScore], [Profile.Data].[Person].[FacultyRankID], [Profile.Data].[Person].[InternalUsername], [Profile.Data].[Person].[Visible] FROM [Profile.Data].[Person] WHERE [Profile.Data].[Person].[InternalUsername] = '" + InternalUsername + "'");
             return PopulateFromRow(FillTable(cmd), 0); 
         } 
         internal ProfilesRNSDLL.BO.Profile.Data.Person Get(int PersonID) 
-        { 
-            System.Data.Common.DbCommand cmd = GetCommand("[Profile.Data].cg2_PersonGet");
-            AddParam(ref cmd, "@PersonID", PersonID);
+        {
+            System.Data.Common.DbCommand cmd = GetCommand("sp_executesql");
+            AddParam(ref cmd, "@stmt", "SELECT TOP 100 PERCENT [Profile.Data].[Person].[PersonID], [Profile.Data].[Person].[UserID], [Profile.Data].[Person].[FirstName], [Profile.Data].[Person].[LastName], [Profile.Data].[Person].[MiddleName], [Profile.Data].[Person].[DisplayName], [Profile.Data].[Person].[Suffix], [Profile.Data].[Person].[IsActive], [Profile.Data].[Person].[EmailAddr], [Profile.Data].[Person].[Phone], [Profile.Data].[Person].[Fax], [Profile.Data].[Person].[AddressLine1], [Profile.Data].[Person].[AddressLine2], [Profile.Data].[Person].[AddressLine3], [Profile.Data].[Person].[AddressLine4], [Profile.Data].[Person].[City], [Profile.Data].[Person].[State], [Profile.Data].[Person].[Zip], [Profile.Data].[Person].[Building], [Profile.Data].[Person].[Floor], [Profile.Data].[Person].[Room], [Profile.Data].[Person].[AddressString], [Profile.Data].[Person].[Latitude], [Profile.Data].[Person].[Longitude], [Profile.Data].[Person].[GeoScore], [Profile.Data].[Person].[FacultyRankID], [Profile.Data].[Person].[InternalUsername], [Profile.Data].[Person].[Visible] FROM [Profile.Data].[Person] WHERE [Profile.Data].[Person].[PersonID] = " + PersonID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 
  

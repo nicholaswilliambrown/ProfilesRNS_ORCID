@@ -60,8 +60,9 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.RDF.Security
  
         internal ProfilesRNSDLL.BO.RDF.Security.Group Get(long SecurityGroupID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[RDF.Security].cg2_GroupGet");
-            AddParam(ref cmd, "@SecurityGroupID", SecurityGroupID);
+            System.Data.Common.DbCommand cmd = GetCommand("sp_executesql");
+            //AddParam(ref cmd, "@stmt", "SELECT TOP 100 PERCENT [RDF.Security].[Group].[SecurityGroupID], [RDF.Security].[Group].[Label], [RDF.Security].[Group].[HasSpecialViewAccess], [RDF.Security].[Group].[HasSpecialEditAccess], [RDF.Security].[Group].[Description], [RDF.Security].[Group].[DefaultORCIDDecisionID] FROM [RDF.Security].[Group] WHERE [RDF.Security].[Group].[SecurityGroupID] = " + SecurityGroupID);
+            AddParam(ref cmd, "@stmt", "SELECT TOP 100 PERCENT [ORCID.].[DefaultORCIDDecisionIDMapping].[SecurityGroupID], [ORCID.].[DefaultORCIDDecisionIDMapping].[DefaultORCIDDecisionID] FROM [ORCID.].[DefaultORCIDDecisionIDMapping] WHERE [ORCID.].[DefaultORCIDDecisionIDMapping].[SecurityGroupID] = " + SecurityGroupID);
             return PopulateFromRow(FillTable(cmd), 0); 
         } 
  
@@ -70,7 +71,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.RDF.Security
         { 
             ProfilesRNSDLL.BO.RDF.Security.Group bo = new ProfilesRNSDLL.BO.RDF.Security.Group();
             bo.SecurityGroupID = long.Parse(dr["SecurityGroupID"].ToString()); 
-            bo.Label = dr["Label"].ToString(); 
+/*            bo.Label = dr["Label"].ToString(); 
             if(!dr.IsNull("HasSpecialViewAccess"))
             { 
                  bo.HasSpecialViewAccess = bool.Parse(dr["HasSpecialViewAccess"].ToString()); 
@@ -83,7 +84,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.RDF.Security
             { 
                  bo.Description = dr["Description"].ToString(); 
             } 
-            if(!dr.IsNull("DefaultORCIDDecisionID"))
+   */         if(!dr.IsNull("DefaultORCIDDecisionID"))
             { 
                  bo.DefaultORCIDDecisionID = int.Parse(dr["DefaultORCIDDecisionID"].ToString()); 
             } 
