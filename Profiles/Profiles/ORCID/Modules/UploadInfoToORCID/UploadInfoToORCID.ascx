@@ -273,14 +273,7 @@
                     <span class="uierror">Note:</span>
                     <asp:Label ID="PublicationMessageWhenORCIDExists" runat="server" Text="The list below will not include any publications that you have already pushed via this site. " />
                     For more information on privacy settings <a href='ORCIDPrivacySettingsandProfiles.pdf'
-                        target='_blank'>click here </a>(opens in new window). <span style="float: right">
-                            <select id="selPrivacy">
-                                <option value="1" selected="selected">Public</option>
-                                <option value="2">Limited</option>
-                                <option value="3">Private</option>
-                                <option value="4">Exclude</option>
-                            </select>
-                        </span>
+                        target='_blank'>click here </a>(opens in new window). 
                 </div>
                 <asp:Repeater ID="rptPublications" runat="server" OnItemDataBound="rptPublications_ItemDataBound">
                     <HeaderTemplate>
@@ -293,7 +286,14 @@
                                     <th>
                                         Publication
                                     </th>
-                                    <th>
+                                    <th><span style="float: right">
+                            <select id="selPrivacy">
+                                <option value="1" selected="selected">Public</option>
+                                <option value="2">Limited</option>
+                                <option value="3">Private</option>
+                                <option value="4">Exclude</option>
+                            </select>
+                        </span>
                                     </th>
                                 </tr>
                             </thead>
