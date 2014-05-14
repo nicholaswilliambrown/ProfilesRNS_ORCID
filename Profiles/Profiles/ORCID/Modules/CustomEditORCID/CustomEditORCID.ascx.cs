@@ -81,8 +81,8 @@ namespace Profiles.ORCID.Modules.CustomEditORCID
             {
                 orcidHelpLink = "&nbsp;<a style='border: none;' href='" + orcidInfoSite + "' target='_blank'><img style='border-style: none' src='" + Root.Domain + "/Framework/Images/info.png'  border='0'></a>";
             }
-            litCreateProvideORCID.Text = "<a href='" + Root.Domain + "/ORCID/CreateMyORCID.aspx'>Create My ORCID</a>" + orcidHelpLink + "<br><a href='" + Root.Domain + "/ORCID/ProvideORCID.aspx'>Provide My ORCID</a>" + orcidHelpLink;
-            litUploatInfoToORCID.Text = "<a href='" + Root.Domain + "/ORCID/UploadInfoToORCID.aspx'>Upload Info To ORCID</a>";
+            litCreateProvideORCID.Text = "<img src='" + Root.Domain + "/framework/images/icon_squareArrow.gif' border='0'/>&nbsp;<a href='" + Root.Domain + "/ORCID/CreateMyORCID.aspx'>Create My ORCID</a>" + orcidHelpLink + "<br><img src='" + Root.Domain + "/framework/images/icon_squareArrow.gif' border='0'/>&nbsp;<a href='" + Root.Domain + "/ORCID/ProvideORCID.aspx'>Provide My ORCID</a>" + orcidHelpLink;
+            litUploatInfoToORCID.Text = "<img src='" + Root.Domain + "/framework/images/icon_squareArrow.gif' border='0'/>&nbsp;<a href='" + Root.Domain + "/ORCID/UploadInfoToORCID.aspx'>Upload Info To ORCID</a>";
                                 string loggedInInternalUsername = new Profiles.ORCID.Utilities.DataIO().GetInternalUserID();
                     Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person person = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.Person().GetByInternalUsername(loggedInInternalUsername);
 
