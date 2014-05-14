@@ -5,6 +5,7 @@
   <xsl:param name="imgguid"/>
   <xsl:param name="orcid"/>
   <xsl:param name="orcidurl"/>
+  <xsl:param name="orcidinfosite"/>
   <xsl:param name="orcidimage"/>
   <xsl:param name="orcidimageguid"/>
 
@@ -152,7 +153,10 @@
               <xsl:otherwise>
                 <xsl:value-of select="$orcid "/>
               </xsl:otherwise> 
-            </xsl:choose>               
+            </xsl:choose>
+            <xsl:text disable-output-escaping="yes">&#160;</xsl:text><a style="border: none;" href="{$orcidinfosite}" target='_blank'>
+              <img style='border-style: none' src="{$root}/Framework/Images/info.png"  border='0'/>
+            </a>
           </td>
         </tr>
       </xsl:when>

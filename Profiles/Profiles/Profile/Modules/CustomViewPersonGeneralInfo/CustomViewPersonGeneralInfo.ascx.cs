@@ -61,12 +61,14 @@ namespace Profiles.Profile.Modules.CustomViewPersonGeneralInfo
             {
                 args.AddParam("orcid", "", orcidPerson.ORCID);
                 args.AddParam("orcidurl", "", Profiles.ORCID.Utilities.config.ORCID_URL + "/" + orcidPerson.ORCID);
+                args.AddParam("orcidinfourl", "", Profiles.ORCID.Utilities.config.InfoSite);
                 args.AddParam("orcidimage", "", Root.Domain + "/Framework/Images/orcid_16x16(1).gif");
                 args.AddParam("orcidimageguid", "", Guid.NewGuid().ToString());
             }
             else if (Profiles.ORCID.Utilities.config.ShowNoORCIDMessage && Profiles.ORCID.Utilities.config.Enabled)
             {
                 args.AddParam("orcid", "", "No ORCID id has been created for this user");
+                args.AddParam("orcidinfosite", "", Profiles.ORCID.Utilities.config.InfoSite);
                 //args.AddParam("orcidurl", "", Profiles.ORCID.Utilities.config.ORCID_URL + "/" + orcidPerson.ORCID);
                 args.AddParam("orcidimage", "", Root.Domain + "/Framework/Images/orcid_16x16(1).gif");
                 args.AddParam("orcidimageguid", "", Guid.NewGuid().ToString());
