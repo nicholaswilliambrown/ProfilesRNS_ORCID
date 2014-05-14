@@ -134,7 +134,13 @@ namespace Profiles.ORCID.Utilities
                 return Convert.ToInt32(ConfigurationManager.AppSettings["ORCID.Enabled"]).Equals(1);
             }
         }
-
+        public static bool ShowNoORCIDMessage
+        {
+            get
+            {
+                return Convert.ToInt32(ConfigurationManager.AppSettings["ORCID.ShowNoORCIDMessage"]).Equals(1);
+            }
+        }
 
     }
 }
