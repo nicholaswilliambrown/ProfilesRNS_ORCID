@@ -126,33 +126,33 @@ namespace Profiles.Framework.Modules.MainMenu
             }
             else
             {
-                if (Profiles.ORCID.Utilities.config.Enabled)
-                {
+                //if (Profiles.ORCID.Utilities.config.Enabled)
+                //{
 
-                    string loggedInInternalUsername = new Profiles.ORCID.Utilities.DataIO().GetInternalUserID();
-                    Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person person = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.Person().GetByInternalUsername(loggedInInternalUsername);
+                //    string loggedInInternalUsername = new Profiles.ORCID.Utilities.DataIO().GetInternalUserID();
+                //    Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person person = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.Person().GetByInternalUsername(loggedInInternalUsername);
 
-                    if (!person.Exists || person.ORCIDIsNull)
-                    {
-                        string orcidHelpLink = string.Empty;
-                        string orcidInfoSite = Profiles.ORCID.Utilities.config.InfoSite;
-                        if (!string.IsNullOrEmpty(orcidInfoSite))
-                        {
-                            orcidHelpLink = "&nbsp;<a style='border: none;' href='" + orcidInfoSite + "' target='_blank'><img style='border-style: none' src='" + Root.Domain + "/Framework/Images/info.png'  border='0'></a>";
-                        }
-                        menulist.Append("<li><a href='" + Root.Domain + "/ORCID/CreateMyORCID.aspx'>Create My ORCID</a>" + orcidHelpLink + "</li>");
-                        menulist.Append("<li><a href='" + Root.Domain + "/ORCID/ProvideORCID.aspx'>Provide My ORCID</a>" + orcidHelpLink + "</li>");
-                    }
-                    else
-                    {
-                        menulist.Append("<li><a href='" + Root.Domain + "/ORCID/UploadInfoToORCID.aspx'>Upload Info To ORCID</a></li>");
-                    }
-                    if (data.GetSessionSecurityGroup() == -50)
-                    {
-                        menulist.Append("<li><a href='" + Root.Domain + "/ORCID/CreateBatch.aspx'>Batch Upload</a></li>");
-                        menulist.Append("<li><a href='" + Root.Domain + "/ORCID/UpdateSecurityGroupDefaultDecisions.aspx'>ORCID Privacy Mapping</a></li>");
-                    }
-                }
+                //    if (!person.Exists || person.ORCIDIsNull)
+                //    {
+                //        string orcidHelpLink = string.Empty;
+                //        string orcidInfoSite = Profiles.ORCID.Utilities.config.InfoSite;
+                //        if (!string.IsNullOrEmpty(orcidInfoSite))
+                //        {
+                //            orcidHelpLink = "&nbsp;<a style='border: none;' href='" + orcidInfoSite + "' target='_blank'><img style='border-style: none' src='" + Root.Domain + "/Framework/Images/info.png'  border='0'></a>";
+                //        }
+                //        menulist.Append("<li><a href='" + Root.Domain + "/ORCID/CreateMyORCID.aspx'>Create My ORCID</a>" + orcidHelpLink + "</li>");
+                //        menulist.Append("<li><a href='" + Root.Domain + "/ORCID/ProvideORCID.aspx'>Provide My ORCID</a>" + orcidHelpLink + "</li>");
+                //    }
+                //    else
+                //    {
+                //        menulist.Append("<li><a href='" + Root.Domain + "/ORCID/UploadInfoToORCID.aspx'>Upload Info To ORCID</a></li>");
+                //    }
+                //    if (data.GetSessionSecurityGroup() == -50)
+                //    {
+                //        menulist.Append("<li><a href='" + Root.Domain + "/ORCID/CreateBatch.aspx'>Batch Upload</a></li>");
+                //        menulist.Append("<li><a href='" + Root.Domain + "/ORCID/UpdateSecurityGroupDefaultDecisions.aspx'>ORCID Privacy Mapping</a></li>");
+                //    }
+                //}
                 menulist.Append("<li><a href='" + Root.Domain + "/login/default.aspx?method=logout&redirectto=" + Root.Domain + Root.AbsolutePath + "'>Logout</a></li>");
             }
 
