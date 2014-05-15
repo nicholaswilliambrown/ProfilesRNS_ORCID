@@ -40,7 +40,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.Profile.Data
             if(!bo.InstitutionAbbreviationIsNull) {
                  AddParam(ref cmd, "@InstitutionAbbreviation", bo.InstitutionAbbreviation);
             } 
-            if(!bo.CityIsNull) {
+/*            if(!bo.CityIsNull) {
                  AddParam(ref cmd, "@City", bo.City);
             } 
             if(!bo.StateIsNull) {
@@ -52,7 +52,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.Profile.Data
             if(!bo.RingGoldIDIsNull) {
                  AddParam(ref cmd, "@RingGoldID", bo.RingGoldID);
             } 
-        } 
+  */      } 
  
         /*! Method to log changes to fields in a record. */
         public override void LogIfNecessary(DevelopmentBase.BaseClassBO.RecordLevelAuditTypes auditType, ProfilesRNSDLL.BO.Profile.Data.OrganizationInstitution boBefore, ProfilesRNSDLL.BO.Profile.Data.OrganizationInstitution bo, DbTransaction trans) 
@@ -68,11 +68,11 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.Profile.Data
             }
             LogIfChanged(recordLevelAuditTrailID, (int)ProfilesRNSDLL.BO.Profile.Data.OrganizationInstitution.FieldNames.InstitutionName, bo.InstitutionNameIsNull, boBefore.InstitutionNameIsNull, bo.InstitutionName, boBefore.InstitutionName, trans);
             LogIfChanged(recordLevelAuditTrailID, (int)ProfilesRNSDLL.BO.Profile.Data.OrganizationInstitution.FieldNames.InstitutionAbbreviation, bo.InstitutionAbbreviationIsNull, boBefore.InstitutionAbbreviationIsNull, bo.InstitutionAbbreviation, boBefore.InstitutionAbbreviation, trans);
-            LogIfChanged(recordLevelAuditTrailID, (int)ProfilesRNSDLL.BO.Profile.Data.OrganizationInstitution.FieldNames.City, bo.CityIsNull, boBefore.CityIsNull, bo.City, boBefore.City, trans);
+ /*           LogIfChanged(recordLevelAuditTrailID, (int)ProfilesRNSDLL.BO.Profile.Data.OrganizationInstitution.FieldNames.City, bo.CityIsNull, boBefore.CityIsNull, bo.City, boBefore.City, trans);
             LogIfChanged(recordLevelAuditTrailID, (int)ProfilesRNSDLL.BO.Profile.Data.OrganizationInstitution.FieldNames.State, bo.StateIsNull, boBefore.StateIsNull, bo.State, boBefore.State, trans);
             LogIfChanged(recordLevelAuditTrailID, (int)ProfilesRNSDLL.BO.Profile.Data.OrganizationInstitution.FieldNames.Country, bo.CountryIsNull, boBefore.CountryIsNull, bo.Country, boBefore.Country, trans);
             LogIfChanged(recordLevelAuditTrailID, (int)ProfilesRNSDLL.BO.Profile.Data.OrganizationInstitution.FieldNames.RingGoldID, bo.RingGoldIDIsNull, boBefore.RingGoldIDIsNull, bo.RingGoldID, boBefore.RingGoldID, trans);
-        } 
+   */     } 
  
         /*! Method to get the fields in the table in a select string. */
         internal static string GetSelectString() { return "SELECT TOP 100 PERCENT [Profile.Data].[Organization.Institution].[InstitutionID], [Profile.Data].[Organization.Institution].[InstitutionName], [Profile.Data].[Organization.Institution].[InstitutionAbbreviation], [Profile.Data].[Organization.Institution].[City], [Profile.Data].[Organization.Institution].[State], [Profile.Data].[Organization.Institution].[Country], [Profile.Data].[Organization.Institution].[RingGoldID]"; } 
@@ -91,8 +91,11 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.Profile.Data
  
         internal ProfilesRNSDLL.BO.Profile.Data.OrganizationInstitution Get(int InstitutionID) 
         { 
-            System.Data.Common.DbCommand cmd = GetCommand("[Profile.Data].cg2_OrganizationInstitutionGet");
-            AddParam(ref cmd, "@InstitutionID", InstitutionID);
+//            System.Data.Common.DbCommand cmd = GetCommand("[Profile.Data].cg2_OrganizationInstitutionGet");
+//            AddParam(ref cmd, "@InstitutionID", InstitutionID);
+            System.Data.Common.DbCommand cmd = GetCommand("sp_executesql");
+            AddParam(ref cmd, "@stmt", "select [InstitutionID],[InstitutionName],[InstitutionAbbreviation] from [Profile.Data].[Organization.Institution] where [InstitutionID] = " + InstitutionID);
+
             return PopulateFromRow(FillTable(cmd), 0); 
         } 
  
@@ -109,7 +112,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.Profile.Data
             { 
                  bo.InstitutionAbbreviation = dr["InstitutionAbbreviation"].ToString(); 
             } 
-            if(!dr.IsNull("City"))
+ /*           if(!dr.IsNull("City"))
             { 
                  bo.City = dr["City"].ToString(); 
             } 
@@ -125,7 +128,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.Profile.Data
             { 
                  bo.RingGoldID = dr["RingGoldID"].ToString(); 
             } 
-            bo.Exists = true;
+   */         bo.Exists = true;
             return bo;
         } 
      

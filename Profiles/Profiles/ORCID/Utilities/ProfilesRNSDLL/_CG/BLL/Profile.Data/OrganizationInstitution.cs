@@ -35,7 +35,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.Profile.Data
                      bo.HasError = true;
                 } 
             }
-            if (!bo.CityIsNull) 
+ /*           if (!bo.CityIsNull) 
             { 
                 if (bo.City.Length > 500) 
                 { 
@@ -67,7 +67,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.Profile.Data
                      bo.HasError = true;
                 } 
             }
-        } 
+   */     } 
     
     
         # endregion // Public Methods 

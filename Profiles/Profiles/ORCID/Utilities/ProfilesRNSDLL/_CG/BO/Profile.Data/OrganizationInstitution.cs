@@ -16,13 +16,13 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Data
           /*! InstitutionAbbreviation state (Institution Abbreviation) */ 
           private string _InstitutionAbbreviation;
           /*! City state (City) */ 
-          private string _City;
+  //        private string _City;
           /*! State state (State) */ 
-          private string _State;
+  //        private string _State;
           /*! Country state (Country) */ 
-          private string _Country;
+  //        private string _Country;
           /*! RingGoldID state (Ring GoldID) */ 
-          private string _RingGoldID;
+  //        private string _RingGoldID;
         # endregion //Private variables 
      
         # region Public Properties 
@@ -54,7 +54,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Data
         } 
         public bool InstitutionAbbreviationIsNull { get; set; }
         public string InstitutionAbbreviationErrors { get; set; }
-        
+ /*       
         public string City 
         { 
               get { return _City; } 
@@ -86,7 +86,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Data
         } 
         public bool RingGoldIDIsNull { get; set; }
         public string RingGoldIDErrors { get; set; }
-        public string AllErrors 
+   */     public string AllErrors 
         { 
               get 
               { 
@@ -103,7 +103,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Data
                   { 
                       returnString += "Institution Abbreviation: " + InstitutionAbbreviationErrors; 
                   } 
-                  if (!CityErrors.Equals(string.Empty))
+  /*                if (!CityErrors.Equals(string.Empty))
                   { 
                       returnString += "City: " + CityErrors; 
                   } 
@@ -119,7 +119,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Data
                   { 
                       returnString += "Ring GoldID: " + RingGoldIDErrors; 
                   } 
-                  return returnString; 
+    */              return returnString; 
               } 
         } 
         public bool Equals(OrganizationInstitution left, OrganizationInstitution right)
@@ -164,7 +164,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Data
             InstitutionNameErrors = string.Empty; 
             InstitutionAbbreviationIsNull = true; 
             InstitutionAbbreviationErrors = string.Empty; 
-            CityIsNull = true; 
+/*            CityIsNull = true; 
             CityErrors = string.Empty; 
             StateIsNull = true; 
             StateErrors = string.Empty; 
@@ -172,7 +172,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Profile.Data
             CountryErrors = string.Empty; 
             RingGoldIDIsNull = true; 
             RingGoldIDErrors = string.Empty; 
-            InitializeProperties(); 
+  */          InitializeProperties(); 
         }
      
         # endregion // Protected Methods 

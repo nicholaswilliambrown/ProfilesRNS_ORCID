@@ -8,7 +8,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Interfaces.Profile.Data
         bool InstitutionNameIsNull { get; set; }
         string InstitutionAbbreviation { get; set; } 
         bool InstitutionAbbreviationIsNull { get; set; }
-        string City { get; set; } 
+ /*       string City { get; set; } 
         bool CityIsNull { get; set; }
         string State { get; set; } 
         bool StateIsNull { get; set; }
@@ -16,5 +16,5 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.Interfaces.Profile.Data
         bool CountryIsNull { get; set; }
         string RingGoldID { get; set; } 
         bool RingGoldIDIsNull { get; set; }
-    } 
+ */   } 
 } 

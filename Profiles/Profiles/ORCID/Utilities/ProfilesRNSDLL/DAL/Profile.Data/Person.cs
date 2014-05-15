@@ -29,7 +29,7 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.Profile.Data
             sql += "    FROM ";
             sql += "        [Profile.Data].[Person] ";
             sql += "		LEFT JOIN [Profile.Data].[Person.FacultyRank] ON [Profile.Data].[Person].FacultyRankID = [Profile.Data].[Person.FacultyRank].FacultyRankID ";
-            sql += "		LEFT JOIN ORCID.Person OP ON [Profile.Data].[Person].InternalUsername = OP.InternalUsername ";
+            sql += "		LEFT JOIN [ORCID.].Person OP ON [Profile.Data].[Person].InternalUsername = OP.InternalUsername ";
             sql += "		INNER JOIN  [Profile.Data].[Person.Affiliation]  ";
             sql += "			ON  ";
             sql += "				[Profile.Data].[Person].PersonID = [Profile.Data].[Person.Affiliation].PersonID ";
@@ -79,13 +79,13 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.DAL.Profile.Data
         }
         internal System.Data.DataView GetPeopleWithoutAnORCID()
         {
-            DbCommand cmd = GetCommand("[Profile.Data].[PeopleWithoutAnORCID]");
+            DbCommand cmd = GetCommand("[ORCID.].[PeopleWithoutAnORCID]");
             cmd.CommandType = CommandType.StoredProcedure;
             return FillTable(cmd).DefaultView;
         }
         internal System.Data.DataView GetPeopleWithoutAnORCIDByName(string partialName)
         {
-            DbCommand cmd = GetCommand("[Profile.Data].[PeopleWithoutAnORCIDByName]");
+            DbCommand cmd = GetCommand("[ORCID.].[PeopleWithoutAnORCIDByName]");
             cmd.CommandType = CommandType.StoredProcedure;
             AddParam(ref cmd, "@PartialName", partialName);
             return FillTable(cmd).DefaultView;
