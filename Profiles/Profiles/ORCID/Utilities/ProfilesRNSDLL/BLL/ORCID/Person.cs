@@ -38,6 +38,17 @@ namespace Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID
                 }
             }
         }
+
+        public ProfilesRNSDLL.BO.ORCID.Person GetByPersonID(int profilePersonID)
+        {
+            BLL.Profile.Data.Person profilePersonBLL = new BLL.Profile.Data.Person();
+            BO.Profile.Data.Person profilePerson = profilePersonBLL.Get(profilePersonID);
+            string internalUsername = profilePerson.InternalUsername;
+            long profileSubjectID = profilePersonBLL.GetNodeId(internalUsername);
+
+            return GetByInternalUsername(internalUsername);
+        }
+
         public new ProfilesRNSDLL.BO.ORCID.Person GetByInternalUsername(string internalUsername)
         {
             ProfilesRNSDLL.BO.ORCID.Person person = base.GetByInternalUsername(internalUsername);

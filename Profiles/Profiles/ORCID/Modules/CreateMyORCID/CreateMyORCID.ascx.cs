@@ -35,7 +35,7 @@ using Profiles.Profile.Utilities;
 
 namespace Profiles.ORCID.Modules.CreateMyORCID
 {
-    public partial class CreateMyORCID : ORCIDBaseModule
+    public partial class CreateMyORCID : ORCIDBaseModule, IPostBackEventHandler
     {
         public CreateMyORCID() {
             base.RDFTriple = new RDFTriple(Convert.ToInt64(sm.Session().NodeID.ToString()));             
@@ -60,15 +60,28 @@ namespace Profiles.ORCID.Modules.CreateMyORCID
                 {
                     DrawProfilesModule();
                 }
+                else
+                    loadSessionState();
             }
             catch (Exception ex)
             {
                 LogException(ex);
             }
         }
+        private void loadSessionState()
+        {
+            LoadAssets();
+            this.txtEmailAddress.Text = Session["txtEmailAddress.Text"].ToString();
+            this.txtFirstName.Text = Session["txtFirstName.Text"].ToString();
+            this.txtLastName.Text = Session["txtLastName.Text"].ToString();
+            this.hlORCIDAckAndConsent.Text = Session["hlORCIDAckAndConsent.Text"].ToString();
+            this.hlORCIDAckAndConsent.NavigateUrl = Session["hlORCIDAckAndConsent.NavigateUrl"].ToString();
+        }
+
         protected void DrawProfilesModule()
         {
-            Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person orcidPerson = GetPersonWithDBData();
+            LoadAssets();
+            Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person orcidPerson = GetPersonWithDBData(Convert.ToInt32(Request.QueryString["subject"]));
             this.txtEmailAddress.Text = orcidPerson.EmailAddress;
             this.txtFirstName.Text = orcidPerson.FirstName;
             this.txtLastName.Text = orcidPerson.LastName;
@@ -78,15 +91,39 @@ namespace Profiles.ORCID.Modules.CreateMyORCID
             CheckForExistingORCID();
             UpdateAcknowledgeVisibility();
             this.lblOrgEmailRequired.Text = Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.Person.EmailRequiredMessage;
+            Session["txtEmailAddress.Text"] = this.txtEmailAddress.Text;
+            Session["txtFirstName.Text"] = this.txtFirstName.Text;
+            Session["txtLastName.Text"] = this.txtLastName.Text;
+            Session["hlORCIDAckAndConsent.Text"] = this.hlORCIDAckAndConsent.Text;
+            Session["hlORCIDAckAndConsent.NavigateUrl"] = this.hlORCIDAckAndConsent.NavigateUrl;
         }
+
+        private void LoadAssets()
+        {
+            HtmlLink ORCIDcss = new HtmlLink();
+            ORCIDcss.Href = Root.Domain + "/ORCID/CSS/ORCID.css";
+            ORCIDcss.Attributes["rel"] = "stylesheet";
+            ORCIDcss.Attributes["type"] = "text/css";
+            ORCIDcss.Attributes["media"] = "all";
+            Page.Header.Controls.Add(ORCIDcss);
+
+            HtmlGenericControl ORCIDjs = new HtmlGenericControl("script");
+            ORCIDjs.Attributes.Add("type", "text/javascript");
+            ORCIDjs.Attributes.Add("src", Root.Domain + "/ORCID/JavaScript/orcid.js?v=1");
+            Page.Header.Controls.Add(ORCIDjs);
+        }
+
         protected void btnNewORCID_Click(object sender, EventArgs e)
         {
             try
             {
-                Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person bo = GetPerson();
+                long subjectID = Convert.ToInt32(Request.QueryString["subject"]);
+                int profilePersonID = new Profiles.Edit.Utilities.DataIO().GetPersonID(subjectID);
+                Utilities.ProfilesRNSDLL.BLL.ORCID.Person personBLL = new Utilities.ProfilesRNSDLL.BLL.ORCID.Person();
+                Utilities.ProfilesRNSDLL.BO.ORCID.Person bo = personBLL.GetByPersonID(profilePersonID);
                 if (chkUploadInfoNow.Checked)
                 {
-                    bo = UploadInfoToORCID1.GetPersonWithPageData();
+                    bo = UploadInfoToORCID1.GetPersonWithPageData(bo);
                 }
 
                 GetPageControlValues(bo);
@@ -98,7 +135,6 @@ namespace Profiles.ORCID.Modules.CreateMyORCID
                 if (new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.Person().CreateNewORCID(bo, LoggedInInternalUsername, Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.REFPersonStatusType.REFPersonStatusTypes.User_Push_Failed))
                 {
                     Edit.Utilities.DataIO data = new Edit.Utilities.DataIO();
-                    long subjectID = Profiles.ORCID.Utilities.DataIO.getNodeIdFromInternalUserName(LoggedInInternalUsername);
                     data.AddLiteral(subjectID, data.GetStoreNode("http://vivoweb.org/ontology/core#orcidId"), data.GetStoreNode(bo.ORCID));
                     Response.Redirect("~/ORCID/CreationConfirmation.aspx?UserORCID=" + bo.ORCID, false);
                     return;
@@ -138,7 +174,7 @@ namespace Profiles.ORCID.Modules.CreateMyORCID
         {
             bo.AlternateEmails = new List<Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.PersonAlternateEmail>();
 
-            bo.InternalUsername = LoggedInInternalUsername;
+            //bo.InternalUsername = LoggedInInternalUsername;
             bo.PersonStatusTypeID = (int)Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.REFPersonStatusType.REFPersonStatusTypes.ORCID_Created;
 
             if (!this.txtFirstName.Text.Equals(string.Empty))
@@ -223,6 +259,13 @@ namespace Profiles.ORCID.Modules.CreateMyORCID
                 li.Selected = true;
             }
         }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            if (Page.IsPostBack)
+            { }
+        }
+
         private void UpdateUploadNowVisibility()
         {
             this.UploadInfoToORCID1.Visible = chkUploadInfoNow.Checked;
@@ -245,6 +288,18 @@ namespace Profiles.ORCID.Modules.CreateMyORCID
         {
             int profilePersonID = new Profiles.Edit.Utilities.DataIO().GetPersonID(base.RDFTriple.Subject);
             return new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.Person().GetPersonWithDBData(profilePersonID, sm.Session().SessionID);
+        }
+
+
+        private Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person GetPersonWithDBData(int subject)
+        {
+            int profilePersonID = new Profiles.Edit.Utilities.DataIO().GetPersonID(subject);
+            return new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.Person().GetPersonWithDBData(profilePersonID, sm.Session().SessionID);
+        }
+
+        public void RaisePostBackEvent(string eventArgument)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -57,15 +57,15 @@ namespace Profiles.ORCID.Modules.ProvideORCID
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
+            //if (!IsPostBack)
+            //{
                 Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person person = GetPerson();
                 divORCIDAlreadyProvided.Visible = person.Exists && !person.ORCIDIsNull;
                 divProvideORCID.Visible = !divORCIDAlreadyProvided.Visible;
                 //lblOrganizationName.Text = Profiles.ORCID.Utilities.config.OrganizationName;
                 //lblOrganizationName2.Text = Profiles.ORCID.Utilities.config.OrganizationName;
                 this.lblButtonLabel.Text = this.btnLoginToORCID.Text;
-            }
+            //}
         }
         protected void btnLoginToORCID_Click(object sender, EventArgs e)
         {

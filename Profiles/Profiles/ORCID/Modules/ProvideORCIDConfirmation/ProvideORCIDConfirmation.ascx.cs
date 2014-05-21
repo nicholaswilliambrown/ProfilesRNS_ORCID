@@ -67,6 +67,8 @@ namespace Profiles.ORCID.Modules.ProvideORCIDConfirmation
                         lblErrors.Text = "An error occurred while associating your ORCID with your local identifier";
                     }
                     Int64 subjectID = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.Profile.Data.Person().GetNodeId(person.InternalUsername);
+                    Edit.Utilities.DataIO data = new Edit.Utilities.DataIO();
+                    data.AddLiteral(subjectID, data.GetStoreNode("http://vivoweb.org/ontology/core#orcidId"), data.GetStoreNode(person.ORCID));
                     pHasProfile.Visible = !subjectID.Equals(0);
                     hlProfile.NavigateUrl = "~/display/" + subjectID.ToString();
                 }

@@ -31,14 +31,29 @@ using Profiles.Edit.Utilities;
 
 namespace Profiles.ORCID.Modules.CustomEditORCID
 {
-    public partial class CustomEditORCID : BaseModule
+    public partial class CustomEditORCID : BaseModule, IPostBackEventHandler
     {
+
+        protected global::Profiles.ORCID.Modules.CreateMyORCID.CreateMyORCID CreateMyORCID1;
 
         Edit.Utilities.DataIO data;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
+            {
                 Session["pnlInsertAward.Visible"] = null;
+                Session["pnlCreateMyORCID.Visible"] = null;
+                Session["pnlProvideMyORCID.Visible"] = null;
+            }
+            else
+                loadSessionState();
+        }
+
+
+        private void loadSessionState()
+        {
+            if (Session["pnlCreateMyORCID.Visible"] != null) pnlCreateMyORCID.Visible = true;
+            if (Session["pnlProvideMyORCID.Visible"] != null) pnlProvideMyORCID.Visible = true;
         }
 
         public CustomEditORCID() : base() { }
@@ -81,24 +96,49 @@ namespace Profiles.ORCID.Modules.CustomEditORCID
             {
                 orcidHelpLink = "&nbsp;<a style='border: none;' href='" + orcidInfoSite + "' target='_blank'><img style='border-style: none' src='" + Root.Domain + "/Framework/Images/info.png'  border='0'></a>";
             }
-            litCreateProvideORCID.Text = "<img src='" + Root.Domain + "/framework/images/icon_squareArrow.gif' border='0'/>&nbsp;<a href='" + Root.Domain + "/ORCID/CreateMyORCID.aspx'>Create My ORCID</a>" + orcidHelpLink + "<br><img src='" + Root.Domain + "/framework/images/icon_squareArrow.gif' border='0'/>&nbsp;<a href='" + Root.Domain + "/ORCID/ProvideORCID.aspx'>Provide My ORCID</a>" + orcidHelpLink;
-            litUploatInfoToORCID.Text = "<img src='" + Root.Domain + "/framework/images/icon_squareArrow.gif' border='0'/>&nbsp;<a href='" + Root.Domain + "/ORCID/UploadInfoToORCID.aspx'>Upload Info To ORCID</a>";
-                                string loggedInInternalUsername = new Profiles.ORCID.Utilities.DataIO().GetInternalUserID();
-                    Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person person = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.Person().GetByInternalUsername(loggedInInternalUsername);
+            //litCreateProvideORCID.Text = "<img src='" + Root.Domain + "/framework/images/icon_squareArrow.gif' border='0'/>&nbsp;<a href='" + Root.Domain + "/ORCID/CreateMyORCID.aspx'>Create My ORCID</a>" + orcidHelpLink + "<br><img src='" + Root.Domain + "/framework/images/icon_squareArrow.gif' border='0'/>&nbsp;<a href='" + Root.Domain + "/ORCID/ProvideORCID.aspx'>Provide My ORCID</a>" + orcidHelpLink;
+            //litUploatInfoToORCID.Text = "<img src='" + Root.Domain + "/framework/images/icon_squareArrow.gif' border='0'/>&nbsp;<a href='" + Root.Domain + "/ORCID/UploadInfoToORCID.aspx'>Upload Info To ORCID</a>";
+            string loggedInInternalUsername = new Profiles.ORCID.Utilities.DataIO().GetInternalUserID();
+            //Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person person = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.Person().GetByInternalUsername(loggedInInternalUsername);
 
-                    if (!person.Exists || person.ORCIDIsNull)
-                    {
-                        litCreateProvideORCID.Visible = true;
-                        litUploatInfoToORCID.Visible = false;
-                        orcidtable.Visible = false;
-                    }
-                    else
-                    {
-                        litORCIDID.Text = "<a href='" + Profiles.ORCID.Utilities.config.ORCID_URL + "/" + person.ORCID + "'>" + person.ORCID + "</a>";
-                        litCreateProvideORCID.Visible = false;
-                        litUploatInfoToORCID.Visible = true;
-                        orcidtable.Visible = true;
-                    }
+            lbCreateMyORCID.Text = "Create ORCID" + orcidHelpLink;
+            lbProvideMyORCID.Text = "Provide My ORCID" + orcidHelpLink;
+
+            String orcid = null;
+            try { orcid = base.BaseData.SelectSingleNode("rdf:RDF/rdf:Description/vivo:orcidId", base.Namespaces).InnerText; }
+            catch (Exception ex) { }
+
+            if (orcid == null)
+            {
+                pnlAddORCID.Visible = true;
+                pnlEditORCID.Visible = false;
+                orcidtable.Visible = false;
+                pnlORCIDProxy.Visible = false;
+            }
+            else
+            {
+                litORCIDID.Text = "<a href='" + Profiles.ORCID.Utilities.config.ORCID_URL + "/" + orcid + "'>" + orcid + "</a>";
+                pnlAddORCID.Visible = false;
+                pnlEditORCID.Visible = true;
+                orcidtable.Visible = true;
+                pnlORCIDProxy.Visible = false;
+            }
+
+            if (Profiles.ORCID.Utilities.DataIO.getNodeIdFromInternalUserName(loggedInInternalUsername) != this.SubjectID)
+            {
+                pnlORCIDProxy.Visible = true;
+                imbProvideMyORCID.Visible = false;
+                lbProvideMyORCID.Visible = false;
+                imbUploadToORCID.Visible = false;
+                lbUploadToORCID.Visible = false;
+            }
+
+            if (data.GetSessionSecurityGroup() == -50)
+            {
+                pnlORCIDAdmin.Visible = true;
+                litORCIDAdmin.Text = "<img src='" + Root.Domain + "/framework/images/icon_squareArrow.gif' border='0'/>&nbsp;<a href='" + Root.Domain + "/ORCID/CreateBatch.aspx'>Batch Upload</a><br><img src='" + Root.Domain + "/framework/images/icon_squareArrow.gif' border='0'/>&nbsp;<a href='" + Root.Domain + "/ORCID/UpdateSecurityGroupDefaultDecisions.aspx'>ORCID Privacy Mapping</a></li>";
+            }
+
         }
 
         #region Awards
@@ -107,7 +147,80 @@ namespace Profiles.ORCID.Modules.CustomEditORCID
         {
         }
 
- 
+
+        protected void imbCreateMyORCID_OnClick(object sender, EventArgs e)
+        {
+            if (Session["pnlCreateMyORCID.Visible"] == null)
+            {
+                pnlCreateMyORCID.Visible = true;
+                imbCreateMyORCID.ImageUrl = "~/Framework/Images/icon_squareDownArrow.gif";
+                Session["pnlCreateMyORCID.Visible"] = true;
+                Session["pnlProvideMyORCID.Visible"] = null;
+                pnlProvideMyORCID.Visible = false;
+            }
+            else
+            {
+                pnlCreateMyORCID.Visible = false;
+                imbCreateMyORCID.ImageUrl = "~/Framework/Images/icon_squareArrow.gif";
+                Session["pnlCreateMyORCID.Visible"] = null;
+            }
+        }
+
+        protected void imbProvideMyORCID_OnClick(object sender, EventArgs e)
+        {
+            if (Session["pnlProvideMyORCID.Visible"] == null)
+            {
+                pnlProvideMyORCID.Visible = true;
+                imbProvideMyORCID.ImageUrl = "~/Framework/Images/icon_squareDownArrow.gif";
+                Session["pnlProvideMyORCID.Visible"] = true;
+                Session["pnlCreateMyORCID.Visible"] = null;
+                pnlCreateMyORCID.Visible = false;
+            }
+            else
+            {
+                pnlProvideMyORCID.Visible = false;
+                imbProvideMyORCID.ImageUrl = "~/Framework/Images/icon_squareArrow.gif";
+                Session["pnlProvideMyORCID.Visible"] = null;
+            }
+        }
+
+        protected void imbUploadToORCID_OnClick(object sender, EventArgs e)
+        {
+            if (Session["pnlUploadToORCID.Visible"] == null)
+            {
+                pnlUploadToORCID.Visible = true;
+                imbUploadToORCID.ImageUrl = "~/Framework/Images/icon_squareDownArrow.gif";
+                Session["pnlUploadToORCID.Visible"] = true;
+            }
+            else
+            {
+                pnlUploadToORCID.Visible = false;
+                imbUploadToORCID.ImageUrl = "~/Framework/Images/icon_squareArrow.gif";
+                Session["pnlUploadToORCID.Visible"] = null;
+            }
+        }
+
+        protected void btnSubmitToORCID_Click(object sender, EventArgs e)
+        {
+            String LoggedInInternalUsername = new Profiles.ORCID.Utilities.DataIO().GetInternalUserID();
+            try
+            {
+                if (UploadInfoToORCID1.ResearchExpertiseAndProfessionalInterests.Length > 5000)
+                {
+                    UploadInfoToORCID1.ResearchExpertiseAndProfessionalInterestsErrors += "Error! Biography cannot be longer then 5000 characters";
+                    return;
+                }
+                Profiles.ORCID.Utilities.ProfilesRNSDLL.BO.ORCID.Person person = UploadInfoToORCID1.GetPersonWithPageData();
+                Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.PersonMessage personMessageBLL = new Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.PersonMessage();
+                personMessageBLL.CreateUploadMessages(person, LoggedInInternalUsername);
+            }
+            catch (Exception ex)
+            {
+                lblErrorsUpload.Text = ex.Message;
+                Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.ErrorLog.LogError(ex, LoggedInInternalUsername);
+            }
+        }
+
         #endregion
 
         private Int64 SubjectID { get; set; }
@@ -118,5 +231,10 @@ namespace Profiles.ORCID.Modules.CustomEditORCID
 
 
 
+
+        public void RaisePostBackEvent(string eventArgument)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

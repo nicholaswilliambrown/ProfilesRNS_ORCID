@@ -44,6 +44,15 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
             GetAffiliationsFromThePage(person);
             return person;
         }
+
+        public Utilities.ProfilesRNSDLL.BO.ORCID.Person GetPersonWithPageData(Utilities.ProfilesRNSDLL.BO.ORCID.Person person)
+        {
+            GetBioFromThePage(person);
+            GetWorksFromThePage(person);
+            GetAffiliationsFromThePage(person);
+            return person;
+        }
+
         public string ResearchExpertiseAndProfessionalInterestsErrors
         {
             get
@@ -75,7 +84,7 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
 
         protected void DrawProfilesModule()
         {
-            Utilities.ProfilesRNSDLL.BO.ORCID.Person orcidPerson = GetPersonWithDBData();
+            Utilities.ProfilesRNSDLL.BO.ORCID.Person orcidPerson = GetPersonWithDBData(Convert.ToInt32(Request.QueryString["subject"]));
             LoadURLs(orcidPerson);
             LoadBIO(orcidPerson);
             LoadAffiliations(orcidPerson);
@@ -87,10 +96,10 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
         {
             try
             {
-                if (!IsPostBack)
-                {
+//                if (!IsPostBack)
+//                {
                     DrawProfilesModule();
-                }
+//                }
             }
             catch (Exception ex)
             {
@@ -337,6 +346,12 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
         private Utilities.ProfilesRNSDLL.BO.ORCID.Person GetPersonWithDBData()
         {
             int profilePersonID = new Profiles.Edit.Utilities.DataIO().GetPersonID(base.RDFTriple.Subject);
+            return new Utilities.ProfilesRNSDLL.BLL.ORCID.Person().GetPersonWithDBData(profilePersonID, sm.Session().SessionID);
+        }
+
+        private Utilities.ProfilesRNSDLL.BO.ORCID.Person GetPersonWithDBData(int subject)
+        {
+            int profilePersonID = new Profiles.Edit.Utilities.DataIO().GetPersonID(subject);
             return new Utilities.ProfilesRNSDLL.BLL.ORCID.Person().GetPersonWithDBData(profilePersonID, sm.Session().SessionID);
         }
 
