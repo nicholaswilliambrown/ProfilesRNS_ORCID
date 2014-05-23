@@ -144,16 +144,9 @@
             <img id="{$orcidimageguid}" src="{$orcidimage}" alt="ORCID Icon" style="vertical-align:text-bottom"></img>
           </th>
           <td>
-            <xsl:choose>
-              <xsl:when test="$orcidurl!=''">
-                <a href="{$orcidurl}" target="_blank">
-                  <xsl:value-of select="$orcid "/>
-                </a>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:value-of select="$orcid "/>
-              </xsl:otherwise> 
-            </xsl:choose>
+            <a href="{$orcidurl}" target="_blank">
+              <xsl:value-of select="$orcid "/>
+            </a>
             <xsl:text disable-output-escaping="yes">&#160;</xsl:text><a style="border: none;" href="{$orcidinfosite}" target='_blank'>
               <img style='border-style: none' src="{$root}/Framework/Images/info.png"  border='0'/>
             </a>

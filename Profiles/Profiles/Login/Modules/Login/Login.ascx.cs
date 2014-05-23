@@ -18,6 +18,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
 using System.Web.UI.HtmlControls;
+using System.Configuration;
 
 using Profiles.Login.Utilities;
 using Profiles.Framework.Utilities;
@@ -28,7 +29,7 @@ namespace Profiles.Login.Modules.Login
     {
         Framework.Utilities.SessionManagement sm;
         protected void Page_Load(object sender, EventArgs e)
-        {           
+        {
 
             if (!IsPostBack)
             {
@@ -40,14 +41,17 @@ namespace Profiles.Login.Modules.Login
                     sm.SessionDestroy();
                     Response.Redirect(Root.Domain + "/search");
                 }
-                else if(Request.QueryString["method"].ToString()=="login" && sm.Session().PersonID>0)
+                else if (Request.QueryString["method"].ToString() == "login" && sm.Session().PersonID > 0)
                 {
-                    if (Request.QueryString["redirectto"] == null && Request.QueryString["edit"] =="true")
+                    if (Request.QueryString["redirectto"] == null && Request.QueryString["edit"] == "true")
                     {
-                        Response.Redirect(Root.Domain + "/edit/" + sm.Session().NodeID);
-
-                    }else
-                    Response.Redirect(Request.QueryString["redirectto"].ToString());
+                        if (Request.QueryString["editparams"] == null)
+                            Response.Redirect(Root.Domain + "/edit/" + sm.Session().NodeID);
+                        else
+                            Response.Redirect(Root.Domain + "/edit/default.aspx?subject=" + sm.Session().NodeID + "&" + Request.QueryString["editparams"]);
+                    }
+                    else
+                        Response.Redirect(Request.QueryString["redirectto"].ToString());
                 }
             }
 
@@ -57,8 +61,9 @@ namespace Profiles.Login.Modules.Login
         public Login() { }
         public Login(XmlDocument pagedata, List<ModuleParams> moduleparams, XmlNamespaceManager pagenamespaces)
         {
-           sm = new Profiles.Framework.Utilities.SessionManagement();
+            sm = new Profiles.Framework.Utilities.SessionManagement();
             LoadAssets();
+            if (ConfigurationSettings.AppSettings["LOGIN_USER"] != null) autoLogin();
         }
 
         protected void cmdSubmit_Click(object sender, EventArgs e)
@@ -76,7 +81,10 @@ namespace Profiles.Login.Modules.Login
                 {
                     Framework.Utilities.Cache.AlterDependency(sm.Session().SessionID);
                     if (Request.QueryString["edit"] == "true")
-                        Response.Redirect(Root.Domain + "/edit/" + sm.Session().NodeID.ToString());
+                        if (Request.QueryString["editparams"] == null)
+                            Response.Redirect(Root.Domain + "/edit/" + sm.Session().NodeID);
+                        else
+                            Response.Redirect(Root.Domain + "/edit/default.aspx?subject=" + sm.Session().NodeID + "&" + Request.QueryString["editparams"]);
                     else
                         Response.Redirect(Request.QueryString["redirectto"].ToString());
 
@@ -96,6 +104,38 @@ namespace Profiles.Login.Modules.Login
 
         }
 
+        public void autoLogin()
+        {
+            if (ConfigurationSettings.AppSettings["LOGIN_USER"] != null)
+            {
+                Profiles.Login.Utilities.DataIO data = new Profiles.Login.Utilities.DataIO();
+
+                if (Request.QueryString["method"].ToString() == "login")
+                {
+                    Profiles.Login.Utilities.User user = new Profiles.Login.Utilities.User();
+                    user.UserName = ConfigurationSettings.AppSettings["LOGIN_USER"];
+                    user.Password = ConfigurationSettings.AppSettings["LOGIN_PASSWORD"];
+
+                    if (data.UserLogin(ref user))
+                    {
+                        Framework.Utilities.Cache.AlterDependency(sm.Session().SessionID);
+                        if (Request.QueryString["edit"] == "true")
+                            Response.Redirect(Root.Domain + "/edit/" + sm.Session().NodeID.ToString());
+                        else
+                            Response.Redirect(Request.QueryString["redirectto"].ToString());
+
+                    }
+                    else
+                    {
+                        lblError.Text = "Login failed, please try again";
+                        txtPassword.Text = "";
+                        txtPassword.Focus();
+                    }
+
+                }
+            }
+        }
+
         private void LoadAssets()
         {
             HtmlLink Searchcss = new HtmlLink();
@@ -105,12 +145,12 @@ namespace Profiles.Login.Modules.Login
             Searchcss.Attributes["media"] = "all";
             Page.Header.Controls.Add(Searchcss);
 
-			// Inject script into HEADER
-			Literal script = new Literal();
-			script.Text = "<script>var _path = \"" + Root.Domain + "\";</script>";
-			Page.Header.Controls.Add(script);
-			
-			//Response.Write("<script>var _path = \"" + Root.Domain + "\";</script>");
+            // Inject script into HEADER
+            Literal script = new Literal();
+            script.Text = "<script>var _path = \"" + Root.Domain + "\";</script>";
+            Page.Header.Controls.Add(script);
+
+            //Response.Write("<script>var _path = \"" + Root.Domain + "\";</script>");
 
 
         }

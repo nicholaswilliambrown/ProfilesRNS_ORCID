@@ -67,9 +67,11 @@ namespace Profiles.Profile.Modules.CustomViewPersonGeneralInfo
             }
             else if (Profiles.ORCID.Utilities.config.ShowNoORCIDMessage && Profiles.ORCID.Utilities.config.Enabled)
             {
-                args.AddParam("orcid", "", "No ORCID id has been created for this user");
+                //args.AddParam("orcid", "", "No ORCID id has been created for this user");
+                args.AddParam("orcid", "", "Login to create your ORCID iD");
                 args.AddParam("orcidinfosite", "", Profiles.ORCID.Utilities.config.InfoSite);
-                //args.AddParam("orcidurl", "", Profiles.ORCID.Utilities.config.ORCID_URL + "/" + orcidPerson.ORCID);
+                string qs = HttpUtility.UrlEncode("predicateuri=http%3a%2f%2fvivoweb.org%2fontology%2fcore!orcidId&module=DisplayItemToEdit&ObjectType=Literal");
+                args.AddParam("orcidurl", "", Root.Domain + "/login/default.aspx?method=login&edit=true&editparams=" + qs);
                 args.AddParam("orcidimage", "", Root.Domain + "/Framework/Images/orcid_16x16(1).gif");
                 args.AddParam("orcidimageguid", "", Guid.NewGuid().ToString());
             }
