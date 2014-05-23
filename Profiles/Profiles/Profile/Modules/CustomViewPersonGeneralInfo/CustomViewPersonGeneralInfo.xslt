@@ -141,7 +141,7 @@
         <tr>
           <th>
             ORCID
-            <img id="{$orcidimageguid}" src="{$orcidimage}" alt="ORCID Icon"></img>
+            <img id="{$orcidimageguid}" src="{$orcidimage}" alt="ORCID Icon" style="vertical-align:text-bottom"></img>
           </th>
           <td>
             <xsl:choose>
