@@ -156,6 +156,9 @@ namespace Profiles.ORCID.Modules.CustomEditORCID
                 imbCreateMyORCID.ImageUrl = "~/Framework/Images/icon_squareDownArrow.gif";
                 Session["pnlCreateMyORCID.Visible"] = true;
                 Session["pnlProvideMyORCID.Visible"] = null;
+                imbProvideMyORCID.ImageUrl = "~/Framework/Images/icon_squareArrow.gif";
+                imbProvideMyORCID.Visible = false;
+                lbProvideMyORCID.Visible = false;
                 pnlProvideMyORCID.Visible = false;
             }
             else
@@ -163,6 +166,8 @@ namespace Profiles.ORCID.Modules.CustomEditORCID
                 pnlCreateMyORCID.Visible = false;
                 imbCreateMyORCID.ImageUrl = "~/Framework/Images/icon_squareArrow.gif";
                 Session["pnlCreateMyORCID.Visible"] = null;
+                imbProvideMyORCID.Visible = true;
+                lbProvideMyORCID.Visible = true;
             }
         }
 
@@ -174,6 +179,9 @@ namespace Profiles.ORCID.Modules.CustomEditORCID
                 imbProvideMyORCID.ImageUrl = "~/Framework/Images/icon_squareDownArrow.gif";
                 Session["pnlProvideMyORCID.Visible"] = true;
                 Session["pnlCreateMyORCID.Visible"] = null;
+                imbCreateMyORCID.ImageUrl = "~/Framework/Images/icon_squareArrow.gif";
+                imbCreateMyORCID.Visible = false;
+                lbCreateMyORCID.Visible = false;
                 pnlCreateMyORCID.Visible = false;
             }
             else
@@ -181,6 +189,8 @@ namespace Profiles.ORCID.Modules.CustomEditORCID
                 pnlProvideMyORCID.Visible = false;
                 imbProvideMyORCID.ImageUrl = "~/Framework/Images/icon_squareArrow.gif";
                 Session["pnlProvideMyORCID.Visible"] = null;
+                imbCreateMyORCID.Visible = true;
+                lbCreateMyORCID.Visible = true;
             }
         }
 

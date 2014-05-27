@@ -3,9 +3,7 @@
 <%@ Register Src="~/ORCID/Modules/UploadInfoToORCID/UploadInfoToORCID.ascx" TagName="UploadInfoToORCID"
     TagPrefix="uc1" %>
 <asp:Label ID="lblErrors" runat="server" EnableViewState="false" CssClass="uierror" />
-<h3>
-    Create My ORCID</h3>
-<div id="divEntryForm" runat="server">
+<div id="divEntryForm" runat="server" Style="margin-bottom: 5px; margin-left: 5px; margin-right: 5px;">
     <h3>
         Please complete the form below to create your ORCID.
     </h3>
@@ -150,11 +148,9 @@
         <table>
             <tr>
                 <td style="vertical-align: top;"><asp:CheckBox ID="chkUploadInfoNow" runat="server" AutoPostBack="true" OnCheckedChanged="chkUploadInfoNow_CheckedChanged"
-                Checked="false" /></td>
+                Checked="true" /></td>
                 <td>
-                            I would like to select Profiles data to send to ORCID now (you can do this at a
-            later time by using the 'Upload Info To ORCID' link which will appear after you create an ORCID.)
-
+                       Upload Profiles data to ORCID (uncheck this box to create an ORCID iD without uploading any optional data).
                 </td>
             </tr>
         </table>
@@ -162,7 +158,7 @@
          
             
         </p>
-        <uc1:UploadInfoToORCID ID="UploadInfoToORCID1" runat="server" Visible="false" />
+        <uc1:UploadInfoToORCID ID="UploadInfoToORCID1" runat="server" Visible="true" />
         
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>

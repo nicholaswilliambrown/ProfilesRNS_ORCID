@@ -210,7 +210,7 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
         private Utilities.ProfilesRNSDLL.BO.ORCID.PersonAffiliation GetAffiliationFromThePage(RepeaterItem ri)
         {
             // Get the controls for this item.
-            DropDownList ddlPubVis = (DropDownList)ri.FindControl("ddlPubVis");
+            DropDownList ddlEmpVis = (DropDownList)ri.FindControl("ddlEmpVis");
 
             Label lblProfilesID = (Label)ri.FindControl("lblProfilesID");
             Label lblAffiliationTypeID = (Label)ri.FindControl("lblAffiliationTypeID");
@@ -226,7 +226,7 @@ namespace Profiles.ORCID.Modules.UploadInfoToORCID
             Label lblDisambiguationSource = (Label)ri.FindControl("lblDisambiguationSource");
 
             Utilities.ProfilesRNSDLL.BO.ORCID.PersonAffiliation personAffiliation = new Utilities.ProfilesRNSDLL.BO.ORCID.PersonAffiliation();
-            personAffiliation.DecisionID = int.Parse(ddlPubVis.SelectedValue.ToString());
+            personAffiliation.DecisionID = int.Parse(ddlEmpVis.SelectedValue.ToString());
             personAffiliation.ProfilesID = int.Parse(lblProfilesID.Text);
             personAffiliation.AffiliationTypeID = int.Parse(lblAffiliationTypeID.Text);
             if (!lblDepartmentName.Text.Equals(string.Empty))

@@ -71,6 +71,7 @@ namespace Profiles.ORCID.Modules.CreateMyORCID
         private void loadSessionState()
         {
             LoadAssets();
+            UpdateAcknowledgeVisibility();
             this.txtEmailAddress.Text = Session["txtEmailAddress.Text"].ToString();
             this.txtFirstName.Text = Session["txtFirstName.Text"].ToString();
             this.txtLastName.Text = Session["txtLastName.Text"].ToString();
@@ -85,11 +86,11 @@ namespace Profiles.ORCID.Modules.CreateMyORCID
             this.txtEmailAddress.Text = orcidPerson.EmailAddress;
             this.txtFirstName.Text = orcidPerson.FirstName;
             this.txtLastName.Text = orcidPerson.LastName;
-            UpdateUploadNowVisibility();
-            this.hlORCIDAckAndConsent.Text = "ORCID Acknowledgement and Consent";
+            this.hlORCIDAckAndConsent.Text = Profiles.ORCID.Utilities.config.AcknowledgementInfoSiteText;
             this.hlORCIDAckAndConsent.NavigateUrl = ORCID_WordPress_Agreement;
             CheckForExistingORCID();
             UpdateAcknowledgeVisibility();
+            UpdateUploadNowVisibility();
             this.lblOrgEmailRequired.Text = Profiles.ORCID.Utilities.ProfilesRNSDLL.BLL.ORCID.Person.EmailRequiredMessage;
             Session["txtEmailAddress.Text"] = this.txtEmailAddress.Text;
             Session["txtFirstName.Text"] = this.txtFirstName.Text;

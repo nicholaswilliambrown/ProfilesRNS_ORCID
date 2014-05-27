@@ -127,6 +127,13 @@ namespace Profiles.ORCID.Utilities
                 return ConfigurationManager.AppSettings["ORCID.RequireAcknowledgement"].Equals(1);
             }
         }
+        public static string AcknowledgementInfoSiteText
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["ORCID.AcknowledgementInfoSiteText"];
+            }
+        }
         public static bool Enabled
         {
             get

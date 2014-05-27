@@ -11,7 +11,7 @@
                 <div class='PropertyItemHeader' style='cursor: pointer;'>
                     <img alt="min" id="imgOverviewtrOverview" src="<%=RootDomain()%>/Profile/Modules/PropertyList/images/plusSign.gif"
                         onclick="javascript:toggleBlock('imgOverview','trOverview');" />
-                    Biography
+                    Biography 
                 </div>
             </td>
         </tr>
@@ -123,7 +123,7 @@
                                 <asp:Label ID="lblDisambiguationSource" runat="server" Visible="false" Text='<%# Eval("DisambiguationSource")%>' />
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlPubVis" runat="server" class="visibility">
+                                <asp:DropDownList ID="ddlEmpVis" runat="server" class="visibility">
                                     <asp:ListItem Value="1">Public</asp:ListItem>
                                     <asp:ListItem Value="2">Limited</asp:ListItem>
                                     <asp:ListItem Value="3">Private</asp:ListItem>
@@ -153,7 +153,7 @@
                                 <asp:Label ID="lblDisambiguationSource" runat="server" Visible="false" Text='<%# Eval("DisambiguationSource")%>' />
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlPubVis" runat="server" class="visibility">
+                                <asp:DropDownList ID="ddlEmpVis" runat="server" class="visibility">
                                     <asp:ListItem Value="1">Public</asp:ListItem>
                                     <asp:ListItem Value="2">Limited</asp:ListItem>
                                     <asp:ListItem Value="3">Private</asp:ListItem>
@@ -263,7 +263,14 @@
                 <div class='PropertyItemHeader'>
                     <img alt="min" id="imgPublicationstrPublications" src="<%=RootDomain()%>/Profile/Modules/PropertyList/images/plusSign.gif"
                         onclick="javascript:toggleBlock('imgPublications','trPublications');" />
-                    Publications
+                    Publications <span style="float: right">
+                            <select id="selPrivacy">
+                                <option value="1" selected="selected">Public</option>
+                                <option value="2">Limited</option>
+                                <option value="3">Private</option>
+                                <option value="4">Exclude</option>
+                            </select>&nbsp;
+                        </span>
                 </div>
             </td>
         </tr>
@@ -286,14 +293,7 @@
                                     <th>
                                         Publication
                                     </th>
-                                    <th><span style="float: right">
-                            <select id="selPrivacy">
-                                <option value="1" selected="selected">Public</option>
-                                <option value="2">Limited</option>
-                                <option value="3">Private</option>
-                                <option value="4">Exclude</option>
-                            </select>
-                        </span>
+                                    <th>
                                     </th>
                                 </tr>
                             </thead>

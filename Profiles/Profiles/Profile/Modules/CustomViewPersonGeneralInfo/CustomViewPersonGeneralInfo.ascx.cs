@@ -61,7 +61,7 @@ namespace Profiles.Profile.Modules.CustomViewPersonGeneralInfo
             {
                 args.AddParam("orcid", "", orcidPerson.ORCID);
                 args.AddParam("orcidurl", "", Profiles.ORCID.Utilities.config.ORCID_URL + "/" + orcidPerson.ORCID);
-                args.AddParam("orcidinfourl", "", Profiles.ORCID.Utilities.config.InfoSite);
+                args.AddParam("orcidinfosite", "", Profiles.ORCID.Utilities.config.InfoSite);
                 args.AddParam("orcidimage", "", Root.Domain + "/Framework/Images/orcid_16x16(1).gif");
                 args.AddParam("orcidimageguid", "", Guid.NewGuid().ToString());
             }

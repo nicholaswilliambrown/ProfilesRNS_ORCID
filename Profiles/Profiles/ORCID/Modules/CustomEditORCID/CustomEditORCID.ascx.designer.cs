@@ -58,33 +58,6 @@ namespace Profiles.ORCID.Modules.CustomEditORCID {
         protected global::Profiles.Edit.Modules.SecurityOptions.SecurityOptions securityOptions;
         
         /// <summary>
-        /// orcidtable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel orcidtable;
-        
-        /// <summary>
-        /// litORCIDID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litORCIDID;
-        
-        /// <summary>
-        /// pnlORCIDProxy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlORCIDProxy;
-        
-        /// <summary>
         /// pnlAddORCID control.
         /// </summary>
         /// <remarks>
@@ -227,6 +200,42 @@ namespace Profiles.ORCID.Modules.CustomEditORCID {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmitToORCID;
+        
+        /// <summary>
+        /// orcidtable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel orcidtable;
+        
+        /// <summary>
+        /// litORCIDID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litORCIDID;
+        
+        /// <summary>
+        /// pnlORCIDText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlORCIDText;
+        
+        /// <summary>
+        /// pnlORCIDProxy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlORCIDProxy;
         
         /// <summary>
         /// pnlORCIDAdmin control.
