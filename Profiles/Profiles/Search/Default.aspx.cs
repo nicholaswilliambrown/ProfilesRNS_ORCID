@@ -147,6 +147,7 @@ namespace Profiles.Search
             jsscript.Attributes.Add("src", Root.Domain + "/Search/JavaScript/comboTreeCheck.js");
             Page.Header.Controls.Add(jsscript);
 
+
             // Inject script into HEADER
             Literal script = new Literal();
             script.Text = "<script>var _path = \"" + Root.Domain + "\";</script>";
